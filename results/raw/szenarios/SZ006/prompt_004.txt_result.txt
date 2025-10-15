@@ -1,0 +1,65 @@
+ # Document Class Documentation
+
+## Purpose
+
+The `Document` class is designed to represent a document with associated metadata and tags. It encapsulates properties such as title, file name, content, creation date, and creator, along with a list of tags. The class provides methods to manage tags and retrieve document summaries.
+
+## Properties
+
+### Title
+
+- **Type**: `string`
+- **Description**: The title of the document.
+- **Getter**: Read-only.
+
+### FileName
+
+- **Type**: `string`
+- **Description**: The name of the file associated with the document.
+- **Getter**: Read-only.
+
+### Content
+
+- **Type**: `byte[]`
+- **Description**: The content of the document in byte array format.
+- **Getter**: Read-only.
+
+### CreatedAt
+
+- **Type**: `DateTime`
+- **Description**: The date and time when the document was created.
+- **Getter**: Read-only.
+
+### CreatedBy
+
+- **Type**: `string`
+- **Description**: The name of the person who created the document.
+- **Getter**: Read-only.
+
+### Tags
+
+- **Type**: `IReadOnlyList<string>`
+- **Description**: A read-only list of tags associated with the document.
+- **Getter**: `Tags => _tags.AsReadOnly();`
+
+## Methods
+
+### AddTag(string tag)
+
+- **Description**: Adds a new tag to the document's list of tags if the tag is not null or whitespace and does not already exist.
+- **Parameters**:
+  - `tag`: The tag to be added.
+- **Returns**: `void`
+
+### HasTag(string tag)
+
+- **Description**: Checks if the document contains a specific tag.
+- **Parameters**:
+  - `tag`: The tag to check for.
+- **Returns**: `bool` (true if the tag exists, false otherwise)
+
+### GetSummary()
+
+- **Description**: Returns a summary of the document, including its title, file name, and content size.
+- **Parameters**: None
+- **Returns**: `string` (summary of the document)�

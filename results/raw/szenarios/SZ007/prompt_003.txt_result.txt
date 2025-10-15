@@ -1,0 +1,59 @@
+ # FinancialDataHub Class Documentation
+
+## Purpose
+
+The `FinancialDataHub` class is designed to facilitate real-time financial data updates and retrieval in a SignalR-based application. It extends the `SignalR.Hub` class, allowing for efficient communication between the server and connected clients.
+
+## Class Members
+
+### Private Fields
+
+- `_latestPrices`: A `ConcurrentDictionary<string, decimal>` that stores the latest known prices for various financial symbols.
+
+### Public Methods
+
+#### `SendPriceUpdate(string symbol, decimal price)`
+
+Sends a real-time price update for a given financial symbol to all connected clients.
+
+- **Parameters**
+
+  - `symbol (string)`: The financial symbol for which the price update is being sent.
+
+  - `price (decimal)`: The latest price of the financial symbol.
+
+- **Returns**: None.
+
+- **Description**: This method updates the `_latestPrices` dictionary with the provided symbol and price, and then sends the update to all connected clients using the `SendAsync` method.
+
+#### `GetLastKnownPrice(string symbol)`
+
+Retrieves the last known price for a given financial symbol.
+
+- **Parameters**
+
+  - `symbol (string)`: The financial symbol for which the last known price is being retrieved.
+
+- **Returns**: `decimal?` - A nullable decimal value representing the last known price of the symbol, or null if the symbol is not found in the `_latestPrices` dictionary.
+
+- **Description**: This method attempts to retrieve the latest price for the specified symbol from the `_latestPrices` dictionary. If the symbol is not found, it returns null.
+
+#### `OnConnectedAsync()`
+
+An overridden method that is called when a client connects to the SignalR hub.
+
+- **Parameters**: None.
+
+- **Returns**: `Task` - An asynchronous task that returns void.
+
+- **Description**: This method sends a "ConnectionEstablished" message to the client that initiated the connection, and then calls the base `OnConnectedAsync` method to handle any additional connection-related logic.
+
+#### `OnDisconnectedAsync(Exception? exception)`
+
+An overridden method that is called when a client disconnects from the SignalR hub.
+
+- **Parameters**: `Exception? exception` - An optional exception object, if the disconnection was caused by an error.
+
+- **Returns**: `Task` - An asynchronous task that returns void.
+
+- **Description**: This method sends a "UserDisconnected" message to all connected clients, and then calls the base `OnDisconnectedAsync` method to handle any additional disconnection-related logic.�

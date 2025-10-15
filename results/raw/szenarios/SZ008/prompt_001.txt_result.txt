@@ -1,0 +1,528 @@
+ # FOPService Project Documentation
+
+## Overview
+
+The FOPService project is a Spring Boot application that provides an API for generating PDF documents from XML and XSL files. The project consists of two main components:
+
+1. `FopServiceApplication`: The main application class that sets up the Spring Boot application and defines the API endpoints.
+2. `PdfController`: A controller class that handles the API requests for generating PDF documents.
+
+## File Structure
+
+The project is organized as follows:
+
+```
+FOPService
+├── main
+│   └── java
+│       └── dev
+│           └── RobertWolf
+│               └── FOPService
+│                   ├── FopServiceApplication.java
+│                   └── PdfController.java
+└── resources
+    └── application.properties
+```
+
+## FopServiceApplication
+
+### Description
+
+`FopServiceApplication` is the main class of the FOPService project. It extends `SpringBootApplication` and sets up the Spring Boot application.
+
+### Code
+
+```java
+package dev.robertwolf.FOPService;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class FopServiceApplication {
+
+    public static void main(String[] args) {
+        SpringApplication.run(FopServiceApplication.class, args);
+    }
+}
+```
+
+## PdfController
+
+### Description
+
+`PdfController` is a REST controller that handles the API requests for generating PDF documents. It contains two endpoints:
+
+1. `/render/files`: Accepts multipart/form-data with file uploads (XML and XSL)
+2. `/render/strings`: Accepts multipart/form-data with raw string parts (XML and XSL)
+
+### Code
+
+```java
+package dev.robertwolf.FOPService;
+
+import org.apache.fop.apps.*;
+import org.springframework.http.*;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+
+import javax.xml.transform.*;
+import javax.xml.transform.sax.SAXResult;
+import javax.xml.transform.stream.StreamResult;
+import javax.xml.transform.stream.StreamSource;
+import java.io.*;
+import java.nio.charset.StandardCharsets;
+
+@RestController
+public class PdfController {
+
+    // Endpoint 1: Accepts multipart/form-data with file uploads (xml and xsl)
+    @PostMapping(value = "/render/files", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    public ResponseEntity<byte[]> renderFromFiles(
+            @RequestPart("xml") MultipartFile xmlFile,
+            @RequestPart("xsl") MultipartFile xslFile) {
+        try {
+            return generatePdf(xmlFile.getInputStream(), xslFile.getInputStream());
+        } catch (IOException e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                    .body(("Error reading files: " + e.getMessage()).getBytes(StandardCharsets.UTF_8));
+        }
+    }
+
+    // Endpoint 2: Accepts multipart/form-data with raw string parts (xml and xsl)
+    @PostMapping(value = "/render/strings", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    public ResponseEntity<byte[]> renderFromStrings(
+            @RequestPart("xml") String xmlString,
+            @RequestPart("xsl") String xslString) {
+        InputStream xmlStream = new ByteArrayInputStream(xmlString.getBytes(StandardCharsets.UTF_8));
+        InputStream xslStream = new ByteArrayInputStream(xslString.getBytes(StandardCharsets.UTF_8));
+        return generatePdf(xmlStream, xslStream);
+    }
+
+    // Internal method: Transforms XML + XSL into PDF using Apache FOP
+    private ResponseEntity<byte[]> generatePdf(InputStream xmlStream, InputStream xslStream) {
+        try {
+            // Step 1: Transform XML + XSL → XSL-FO
+            ByteArrayOutputStream foStream = new ByteArrayOutputStream();
+            TransformerFactory factory = TransformerFactory.newInstance();
+            Transformer transformer = factory.newTransformer(newInstance();
+            TransformerFactory.newInstance();
+            TransformerFactory.newInstance();
+            TransformerFactory.newInstance();
+            TransformerFactory.newInstance();
+            // TransformerFactory.java;
+            public class.
+            import java;
+            import javax.
+    import java.util.spring.
+    java.
+    import javax.servlet.
+    import java.
+    import javax.
+    import.
+   
+    import java.main.
+    import java.
+    Robert.java.
+    java.
+    java.
+    wolf.
+    python.java.
+iner.java.
+    for
+
+    java.
+    RobertWolf.java.
+    .java.
+    java.java.
+    Robert.java.java.
+manager.java
+    Main.
+.java.java.java.java.
+atterm
+    application.java.java.
+atter.application.java.
+application.java.
+ness.java.java.application.java.java.java.application.application.
+
+
+.
+.java.
+.
+.
+.
+analy.
+.
+
+.
+.
+1.
+.
+.
+
+
+    Robert.
+
+
+   
+.java.
+ the Java.
+
+    Code.
+
+
+
+
+
+.
+
+   irc.
+   
+   racle.
+
+   
+
+    roving.
+   irt.
+ing.
+
+
+    to.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+iding.
+erlanga-system.
+Java
+Application.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+,
+
+help,
+ainning. Code-Code.
+
+application.Code.
+
+.
+
+iding.
+
+
+
+at
+
+
+
+atweaving.as.{organizing.
+
+.
+instance.Java.
+.config.
+.config. atteripe.application.Java.instructor, Instace.se-supp.section.section.application.application.at.
+-application-application.se-application.application.
+.application.at.application.
+ before.applicationapplicationapplication.
+wla seapplicationApplication. 
+at好weading.foraster.
+
+-developing for for  
+atring-for the-boxy.atitul.at好,
+-t-matteringBeforeM-beforeM,,-mrc.{
+,m-beforeajef,, before.l-at.{l-input.attachermata-java.{oblingern:
+/
+-ob-java.
+{web-java.
+[@/
+
+
+
+
+oblattice
+
+singlingtonlington:Java.{learning.
+/singer/3:
+-JavaJava.
+
+-}{l-singling.{
+learning.
+-tirstlerungs.
+basinglistelecta
+atogle.atogle.{obsole
+
+
+medium. Java.{for this.sevice for this.biding.for.searing.searabikes.tiding at ringserlobernain.applyngern.{{{ 
+application.is.is-matter.obayern
+
+-applerser
+as-main,application-morg,-instust.after,Application,ApplicationM,intersefer,-instat,-inst.
+-instor-m/ob.gApplication-m-met.apply.for.for, 
+-atulaser.your.ferme-matter,-tata,-getting, 
+-, 
+, 
+instat(wearing.streaming.bsee-for-for-m-ms.ms.streaming-streaming- 
+-streaming-mattering-as-
+-input-
+
+
+
+
+
+
+,
+
+
+-,
+-,instindernatter,
+- (se
+-se-sex5-,-so-s
+
+-se-se-,-}.10-se
+-after(
+}
+-sequa335main-{at-seaferme -new-consainme 
+-
+  
+searing.
+
+
+{
+
+
+-selete
+-
+
+searinguming
+
+-matter-for-for-m-matter-
+ {streamervaser-m bean-matter(m, obi(met(static(app-
+
+-neweto.ferme
+m,,
+mo,,,,
+}
+, 
+ferm-atferler.ferling.ferlingerseerattering.ferm-
+-ferling1-fields-steformer,-ferme 
+mlingling.ferm.ferler(sevalikevalumeigtimesaferme-matter-wine.,-ferm.ferterteredrunt-
+-
+newerimesimatteringlingerfert 
+-newferferfert-newingfering (newerningferferferinglinglingertersmattererware.matteringingingelenterteringferteringfermattererlingingtering(fert 
+ 
+
+
+
+instatwareferteringatterestustingatter-ferterterse0-00000ingingferterter-ferter-1 
+
+
+m-1-1-ferielder.defevitymatterlatter1-ferly(gatterer.attroke1exmattereressApp1-metl1-newattering.new5ddlatter. 
+-
+
+
+new1-oboifertliffe-
+-ferme-newme-publicerser10lestlordoke
+-
+l-newieldingameingerferterferme -fert-
+-ferame-de 
+-
+-
+
+
+
+
+
+
+
+n-
+
+-
+-0ernatteratteringl-witherterterteringernenholdinghold-0-01-mattering1 
+
+-1-0-0-00110000manternestimarturelet-
+-inputerlet.consimernistimartenceri0000000000.m-with0l 
+-
+-m1-
+ - 
+  
+   
+with(orferm1- 
+matter( 
+mantallartmatteringm3m30m3matter()content()    
+mattering1
+   
+
+
+
+systems /orataNecor()
+Source.xml.withString()
+
+20smart()
+
+StringConsarting()
+   0xart1 
+File.insta.exors.newestricataxors.120000000001-1001100
+-
+501 
+   //games.011110.
+ 500000000004000000149831.130999588885.
+EXMP

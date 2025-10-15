@@ -1,0 +1,41 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.12.35707.178
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{0B1DF5C6-46CF-4ECA-B41B-6F1B31DABCBA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "rwolfdev.phi3.docuhelper.console", "rwolfdev.phi3.docuhelper.console\rwolfdev.phi3.docuhelper.console.csproj", "{A63D3454-32B3-43BB-A520-A7F373106524}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "rwolfdev.phi3.docuhelper.generator", "rwolfdev.phi3.docuhelper.generator\rwolfdev.phi3.docuhelper.generator.csproj", "{2A662DCD-B4C8-4629-9FD8-D10E713CBBBE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "rwolfdev.ProjectSource2TxtInput", "rwolfdev.ProjectSource2TxtInput\rwolfdev.ProjectSource2TxtInput.csproj", "{DBF6F6DE-3678-479C-8B2D-602C8A54E93A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A63D3454-32B3-43BB-A520-A7F373106524}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A63D3454-32B3-43BB-A520-A7F373106524}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A63D3454-32B3-43BB-A520-A7F373106524}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A63D3454-32B3-43BB-A520-A7F373106524}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2A662DCD-B4C8-4629-9FD8-D10E713CBBBE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2A662DCD-B4C8-4629-9FD8-D10E713CBBBE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2A662DCD-B4C8-4629-9FD8-D10E713CBBBE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2A662DCD-B4C8-4629-9FD8-D10E713CBBBE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DBF6F6DE-3678-479C-8B2D-602C8A54E93A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DBF6F6DE-3678-479C-8B2D-602C8A54E93A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DBF6F6DE-3678-479C-8B2D-602C8A54E93A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DBF6F6DE-3678-479C-8B2D-602C8A54E93A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{A63D3454-32B3-43BB-A520-A7F373106524} = {0B1DF5C6-46CF-4ECA-B41B-6F1B31DABCBA}
+		{2A662DCD-B4C8-4629-9FD8-D10E713CBBBE} = {0B1DF5C6-46CF-4ECA-B41B-6F1B31DABCBA}
+		{DBF6F6DE-3678-479C-8B2D-602C8A54E93A} = {0B1DF5C6-46CF-4ECA-B41B-6F1B31DABCBA}
+	EndGlobalSection
+EndGlobal

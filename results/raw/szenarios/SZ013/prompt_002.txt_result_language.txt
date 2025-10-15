@@ -1,0 +1,39 @@
+ # AnalyzeTransactions Function Documentation
+
+## Overview
+
+The `AnalyzeTransactions` function analyzes a list of `Transaction` objects and categorizes them into various groups based on their amount, date, and category. The function returns a `Dictionary<string, decimal>` containing the total amounts for each category.
+
+## Parameters
+
+1. `transactions`: A list of `Transaction` objects.
+
+## Return Value
+
+A `Dictionary<string, decimal>` containing the total amounts for each category.
+
+## Functionality
+
+1. Initialize a dictionary with keys "Suspicious", "Recurring", "HighValue", "Weekend", and "Total" with initial values of 0.
+2. Initialize variables `suspiciousTotal`, `recurringTotal`, `highValueTotal`, and `weekendTotal` to 0.
+3. Iterate through each transaction in the input list.
+4. Determine if the transaction is suspicious, recurring, high-value, or falls on a weekend.
+5. Update the appropriate dictionary key with the transaction amount.
+6. Return the dictionary containing the total amounts for each category.
+
+## Key Categories
+
+- **Suspicious**: Transactions with amounts greater than 5000m and either category "Cash" or "Online" on a weekend.
+- **Recurring**: Transactions with amounts less than 50m and not suspicious, categorized as "SmallRecurring", "NormalRecurring", or "LargeRecurring" based on the amount.
+- **HighValue**: Transactions with amounts greater than 10000m, categorized as "InvestmentHighValue", "LuxuryHighValue", or "OtherHighValue" based on the category.
+- **Weekend**: Transactions with dates falling on a Saturday or Sunday, categorized as "WeekendFood" or "WeekendTravel" based on the category.
+
+## Example
+
+```csharp
+List<Transaction> transactions = new List<Transaction>();
+// Populate transactions list with Transaction objects
+Dictionary<string, decimal> result = AnalyzeTransactions(transactions);
+```
+
+After executing the code, `result` will contain the total amounts for each category.�

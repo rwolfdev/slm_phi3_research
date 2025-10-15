@@ -1,0 +1,27 @@
+ # ValidateForm Method Documentation
+
+## Purpose
+Validates a list of form inputs based on their type, required status, and value constraints, and returns a dictionary of errors.
+
+## Parameters
+
+### inputs (List<FieldInput>)
+A list of `FieldInput` objects representing the form inputs to be validated.
+
+### Returns
+A `Dictionary<string, string>` containing the validation errors for each input field.
+
+## Key Notes and Limitations
+
+- Critical errors in high-priority fields trigger a form rejection.
+- Password validation includes checks for length and character composition.
+- The method assumes that the `FieldInput` class has properties: `Name`, `Type`, `Value`, `Required`, and `Priority`.
+
+## Method Signature
+
+```csharp
+public Dictionary<string, string> ValidateForm(List<FieldInput> inputs)
+{
+    // Method implementation...
+}
+```�

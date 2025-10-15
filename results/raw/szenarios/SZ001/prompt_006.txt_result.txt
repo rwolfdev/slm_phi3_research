@@ -1,0 +1,12 @@
+ ```csharp
+/// <summary>
+/// Adds two integer values and returns the sum.
+/// </summary>
+/// <param name="zahl1">The first integer to be added.</param>
+/// <param name="zahl2">The second integer to be added.</param>
+/// <returns>The sum of zahl1 and zahl2.</returns>
+public int Addiere(int zahl1, int zahl2)
+{
+    // Function implementation
+}
+```�

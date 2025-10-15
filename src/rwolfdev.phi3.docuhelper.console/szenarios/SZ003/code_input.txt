@@ -1,0 +1,4 @@
+﻿public int[] FilterEvenNumbers(int[] numbers)
+{
+    return numbers.Where(n => n % 2 == 0).ToArray();
+}

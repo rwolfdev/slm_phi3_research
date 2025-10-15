@@ -1,0 +1,18 @@
+ # Function: CountWords(string text)
+
+## Purpose
+Counts the frequency of each word in the provided text and returns a dictionary mapping words to their respective counts.
+
+## Parameters
+- `text` (string): The input string containing the text to be analyzed.
+
+## Return Value
+- `Dictionary<string, int>`: A dictionary where each key represents a unique word from the input text, and the corresponding value indicates the count of occurrences of that word.
+
+## Description
+The `CountWords` function takes a string `text` as input, splits it into words using space (' ') as the delimiter, groups these words by their uniqueness, and then counts the occurrences of each unique word. The result is returned as a dictionary mapping each word to its frequency in the text.
+
+## Key Notes/Limitations
+- The function assumes that words are separated by a single space character.
+- It does not account for punctuation or case sensitivity.
+- The dictionary may contain words with a count of 1 if they appear only once in the text.�

@@ -1,0 +1,67 @@
+ # ValidateForm Function Documentation
+
+## Overview
+
+The `ValidateForm` function is designed to validate a list of `FieldInput` objects representing form fields. It checks each field based on its type (Text, Number, Date, Email, Password) and specific validation rules. The function returns a `Dictionary<string, string>` containing the name of the field as the key and the corresponding error message as the value.
+
+## Parameters
+
+1. `inputs` (`List<FieldInput>`): A list of `FieldInput` objects representing the form fields to be validated.
+
+## Return Value
+
+- A `Dictionary<string, string>` containing the name of the field as the key and the corresponding error message as the value. If no errors are found, the dictionary will have a key "FormStatus" with the value "Valid".
+
+## Error Handling
+
+- If a critical error is found in a high-priority field, the function sets the "FormStatus" key in the dictionary to "Critical error: high priority field invalid." and returns immediately.
+
+## Error Message Categories
+
+1. **Text Fields**:
+    - Required: "Field is required."
+    - Length: "Text too short." or "Text too long."
+
+2. **Number Fields**:
+    - Invalid number: "Invalid number."
+    - Negative value: "Value must be positive."
+    - Exceeds limit: "Value exceeds limit."
+
+3. **Date Fields**:
+    - Invalid date: "Invalid date."
+    - Future date: "Date cannot be in the future."
+    - Past date: "Date too far in the past."
+
+4. **Email Fields**:
+    - Invalid format: "Invalid email format."
+    - Suspicious email: "Suspicious email."
+
+5. **Password Fields**:
+    - Short password: "Password too short."
+    - Missing requirements: "Password must contain upper, lower, digit, and special."
+
+## Additional Notes
+
+- The function prioritizes fields with a priority greater than 5, and if a critical error is found, it stops further validation and returns the error message.
+- The function checks if the password contains the field name itself, and if so, it adds an error message to the dictionary.
+- The function uses the `OrderByDescending` method to sort the inputs by their priority before validation.
+
+## Example Usage
+
+```csharp
+List<FieldInput> inputs = new List<FieldInput>
+{
+    new FieldInput { Name = "Name", Required = true, Type = FieldType.Text, Value = "" },
+    new FieldInput { Name = "Email", Required = true, Type = FieldType.Email, Value = "invalid_email" },
+    new FieldInput { Name = "Password", Required = true, Type = FieldType.Password, Value = "password123" }
+};
+
+Dictionary<string, string> errors = ValidateForm(inputs);
+
+// Output:
+// {
+//   { "Name", "Field is required." },
+//   { "Email", "Invalid email format." },
+//   { "Password", "Password must contain upper, lower, digit, and special." }
+// }
+```�

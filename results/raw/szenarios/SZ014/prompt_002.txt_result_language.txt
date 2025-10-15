@@ -1,0 +1,30 @@
+ # ValidateForm Function Documentation
+
+## Overview
+
+The `ValidateForm` function validates a list of `FieldInput` objects, checking for errors based on the input's type, required status, and value. It returns a `Dictionary<string, string>` containing the field names and corresponding error messages.
+
+## Parameters
+
+1. `inputs` (List<FieldInput>): A list of `FieldInput` objects representing the form fields to be validated.
+
+## Return Value
+
+A `Dictionary<string, string>` containing the field names and their associated error messages. If no errors are found, the dictionary will have a key "FormStatus" with the value "Valid".
+
+## Error Handling
+
+- If a required field is empty, an error message will be added to the dictionary with the field name and the message "Field is required."
+- If a critical error is detected (high priority field with an error), the dictionary will have a key "FormStatus" with the value "Critical error: high priority field invalid."
+
+## Error Cases
+
+- Text fields: Length validation (3-200 characters).
+- Number fields: Validation for negative values, limits (0-100000), and date constraints (future dates and dates more than 120 years ago).
+- Email fields: Validation for a proper email format and suspicious patterns.
+- Password fields: Validation for minimum length (8 characters), presence of uppercase, lowercase, digits, and special characters.
+
+## Additional Notes
+
+- The function prioritizes fields with a priority greater than 5, and if a critical error is found, the form will be rejected.
+- If no errors are found, the dictionary will have a key "FormStatus" with the value "Valid".�

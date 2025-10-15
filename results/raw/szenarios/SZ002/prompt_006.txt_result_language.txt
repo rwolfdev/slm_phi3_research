@@ -1,0 +1,14 @@
+ /// <summary>
+/// Counts the occurrences of each word in the given text.
+///
+/// This method takes a string input and returns a Dictionary<string, int>
+/// where each key represents a unique word found in the text, and the corresponding
+/// value represents the number of times that word appears.
+///
+/// <param name="text">The input string containing words to be counted.</param>
+/// <returns>A Dictionary<string, int> with words as keys and their counts as values.</returns>
+/// </summary>
+public Dictionary<string, int> CountWords(string text)
+{
+    // Implementation here
+}�

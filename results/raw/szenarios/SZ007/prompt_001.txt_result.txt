@@ -1,0 +1,67 @@
+ # FinancialDataHub Class Documentation
+
+## Overview
+
+The `FinancialDataHub` class is a part of the `Microsoft.AspNetCore.SignalR` namespace and is designed to facilitate real-time financial data updates and price information retrieval in a financial data hub application. This class extends the `Hub` class provided by SignalR, enabling it to broadcast messages to clients and manage connections.
+
+## Class Members
+
+### Private Fields
+
+- `_latestPrices`: A `ConcurrentDictionary<string, decimal>` that stores the latest price information for various financial symbols. This dictionary is thread-safe and allows concurrent access to the data.
+
+### Public Methods
+
+#### `SendPriceUpdate(string symbol, decimal price)`
+
+This asynchronous method is responsible for updating the latest price of a financial symbol and broadcasting the update to all connected clients.
+
+- Parameters:
+  - `symbol`: A string representing the financial symbol (e.g., "AAPL" for Apple Inc.).
+  - `price`: A decimal value representing the latest price of the financial symbol.
+
+- Returns:
+  - None.
+
+#### `GetLastKnownPrice(string symbol)`
+
+This method retrieves the last known price of a financial symbol from the `_latestPrices` dictionary. If the symbol is not found, it returns `null`.
+
+- Parameters:
+  - `symbol`: A string representing the financial symbol (e.g., "AAPL" for Apple Inc.).
+
+- Returns:
+  - A `decimal?` value representing the last known price of the financial symbol, or `null` if the symbol is not found.
+
+#### `OnConnectedAsync()`
+
+This asynchronous method is called when a client connects to the SignalR hub. It sends a "ConnectionEstablished" message to the client that initiated the connection, and then calls the base `OnConnectedAsync()` method to handle any additional connection-related tasks.
+
+- Parameters:
+  - None.
+
+#### `OnDisconnectedAsync(Exception? exception)`
+
+This asynchronous method is called when a client disconnects from the SignalR hub. It sends a "UserDisconnected" message to all connected clients and then calls the base `OnDisconnectedAsync()` method to handle any additional disconnection-related tasks.
+
+- Parameters:
+  - `exception`: An optional `Exception` object representing the reason for the client's disconnection.
+
+## Usage
+
+To use the `FinancialDataHub` class, you can create an instance of the class and call its methods as needed. For example, to update the latest price of a financial symbol and broadcast the update to all connected clients, you can call the `SendPriceUpdate` method:
+
+```csharp
+var financialDataHub = new FinancialDataHub();
+financialDataHub.SendPriceUpdate("AAPL", 150.00m);
+```
+
+To retrieve the last known price of a financial symbol, you can call the `GetLastKnownPrice` method:
+
+```csharp
+var lastKnownPrice = financialDataHub.GetLastKnownPrice("AAPL");
+```
+
+## Conclusion
+
+The `FinancialDataHub` class provides a foundation for building a financial data hub application using SignalR. It allows for real-time updates and retrieval of financial data, making it an essential component for financial data hubs and applications.�

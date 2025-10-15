@@ -1,0 +1,25 @@
+ # Function: Addiere
+
+## Purpose
+This function adds two integer values and returns their sum.
+
+## Parameters
+1. `zahl1` (int): The first integer value to be added.
+2. `zahl2` (int): The second integer value to be added.
+
+## Return Value
+- Type: `int`
+- Description: The sum of `zahl1` and `zahl2`.
+
+## Syntax
+```csharp
+public int Addiere(int zahl1, int zahl2)
+{
+    return zahl1 + zahl2;
+}
+```
+
+## Notes
+- The function assumes that `zahl1` and `zahl2` are valid integers.
+- No error handling is implemented for non-integer inputs.
+- The function does not handle overflow scenarios.�

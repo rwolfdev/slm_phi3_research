@@ -1,0 +1,49 @@
+ # ValidateForm Function Documentation
+
+## Overview
+
+The `ValidateForm` function validates a list of `FieldInput` objects, checking for required fields, appropriate data types, and specific constraints. It returns a `Dictionary<string, string>` containing the validation errors for each field.
+
+## Parameters
+
+- `inputs` (`List<FieldInput>`): A list of `FieldInput` objects representing the form fields to be validated.
+
+## Return Value
+
+- `Dictionary<string, string>`: A dictionary containing the validation errors for each field. If no errors are found, the dictionary will have a key "FormStatus" with the value "Valid".
+
+## Error Categories
+
+- "Field is required."
+- "Text too short."
+- "Text too long."
+- "Invalid number."
+- "Value must be positive."
+- "Value exceeds limit."
+- "Invalid date."
+- "Suspicious email."
+- "Password too short."
+- "Password must contain upper, lower, digit, and special."
+- "Password should not contain field name."
+
+## Error Triggering
+
+- Critical errors (e.g., invalid number or date) in high-priority fields (Priority > 5) will trigger a "Critical error: high priority field invalid." error in the dictionary.
+
+## Error Handling
+
+- If a field is required but empty, an error will be added to the dictionary with the key being the field name and the value being "Field is required."
+
+- For each field type (Text, Number, Date, Email, Password), specific validation checks are performed based on the field's value and type.
+
+- If no errors are found, the dictionary will have a key "FormStatus" with the value "Valid".
+
+- If a password field is found without an associated error, an error will be added with the key being the password field name and the value being "Password should not contain field name."
+
+## Example
+
+```csharp
+Dictionary<string, string> errors = ValidateForm(inputs);
+```
+
+This will return a dictionary containing the validation errors for the given `inputs` list.�

@@ -1,0 +1,275 @@
+ public class Route {
+    public string[] {set;set; set;set;set; } public class Route {set; set;set;set;set;set;set;set;set;set; set; set;set;set;set;set;set;set;set;set;set;set;set;set;set;set;set;set;set;set;set;set;set;set;set;set;set;set;set;set;set.set;set.set;set;set;set.set;set;set;set;set;set;set;set;set.set;set;set;set;set;set;set;set;set;set;set.set;set.set;set;set;set;set;set;set;
+. Set;set;set;set;set. Set;set. Set. Set. Set. Set. Set. Set. Yourset. Set. Set. Set. Yourset. You.set. Set.
+
+. Your.
+. Set.
+.
+ 
+.
+
+.
+
+.
+. by.
+
+
+
+
+
+yourcode.
+3.
+
+
+
+.
+ 
+
+
+by.
+
+ 
+
+ 
+ 
+ 
+by.
+
+
+   
+
+byas.
+
+
+
+.
+
+.
+.
+
+(1.
+.as.
+.
+
+
+
+
+. 
+
+ 
+  
+ 
+. 
+. 
+   
+  
+. Your. You.
+
+   
+
+   
+   
+   
+ 
+    to be.I. 
+    with your by: by: your. Your.se with your. 
+   
+   
+    Console. 
+                 
+    }
+    } . 
+    }  byron.
+ for by to. by
+    in by(1 by. 
+   ounce by.Reading. 
+  
+    by by. 
+     by. By 1, line. ínat. Your. 
+    line.Instace.
+ for the oupas. 
+    line. Your to code.
+    By,
+    writing, by-1 to 1, to code in,const.in.Largin. 
+    command. By line. Youres.To. 
+    line. This.This.   1. 
+ to Conranse. by, by 
+   
+in. ToUince by, to help.in. In. In phr. To. 
+    caloe, .format. 
+    Express 
+   ínignes by by by by by. 
+    Format. 
+    (with. Write by your.yours by this. By by.line. To by by by, line. Write. Subintery. Each. Each. S, for route, each, for your, line 
+ for,       Write 
+    Input by, by   
+    line   
+    line by, (    line by line by.By.By.By.            By. By by.    By.                By.                    line.  Line.                line.                    In    In. In (    In.   1 Inlousin.    In.   1 by1B B by (4 by Read.    InBargo.    Det. 1 to by \n. By.By. ByBy.N.  displaying.l.l to (B.3.Incode. lines.  line. 
+    line.  B.  line.  {B byLine.byBy.by.by. By.IfBy.        Bs  B.  Output.  Output.    By.By  By. By.By.By.    \    \    \t.B 
+    }    Return.    }    Paramin.   
+.  Parse. 
+                    } if                    //if line.If   
+ ifl Inif.if., In. If. If., (
+    line. 1. If }    Detake // \textline.B if if. If. If (if line.    //if line. If, B.line. Return. By by byn. Line.    by bys 
+    inIn for .    // {    \n Line.    \n.   icana.                ByInByInferme (ByBy.
+   
+
+
+
+
+
+n {
+
+
+ifnifniface.Inline, for by4woco4s, if (if (if Prwiaits.   
+ (ifuse.                   ín    {           
+   
+   
+    } byn bye byifia.    if   
+   iaise.    (if byifia.if   
+      .    //By.        //   
+   
+.       
+   
+   
+   
+.if   
+ 
+   
+   
+ 
+ by {   
+line.   
+   
+ by {by.   
+   
+ 
+   by.if.if 
+   
+ 
+   
+ 
+  
+   
+     By4. 
+   
+  By.   
+.    {   
+.line.line()   with.,    {inin.in.   
+Inlend.By.   
+   
+ ifnama.   
+   
+ if
+   
+   
+ 
+ 
+game. 
+   
+ 
+ 
+
+   
+ 
+   ifline.                   ifintertonselete.in.
+ toline.ifinialize.ifwrane.ifline.  {           íninrieltianby by (line.;return.returned  
+in the(           
+    {                          new(  
+    //Wee.           {Return.                              If.       
+       
+.        if if.       return. Ift.              
+
+
+
+.
+ (if(if(
+    (return.       
+
+
+
+.
+       
+.Ifin. if.           
+                          
+       
+       
+       
+   
+       
+       
+ (           estestestestest.                 
+, Return.          
+(                     a.                                    
+ 
+ (   4.Seib.       a.       
+(       
+.
+ (
+           
+              {
+                                      4.               ->       4estnatter.       5.
+inachstest.
+       
+       
+       
+.
+(           (in.
+par.        1 in. in.        
+       
+        
+           444.to.
+ 444.           
+ [
+           
+       0.
+           
+       
+                      
+       
+           
+                          
+       
+   
+   
+   ilde(Return(Return(Return(Return(Return(Tha.Ins
+   ilde.          Next.           
+    }       
+                      
+           
+           
+           
+                       return.           .   4.       
+         return. Return.       added.       
+       
+   
+   
+   
+   
+   
+       
+   
+   
+
+
+
+   
+    
+   
+   
+   
+                    
+       
+(          ()        }        }       (                                                              }               }        }           .           .            //           
+           
+                                  
+           
+           (After(Parachine.                          AddNach.Iach.
+           .           .                                                 
+                                 
+                          deach.        
+                .de.de.        and.        and.           ica.return.           i.                       ilde.s.level.level.                  key.                                     
+        //        //       
+       
+           de.
+    

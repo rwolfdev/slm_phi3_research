@@ -1,0 +1,36 @@
+﻿public class Patient
+{
+    private readonly Guid _id;
+
+    public string FirstName { get; }
+    public string LastName { get; }
+    public DateTime DateOfBirth { get; }
+    public string InsuranceNumber { get; private set; }
+
+    public Patient(string firstName, string lastName, DateTime dateOfBirth, string insuranceNumber)
+    {
+        _id = Guid.NewGuid();
+        FirstName = firstName;
+        LastName = lastName;
+        DateOfBirth = dateOfBirth;
+        InsuranceNumber = insuranceNumber;
+    }
+
+    public int GetAge()
+    {
+        var today = DateTime.Today;
+        var age = today.Year - DateOfBirth.Year;
+        if (DateOfBirth.Date > today.AddYears(-age)) age--;
+        return age;
+    }
+
+    public void UpdateInsurance(string newInsuranceNumber)
+    {
+        InsuranceNumber = newInsuranceNumber;
+    }
+
+    public override string ToString()
+    {
+        return $"{FirstName} {LastName} ({DateOfBirth:yyyy-MM-dd})";
+    }
+}

@@ -1,0 +1,4 @@
+﻿Ausgabe der Anzahl von Wörtern innerhalb eines Strings
+
+
+Zyklomatische Komplexität: 1

@@ -1,0 +1,19 @@
+ # Function: FilterEvenNumbers(int[] numbers)
+
+## Purpose
+The `FilterEvenNumbers` function extracts and returns an array of even numbers from the input array.
+
+## Parameters
+
+- `numbers` (int[]): An array of integers from which even numbers will be filtered.
+
+## Return Value
+- `int[]`: An array containing only the even numbers from the input array.
+
+## Description
+This function utilizes LINQ's `Where` method to filter out even numbers from the input array and then converts the resulting `IEnumerable<int>` to an array using `ToArray()`.
+
+## Key Notes
+- The function assumes that the input array is not null.
+- The returned array will only contain even numbers present in the input array.
+- The function does not modify the original input array.�

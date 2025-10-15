@@ -1,0 +1,74 @@
+ # Patient Class Documentation
+
+## Purpose
+
+The `Patient` class represents a patient's information, including personal details and insurance information. It provides methods to calculate the patient's age and update the insurance number.
+
+## Properties
+
+### `_id`
+
+- Type: `Guid`
+- Description: A unique identifier for the patient.
+- Read-only.
+
+### `FirstName`
+
+- Type: `string`
+- Description: The patient's first name.
+- Read-only.
+
+### `LastName`
+
+- Type: `string`
+- Description: The patient's last name.
+- Read-only.
+
+### `DateOfBirth`
+
+- Type: `DateTime`
+- Description: The patient's date of birth.
+
+### `InsuranceNumber`
+
+- Type: `string`
+- Description: The patient's insurance number. This property is read-only and can only be modified through the `UpdateInsurance` method.
+
+## Constructor
+
+### Parameters
+
+- `firstName`: `string` - The patient's first name.
+- `lastName`: `string` - The patient's last name.
+- `dateOfBirth`: `DateTime` - The patient's date of birth.
+- `insuranceNumber`: `string` - The patient's insurance number.
+
+### Description
+
+The constructor initializes a new instance of the `Patient` class with the provided personal and insurance information. The `_id` field is automatically generated using `Guid.NewGuid()`.
+
+## Methods
+
+### `GetAge()`
+
+- Type: `int`
+- Description: Calculates and returns the patient's age based on their date of birth.
+
+### `UpdateInsurance(string newInsuranceNumber)`
+
+- Type: `void`
+- Description: Updates the patient's insurance number with the provided new insurance number.
+
+### `ToString()`
+
+- Type: `string`
+- Description: Returns a string representation of the patient' elements in the format: "{FirstName} {LastName} ({DateOfBirth:yyyy-MM-dd})".
+
+## Example Usage
+
+```csharp
+Patient patient = new Patient("John", "Doe", new DateTime(1990, 1, 1), "1234567890");
+int age = patient.GetAge();
+patient.UpdateInsurance("0000000000");
+string patientInfo = patient.ToString();
+```�

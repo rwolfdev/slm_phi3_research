@@ -1,0 +1,32 @@
+ ## Function: CountWords(string text)
+
+### Purpose:
+This function counts the occurrences of each word in a given string and returns a dictionary mapping words to their respective counts.
+
+### Input Parameters:
+1. `text` (string): The input string from which word counts will be determined.
+
+### Return Value:
+- Type: `Dictionary<string, int>`
+- Description: A dictionary where each key represents a unique word from the input string, and the corresponding value is the count of occurrences of that word.
+
+### Function Details:
+```csharp
+public Dictionary<string, int> CountWords(string text)
+{
+    // Split the input text into words based on space delimiter
+    var words = text.Split(' ');
+
+    // Group words and count occurrences
+    var wordCounts = words.GroupBy(w => w)
+                         .ToDictionary(g => g.Key, g => g.Count());
+
+    return wordCountin
+}
+```
+
+### Key Notes/Limitations:
+- The function assumes that words are separated by a single space character.
+- It does not handle punctuation or case sensitivity; "Word" and "word" would be considered different words.
+- The function does not remove common stopwords (e.g., "the", "is", "at") from the count.
+- The dictionary may contain null or empty keys if the input string contains consecutive spaces or no words at all.�

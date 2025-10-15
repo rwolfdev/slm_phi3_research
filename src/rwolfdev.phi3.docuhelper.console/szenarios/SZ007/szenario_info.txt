@@ -1,0 +1,3 @@
+﻿SignalR Hub zur Übertragung von Echtzeitfinanzdaten (vereinfacht)
+
+Zyklomatische Komplexität: 5

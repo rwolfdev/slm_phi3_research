@@ -1,0 +1,234 @@
+ /// <summary>Analyzes a list of transactions and categorizes them based on suspicious, recurring, high-value, and weekend transactions.</summary>
+/// <param name="transactions">A list of Transaction objects to be analyzed.</param>
+/// <returns>A Dictionary<string, decimal> containing the total amounts categorized by suspicious, recurring, high-value, and weekend transactions.</returns>
+public Dictionary<string, decimal> AnalyzeTransactions(List<Transaction> transactions)
+{
+    Dictionary<string, decimal> result = new Dictionary<string, decimal>();
+    decimal suspiciousTotal = 0; // Total amount of suspicious transactions
+    decimal recurringTotal = 0; // Total amount of recurring transactions
+    decimal highValueTotal = 0; // Total amount of high-value transactions
+    decimal weekendTotal = 0; // Total amount of weekend transactions
+
+    foreach (Transaction t in transactions)
+    {
+        bool isWeekend = t.Date.DayOfWeek == DayOfWeek.Saturday || t.Date.DayOfWeek == DayOfWeek.Sunday; // Check if the transaction occurred on a weekend
+        bool isHighValue = t.Amount > 10000m; // Check if the transaction amount is high-value
+        bool isSuspicious = (t.Amount > 5000m && t.Category == "Cash") || // Check if the transaction is suspicious
+                            (t.Amount > 2000m && t
+===
+:# <summary>Analyzes a list of transactions and categorizes them based on suspicious, recurring, high-value, and weekend transactions.</summary>
+:# <param name="transactions">A list of Transaction objects to be analyzed.</param>
+:# <returns>A Dictionary<string, decimal> containing the total amounts categorized by suspicious, recurring, high-value, and weekend transactions.</returns>
+public Dictionary<string, decimal> AnalyzeTransactions(List<Transaction> transactions)
+{
+    Dictionary<string, decimal> result = new Dictionary<string, decimal>();
+    decimal suspiciousTotal = 0; // Total amount of suspicious transactions
+    decimal recurringTotal = 0; // Total amount of recurring transactions
+    decimal highValueTotal = 0; // Total amount of high-value transactions
+    decimal weekendTotal = 0; // Total amount of weekend transactions
+
+    foreach (Transaction t in transactions)
+    {
+        bool isWeekend = t.Date.DayOfWeek == DayOfWeek.Saturday || t.Date.DayOfWeek == DayOfWeek.Sunday; // Check if the transaction occurred on a weekend
+        bool isHighValue = t.Amount > 10000m; // Check if the transaction amount is high-value
+        bool isSuspicious = (t.Amount > 5000m && t.Category == "Cash") || // Check if the transaction is suspicious
+                            (t.Amount > 2000m && t.IsRecurring && t.Category == "Gift");
+
+        if (isSuspicious)
+        {
+            suspiciousTotal += t.Amount;
+            if (!result.ContainsKey("Suspicious"))
+                result["Suspicious"] = 0;
+            result["Suspicious"] += t.Amount;
+        }
+
+        if (t.IsRecurring)
+        {
+            recurringTotal += t.Amount;
+            if (t.Amount < 50m && !isSuspicious)
+            {
+                if (!result.ContainsKey("SmallRecurring"))
+                    result["SmallRecurring"] = 0;
+                result["SmallRecurring"] += t.Amount;
+            }
+            else if (t.Amount >= 50m && t.Amount <= 500m)
+            {
+                if (!result.ContainsKey("NormalRecurring"))
+                    result["NormalRecurring"] = 0;
+                result["NormalRecurring"] += t.Amount;
+            }
+            else if (t.Amount > 500m)
+            {
+                if (!result.ContainsKey("LargeRecurring"))
+                    result["LargeRecurring"] = 0;
+                result["LargeRecurring"] += t.Amount;
+            }
+        }
+
+        if (isHighValue)
+        {
+            if (t.Category == "Investment")
+            {
+            {
+            {
+            {
+            {
+            }
+            {
+            }
+            {
+            }
+            {
+            }
+            {
+<details>
+            """
+            """
+            """
+            """
+            """
+            """
+            """
+            """
+            """"
+            """
+            """
+            """
+            """
+            """
+            """
+            """
+            """"
+            """
+            """" (noemails" """"""" """" """" """" """"input" """when" """"input"Output, androg"python"Output"Output.
+"Output, when, withOutput,Input,Output,Output,Output,Output,Output,Output"Output"Output"Output,Output"Output"Output"Output ofOutput"Output"Output"Output"Output"Output,Output"Output"Output"Output"Output"Output"Output.Output.Output"Output"Output"Output.
+"Output"Output"Output"Output"Output"Output"Output"Output.
+Input.Output.
+Output.
+Input.
+Output.Output when, withOutput.Output.
+output.
+
+Output.
+Output.
+Output, and Output, and formatting.Output.Output. of your Output.Output. Output.Output.Output. Output,Output.Output.
+for Output, thecriptrue Output. The purpose.format, andOutput, and action. In your code. Format. Your code.sentence. You andrenders, and if yourearness. I input. Output: you aspec, if necessary, of your paragraph. You. You to describe. YouTone: to explain,warmthsnias, you:nustenate. YouPIrôle.Parse. of your output. Assume prompt. Use. Use.
+ input. Answer. Output.officine.name.your script and your output. Output. Readable.Output.reataison, input, input.Output.outreference.format.output.format.format.format.format.format my,format.format.format.printed, input, toP: input. information.I input. I input.
+
+            response.description.abstract. of 
+    format. education.format.format. Based. Fromate.format. Output. Readr,  //output. 
+ reading,format,format,in,format.format.format.format.format.  #' Line,view.  #separandized, of output output.     output, when to  #dnote to tots of of each. My. My. I, either my output.exeqr  
+,ctions,  #pre  #conc 
+:w:format, 
+ (note ( (code  #format
+/w  parsing explanation.  #cited  #exampleand/w 
+.  
+.
+  
+   # 
+
+
+.forthany   
+ .view(ass 
+   #wrindr and for the  for for ): separator., format.  :example  #s.format.  example.ble.  before 
+. to (type: 
+ (type. 
+section.  # 
+  
+   Div 
+  format.format.
+ for for this: 
+ parse format.view:end: 
+:
+:s:  :helping,:sample: parse:  //  propre: 
+  for: my my mains (console for for for (for format(break: foroup.se 
+:r ep  propre, 
+l cason main.  interpretation., my:conlengended,, ):  representation  interpre:se  Camp 
+ and, instructions. 
+   ec 
+e solute, boolean:
+ if(params: and, of:   params: πlc, ofit ofso-, ^\
+  optional, your notes.  #param if 
+   , if if,
+ 
+  if your
+cap  
+  
+
+
+  
+  
+ 
+ 
+  your 
+
+ 
+  your logic. 
+ your.
+  t 
+  
+ 
+: 
+ your own parameters: 5 
+  format: 
+ if any and 
+  gubtifen: 
+       
+  p  main 
+  separator: query : 
+ 
+  user potlamakes.  sign empi 
+: 
+symresu:  parameters.  :  :  : if: if if if if if if  if if if: if if if if if if, if , , , 
+ar: 
+  formatted. fake if: 
+commandsand:pected: context if:  format-, (output  if my if if if  if if if if,  --  ifokn if if  if 
+   if if if if  if , if  you.  #l any  output.w verifyfor any output. output res 
+ if output  res. If your if if if
+respons  if res  validation.l if your 
+respons if your 
+  if
+  if 
+ your own 
+ if 
+ if your your
+ your
+ if  if if if, if if if if if if if if if, if if if  rec prel if, visible, any 
+  :   (undefined (you (specreequanyusten you you : any any any you exluthainensole (my 5., 3M m. type of my. for your defl.largainlamprovequonso 5 youl youso  your., you you ;caplucampern if you .onitsanduitlu (in. you your.   visible and your visible. YouExm. Yourly lu 	resuitlism,  ifl, if any if, if context  ifc. if e hc, if, if it., if if any. , , ifochrese  (if ififanya contextsandlyivin 0 8ituale (wairitu ( ( ( ( ( recall.  Yourn.lyatrain. (entanyituatrecernanduilitulassandmsandarnand, iflugivl, iflernar.ly { ( { { any any {  {  { anywathlargaclearlyutakearainescullyl> lerlyloudathrepresuitaccursitunarguguilampuil.solely (trarecrustust. 5l @rougest.8labeuillevainn8llwolargolly.iflliflevarestituing                levaresting. 
+ 
+ 4;reclavers if, ifituversuit, 8any,minatic, and,,,, o; 4i.,
+er 5heusitu.10.   8acresandon .way if only only (mandin yourn8at8and8heatoc.                { {                                             1 1 18headian888oniterat.           8uiless.88undocurrest.88
+   
+           8uer. { {5end   15ec.n              
+   
+           5aratic (
+       
+   
+                                               ;                   
+                -,
+                //recouverbearm/
+               
+                  
+                                      
+                                     
+                  
+           m;
+                                  
+       
+                      s.                      
+            (                           
+           
+                          
+           
+           
+           
+        (       
+                                              
+            {
+           
+minundainmorphuainacult.                                                          
+           
+       
+                                              
+                                                                                                                       ant
+           any

@@ -1,0 +1,89 @@
+ /// <summary>Validates a form's input fields and returns a dictionary of errors.</summary>
+/// <param name="inputs">A list of input fields with their respective priority and validation requirements.</param>
+/// <returns>A dictionary mapping field names to error messages.</returns>
+/// <exception cref="ArgumentException">Thrown when inputs is null or empty.</exception>
+public Dictionary<string, string> ValidateForm(List<FieldInput> inputs)
+{
+    // Input validation
+    if (inputs == null || !inputs.Any())
+        throw new ArgumentException("Inputs list cannot be null or empty.");
+
+    Dictionary<string, string> errors = new Dictionary<string, string>();
+
+    foreach (FieldInput input in inputs.OrderByDescending(i => i.Priority))
+    {
+        if (input.Required && string.IsNullOrWhiteSpace(input.Value))
+        {
+            errors[input.Name] = "Field is required.";
+            continue;
+        }
+
+        switch (input.Type)
+        {
+            case FieldType.Text:
+                if (input.Value.Length < 3)
+                    errors[input.Name] = "Text too short.";
+                else if (input.Value.Length > 200)
+                    errors[input.Name] = "Text too long.";
+                break;
+
+            case FieldType.Number:
+                if (!decimal.TryParse(input.Value, out decimal number))
+                    errors[input.Name] = "Invalid number.";
+                else if (number < 0)
+                    errors[input.Name] = "Value must be positive.";
+                else if (number > 100000)
+                    errors[input.Name] = "Value exceeds limit.";
+                break;
+
+            case FieldType.Date:
+                if (!DateTime.TryParse(input.Value, out DateTime date))
+                    errors[input.Name] = "Invalid date.";
+                else if (date > DateTime.Now)
+                    errors[input.Name] = "Date cannot be in the future.";
+                else if (date < DateTime.Now.AddYears(-120))
+                    errors[input.Name] = "Date too far in the past.";
+                break;
+
+            case FieldType.Email:
+                if (!input.Value.Contains("@") || !input.Value.Contains("."))
+                    errors[input.Name] = "Invalid email format.";
+                else if (input.Value.EndsWith(".con") || input.Value.Contains(" "))
+                    errors[input.Name] = "Suspicious email.";
+                break;
+
+            case FieldType.Password:
+                bool hasUpper = input.Value.Any(char.IsUpper);
+                bool hasLower = input.Value.Any(char.IsLower);
+                bool hasDigit = input.Value.Any(char.IsDigit);
+                bool hasSpecial = input.Value.Any(c => "!@#$%^&*".Contains(c));
+
+                if (input.Value.Length < 8)
+                    errors[input.Name] = "Password too short.";
+                else if (!(hasUpper && hasLower && hasDigit && hasSpecial))
+                    errors[input.Name] = "Password must contain upper, lower, digit, and special.";
+                break;
+        }
+
+        if (errors.ContainsKey(input.Name))
+        {
+            if (input.Priority > 5)
+            {
+                errors["FormStatus"] = "Critical error: high priority field invalid.";
+                break;
+            }
+        }
+    }
+
+    if (inputs.Any(i => i.Type == FieldType.Password && !errors.ContainsKey(i.Name)))
+    {
+        FieldInput passwordField = inputs.First(i => i.Type == FieldType.Password);
+        if (passwordField.Value.Contains(passwordField.Name))
+            errors[passwordField.Name] = "Password should not contain field name.";
+    }
+
+    if (!errors.Any())
+        errors["FormStatus"] = "Valid";
+
+    return errors;
+}�

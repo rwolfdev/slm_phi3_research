@@ -1,0 +1,32 @@
+﻿using Microsoft.AspNetCore.SignalR;
+using System.Collections.Concurrent;
+
+public class FinancialDataHub : Hub
+{
+    private static readonly ConcurrentDictionary<string, decimal> _latestPrices = new();
+
+    public async Task SendPriceUpdate(string symbol, decimal price)
+    {
+        _latestPrices[symbol] = price;
+        await Clients.All.SendAsync("ReceivePriceUpdate", symbol, price);
+    }
+
+    public decimal? GetLastKnownPrice(string symbol)
+    {
+        if (_latestPrices.TryGetValue(symbol, out var price))
+            return price;
+        return null;
+    }
+
+    public override async Task OnConnectedAsync()
+    {
+        await Clients.Caller.SendAsync("ConnectionEstablished", Context.ConnectionId);
+        await base.OnConnectedAsync();
+    }
+
+    public override async Task OnDisconnectedAsync(Exception? exception)
+    {
+        await Clients.All.SendAsync("UserDisconnected", Context.ConnectionId);
+        await base.OnDisconnectedAsync(exception);
+    }
+}

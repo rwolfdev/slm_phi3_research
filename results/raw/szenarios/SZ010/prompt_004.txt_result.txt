@@ -1,0 +1,268 @@
+ # FullNameToColorConverter Class Documentation
+
+## Purpose
+
+The `FullNameToColorConverter` class is designed to convert a full name into a color based on the hash value of the name. It implements the `IValueConverter` interface to provide this conversion functionality.
+
+## Class Members
+
+### FullNameToColorConverter Class
+
+- `Convert(object value, Type targetType, object parameter, CultureInfo culture)`: Converts the given value (full name) into a color.
+- `ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)`: Returns the original value (full name) as it is.
+
+### ColorScale Class
+
+- `HslToRgb(double h_original, double s_original, double l_original)`: Converts HSL color values to RGB color values.
+
+## Public Methods
+
+### Convert Method
+
+Parameters:
+- `value`: The full name to be converted into a color.
+- `targetType`: The target type, which is not used in this method.
+- `parameter`: The converter parameter, which is not used in this method.
+- `culture`: The culture info, which is not used in this method.
+
+Returns:
+- A `SolidColorBrush` object representing the color based on the hash value of the full name.
+
+### ConvertBack Method
+
+Parameters:
+- `value`: The value to be converted back to a full name.
+- `targetType`: The target type, which is not used in this method.
+- `parameter`: The converter parameter, which is not used in this method.
+- `culture`: The culture info, which is not used in this method.
+
+Returns:
+- The original value (full name) as it is.
+
+## Public Methods Details
+
+### Convert Method
+
+1. Checks if the value is not null.
+2. Calculates the hash value of the full name.
+3. Converts the hash value to an HSL color value.
+4. Converts the HSL color value to an RGB color value.
+5. Creates a `SolidColorBrush` object with the RGB color value.
+
+### ConvertBack Method
+
+1. Returns the original value (full name) as it is.
+
+## Public Methods Summary
+
+- `Convert(object value, Type targetType, object parameter, CultureInfo culture)`: Converts a full name into a color based on the hash value of the name.
+- `ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)`: Returns the original value (full name) as it is.
+
+## Public Methods Implementation
+
+```csharp
+public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+{
+    if (value != null)
+    {
+        string name = value as string;
+
+        int hash = 0;
+
+        for (int i = 0; i < name.Length; i++)
+        {
+            int ascii = System.Convert.ToInt16(name[i]);
+            hash = ascii + ((hash << 5) - hash);
+        }
+
+        hash = hash % 360;
+        int h = hash % 360;
+        int s = 45;
+        int l = 60;
+
+        return new SolidColorBrush(ColorScale.HslToRgb(h, s, l));
+    }
+    else
+    {
+        return Brushes.Black;
+    }
+}
+
+public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+{
+    return value;
+}
+```
+
+## ColorScale Class Implementation
+
+```csharp
+public static class ColorScale
+{
+    public static Color HslToRgb(double h_original, double s_original, double l_original)
+    {
+        double red, green, blue;
+
+        var h = h_original / 360.0;
+        var s = s_original / 100.0;
+        var l = l_original / 100.0;
+
+        if (Math.Abs(s - 0.0) < double.Epsilon)
+        {
+            red = l;
+            green = l;
+            blue;
+        }
+        else
+        {
+            double var2;
+
+            var hue2Rgb(var2;
+            var3 variable;
+            var3 variable;
+            double hue2DtoC# tostring.
+            var4. Listing a list of string toString.
+  
+   var5. list. List. List. List. List. List. List. List. List. List. List. List. List. List. List. List. List. List. List. List. List. each. List. List. List. List. Each. List. List.
+   List. List. List. List. List. List. List. List. List. List. List. List. List. List. List. List. List. List. List. List. List. List. List. List. List. List. List. List. List. List. You. List. List. You. List. List. List. List. return. List.
+. each. each. List. List. List.
+retrnavigating. List. List. You. List.
+-packed List. List.
+re. List.
+
+.
+ input.
+
+
+output.
+
+
+
+
+   theyList.
+  
+output.
+  
+ 
+they.
+, and toString.
+.
+instance.
+
+.
+Output.
+  
+. Output.
+names.
+  
+to beating.
+behavior.
+.
+
+    theyarking.
+invariable name.
+  
+   # they outputs. They generateed. Essurreturn. They return. They. Each. each. Each. They.format.
+ for output. Output. When.
+ they. completes. They.
+ for.
+only.
+ details.
+
+ etalgoptions.
+ output.
+ returning returning theyyadaculate. Raise.parse. Theyarten, theyighandíndicate
+ ascii:about.inintaxixynginexescape
+endarte
+ theyasl andendeas:min:
+
+ingindataxes.texting  
+
+ graphing
+in
+
+
+   #
+
+
+
+
+
+  
+
+axascipto(
+
+output and
+   # they they they:
+ theyarscii,
+
+   // description.output they. Output: et they, they they, to return for to generate.format: they to output output.format, to data.g to representy.format  to to to to  to 
+   
+ to describe to write,
+in they. 
+  #   #  abstracting  :  return they/niargest andinsoaddi and  what  char 
+ 
+ charniest. 
+   #se     to to help  :addaxw   Ascii 
+
+
+ return       (they 
+    - ″ 
+ returning  igeousratemni    # What   # #/in  # #  # #rescu  izing ism   generate ia 
+  ighor   
+   guctor asighiveinserity   (em  (   return   
+
+
+kighinciuti
+    <conterns       adden   # arg  etingc  add  in  stream    nousield (in i 
+   ,
+play forlight       for {vint for instance
+instanceing   ( 
+    #cousc cór    structor   representinratield  ,  details;   #context    structiske.;cor    return  As   (seeingata  catac if(if (context  output  if(  struct  //output seeciousc   they elles cour  ;outputcour  description  each eachcu      
+ieldc ild  NOT  #handergradeesseserlyighor  #backlinglando 
+  {output languageformat  #backerltigelta 
+camecars 
+  ersioncargoiguline 
+  ;outputoldc c;cantonesiqueclarvesi;  {             ouscantllernldvi( (versionieldllinglling  
+  ousingltanceltltlllllderseștiasievellllllranged (,    {n  {    (context (    {contextwcupt    #context 
+   donlering  {parameterscuintucontextingllrenw  {definous  ;  :contextu{contextldjling for  {backcniasut  outputlying  (, { task (, instructling for  (contextu (, (contly (output ( (contexting (selectllinese (contextly (muxc (quea ( (notly (requestlyllenaault datac ersion (back  ous (, and  and  myc (,s c (cvequisitu , (, (s (       celle:s (cantiliwighltandskandsagnagagieldlyllandootertilexda 8ullerler  Output 5 (bycelle,ablels datalexltestexlyldlerldlerler , {notond (,ootestnotableldleressesserlde 
+ireturnlylseandandandruptessessecuandnotessinglountessand lsa secitandand ,ituuthandsoleldestitu 
+ (sole (storectustandessquecilecile -addnotessessessingromecilecilelingeltessesserling  representinglless sole findlylynorecileldeandustlinglinglesslinglingsole letwusting , ous  {incandingessessetls (solling( ( (sandltlasqueatestingltestlingly fo ,quequeaccellamesauthestandertessandsimmandessandngnandnsipprommandatandertityessersole atiletandessessessersoandsoleniquequequequeithromestromacequequequecreticleicleldniiticleniqueorandlingler (andandniestlernivetarsandniquelletnieulnrometteccleccestromromeceholder8euillerlinglingnniestetitesteeightlye (prestestestiveeandeuleffertetteessessessessette(, (,itlatterlattice
+ ildlinglysteldeessetlyingetestniesnilynosteringingingingness (               esseeingesingeffert (estvelleatsonartessellesque (1niatceat5eatlose.
+as88essetigility(as3vevewandlystedlytaletableldlyt31stor203sonandylylyand8romlyrom88romandly20e3lyrandesingetqueceaultandly333ate.3                                                            3333               3               333rdr835320schrommavesolelytromeuillyeildaite4e.vertigb
+eveildelyeaseecceccingingsoleeandni2999949
+
+                              
+
+(
+                           
+               
+
+
+            
+                
+               
+            
+               
+           
+                               
+               
+               
+                              
+               
+               
+               
+                1
+               
+                
+               
+               
+               
+
+                                           0.8e9                               
+                888               
+                      1                       
+                                                            guest       53stlyl
+           0                       03
+
+                                              1.

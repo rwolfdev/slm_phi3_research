@@ -1,0 +1,6 @@
+﻿public Dictionary<string, int> CountWords(string text)
+{
+    return text.Split(' ')
+               .GroupBy(w => w)
+               .ToDictionary(g => g.Key, g => g.Count());
+}

@@ -1,0 +1,72 @@
+ # Document Class Documentation
+
+## Purpose
+
+The `Document` class represents a document with associated metadata and tags. It provides functionality to manage and retrieve document-related information.
+
+## Properties
+
+### Title
+
+- **Type**: `string`
+- **Description**: Gets or sets the title of the document.
+- **Read-only**: Yes
+
+### FileName
+
+- **Type**: `string`
+- **Description**: Gets or sets the name of the file associated with the document.
+- **Read-only**: Yes
+
+### Content
+
+- **Type**: `byte[]`
+- **Description**: Gets the content of the document as a byte array.
+- **Read-only**: Yes
+
+### CreatedAt
+
+- **Type**: `DateTime`
+- **Description**: Gets the date and time when the document was created.
+- **Read-only**: Yes
+
+### CreatedBy
+
+- **Type**: `string`
+- **Description**: Gets the name of the user who created the document.
+- **Read-only**: Yes
+
+### Tags
+
+- **Type**: `IReadOnlyList<string>`
+- **Description**: Gets a read-only list of tags associated with the document.
+
+## Constructor
+
+- **Parameters**:
+  - `title`: The title of the document.
+  - `fileName`: The name of the file associated with the document.
+  - `content`: The content of the document as a byte array.
+  - `createdBy`: The name of the user who created the document.
+
+## Methods
+
+### AddTag(string tag)
+
+- **Parameters**:
+  - `tag`: The tag to be added to the document.
+- **Description**: Adds a new tag to the document's list of tags if it does not already exist.
+- **Returns**: None
+
+### HasTag(string tag)
+
+- **Parameters**:
+  - `tag`: The tag to check for existence in the document'
+- **Description**: Checks if the specified tag exists in the document's list of tags.
+- **Returns**: `bool` indicating whether the tag exists in the document.
+
+### GetSummary()
+
+- **Parameters**: None
+- **Description**: Returns a summary string containing the document's title, file name, and content size.
+- **Returns**: `string` representing the summary of the document.�

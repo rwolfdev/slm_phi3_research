@@ -1,0 +1,3 @@
+Microsoft.ML.OnnxRuntimeGenAI.OnnxRuntimeGenAIException: input_ids size (6586) + current sequence length (0) exceeds max length (4096)
+   at Microsoft.ML.OnnxRuntimeGenAI.Generator.AppendTokenSequences(Sequences sequences)
+   at rwolfdev.phi3.docuhelper.generator.Phi3Environment.SubmitPrompt(String prompt) in C:\Users\R00704\source\repos\phi3-docuhelper\rwolfdev.phi3.docuhelper.generator\Phi3Environment.cs:line 46

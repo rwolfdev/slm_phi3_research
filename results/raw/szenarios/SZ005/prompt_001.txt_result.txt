@@ -1,0 +1,59 @@
+ # Patient Class Documentation
+
+## Overview
+
+The `Patient` class represents a patient's information, including their first name, last name, date of birth, and insurance number. It provides methods to calculate the patient's age and update their insurance number.
+
+## Properties
+
+### `_id`
+
+A private read-only `Guid` field that uniquely identifies the patient.
+
+### `FirstName`
+
+A public read-only property that returns the patient's first name.
+
+### `LastName`
+
+A public read-only property that returns the patient's last name.
+
+### `DateOfBirth`
+
+A public read-only property that returns the patient's date of birth.
+
+### `InsuranceNumber`
+
+A public property with a private setter that returns the patient's insurance number. The setter is only accessible within the class.
+
+## Constructor
+
+The `Patient` class has a single constructor that takes the patient's first name, last name, date of birth, and insurance number as parameters. It generates a unique `Guid` for `_id` and assigns the provided values to the corresponding properties.
+
+## Methods
+
+### `GetAge()`
+
+A public method that calculates and returns the patient's age based on their date of birth and the current date.
+
+### `UpdateInsurance(string newInsuranceNumber)`
+
+A public method that updates the patient's insurance number with the provided `newInsuranceNumber`.
+
+### `ToString()`
+
+A public method that returns a string representation of the patient' elements.
+
+## Example Usage
+
+```csharp
+Patient patient = new Patient("John", "Doe", new DateTime(1990, 1, 1), "1234567890");
+int age = patient.GetAge();
+Console.WriteLine($"Patient: {patient}");
+Console.WriteLine($"Age: {age}");
+
+patient.UpdateInsurance("0987654321");
+Console.WriteLine($"Updated Insurance Number: {patient.InsuranceNumber}");
+```
+
+This example creates a new `Patient` object, calculates and prints the patient's age, and updates the patient's insurance number.�

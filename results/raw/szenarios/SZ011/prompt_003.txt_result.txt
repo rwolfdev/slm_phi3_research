@@ -1,0 +1,142 @@
+ # AuditSaveChangesInterceptor Class Documentation
+
+## Overview
+
+The `AuditSaveChangesInterceptor` class is a custom implementation of the `SaveChangesInterceptor` interface, designed to audit changes made to entities tracked by Entity Framework (EF). It logs changes to the audit table, capturing the action performed, the modified entity's type, the resource ID, the performing user, and the timestamp of the change.
+
+## Class Summary
+
+- **Purpose**: To intercept and audit changes made to entities tracked by Entity Framework.
+
+## Fields
+
+- `_serviceProvider`: A private field of type `IServiceProvider` used to retrieve the `IIdentityContextService`.
+
+## Constructor
+
+- **Parameters**:
+  - `serviceProvider`: An `IServiceProvider` instance required to obtain the `IIdentityContextService`.
+
+## Methods
+
+### `SavingChangesAsync(DbContextEventData eventData, InterceptionResult<int> result, CancellationToken cancellationToken = default)`
+
+- **Overrides**: `SaveChangesAsync` method from the `SaveChangesInterceptor` interface.
+
+- **Parameters**:
+  - `eventData`: An instance of `DbContextEventData` containing information about the current event.
+  - `result`: An instance of `InterceptionResult<int>` representing the result of the save operation.
+  - `cancellationToken`: A `CancellationToken` used to cancel the save operation if needed.
+
+- **Returns**: An `InterceptionResult<int>` representing the result of the save operation.
+
+- **Description**: This method intercepts the save operation, audits changes made to tracked entities, and returns the result of the save operation.
+
+1. Checks if the `DbContext` is null and returns the result of the base save operation if true.
+2. Retrieves the current timestamp and the `IIdentityContextService` using the `_serviceProvider`.
+3. Filters the tracked entities based on their state (Modified, Added, or Deleted).
+4. Iterates through the filtered entities and creates a `ChangeTrackingEntry` object for each entity.
+5. If the entity state is Modified, it appends the modified properties to the `ChangeTrackingEntry` action.
+6. Adds the `ChangeTrackingEntry` to the `DbContext`.
+7. Returns the result of the base save operation.
+
+## Public Methods
+
+- **SavingChangesAsync(DbContextEventData eventData, InterceptionResult<int> result, CancellationToken cancellationToken)**: Overrides the `SaveChangesAsync` method from the `SaveChangesInterceptor` interface.
+
+## Public Fields
+
+- `_serviceProvider`: A private field of type `IServiceProvider`.
+
+## Public Properties
+
+- None.
+
+## Public Methods
+
+- **SavingChangesAsync(DbContextEventData eventData, InterceptionResult<int> result, CancellationToken cancellationToken)**: Overrides the `SaveChangesAsync` method from the `SaveChangesInterceptor` interface.
+
+### Method Signature
+
+```csharp
+public override async ValueTask<InterceptionResult<int>> SavingChangesAsync(DbContextEventData eventData, InterceptionResult<int> result, CancellationToken cancellationToken = default)
+```
+
+### Method Signature Details
+
+- **eventData**: An instance of `DbContextEventData` containing information about the current event.
+- **result**: An instance of `InterceptionResult<int>` representing the result of the save operation.
+- **cancellationToken**: A `CancellationToken` used to cancel the save operation if needed.
+
+### Method Return Type
+
+- `InterceptionResult<int>`: The result of the save operation.
+
+### Method Description
+
+The method intercepts the save operation, audits changes made to tracked entities, and returns the result of the save operation.
+
+### Method Implementation
+
+```csharp
+public override async ValueTask<InterceptionResult<int>> SavingChangesAsync(DbContextEventData eventData, InterceptionResult<int> result, CancellationToken cancellationToken = default)
+{
+    var context = eventData.Context;
+    if (context == null) return await base.SavingChangesAsync(eventData, result, cancellationToken);
+
+    DateTime occurenceTime = DateTime.UtcNow;
+    IIdentityContextService identityContext = _serviceProvider.GetRequiredService<IIdentityContextService>();
+
+    List<EntityEntry> changeEntries = context.ChangeTracker.Entries()
+        .Where(e =>
+            e.Entity is ITrackable &&
+            (e.State == EntityState.Modified ||
+             e.State == EntityState.Added ||
+             e[e.CurrentEntry.State] == EntityState.Deleted));
+
+    foreach (EntityEntry entry in changeEntries)
+    {
+        ITrackable entity = (ITrackable)entry.Entity;
+
+        ChangeTrackingEntry change = new ChangeTrackingEntry
+        {
+            Action = entry.State.ToString(),
+            Resource = entry.Entity.GetType().Name,
+            ResourceId = (Guid)entry.Property("Id").CurrentValue,
+            PerformingUser = identityContext.CurrentUser.Username,
+            Timestamp = occurenceTime
+        };
+
+        if (entry.State == EntityState.Modified)
+        {
+            StringBuilder sb = new StringBuilder();
+            foreach (var prop in entry.Properties)
+            {
+                if (prop.IsModified)
+                {
+                    sb.AppendLine($"{prop.Metadata.Name} geändert von {prop.OriginalValue} => {prop.CurrentValue}");
+                }
+            }
+
+            if (sb.Length > 0)
+            {
+                change.Action = sb.ToString().Trim();
+            }
+        }
+
+        context.Add(change);
+    }
+
+    return await base.SavingChangesAsync(eventData, result, cancellationToken);
+}
+```
+
+### Method Implementation Details
+
+- Checks if the `DbContext` is null and returns the result of the base save operation if true.
+- Retrieves the current timestamp and the `IIdentityContextService` using the `_serviceProvider`.
+- Filters the tracked entities based on their state (Modified, Added, or Deleted).
+- Iterates through the filtered entities and creates a `ChangeTrackingEntry` object for each entity.
+- If the entity state is Modified, appends the modified properties to the `ChangeTrackingEntry` action.
+- Adds the `ChangeTrackingEntry` to the `DbContext`.
+- Returns the result of the base save operation.�

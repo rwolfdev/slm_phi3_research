@@ -1,0 +1,87 @@
+ # FinancialDataHub Class Documentation
+
+## Overview
+
+The `FinancialDataHub` class is a derived class from `Microsoft.AspNetCore.SignalR.Hub` and is designed to facilitate real-time financial data updates and price information retrieval in a financial data hub application. This class provides methods for sending price updates, retrieving the latest known price for a given symbol, and handling connection events.
+
+## Class Members
+
+### Namespace
+
+```csharp
+using Microsoft.AspNetCore.SignalR;
+using System.Collections.Concurrent;
+```
+
+### Class Members
+
+1. `_latestPrices`
+
+    - A private static `ConcurrentDictionary<string, decimal>` that stores the latest known price for each financial symbol.
+
+2. `SendPriceUpdate(string symbol, decimal price)`
+
+    - An asynchronous method that updates the latest price for a given symbol and sends the price update to all connected clients.
+
+3. `GetLastKnownPrice(string symbol)`
+
+    - An asynchronous method that retrieves the latest known price for a given symbol. If the symbol is not found, it returns null.
+
+4. `OnConnectedAsync()`
+
+    - An overridden asynchronous method that is called when a client connects to the hub. It sends a "ConnectionEstablished" message to the client with their connection ID.
+
+5. `OnDisconnectedAsync(Exception? exception)`
+
+    - An overridden asynchronous method that is called when a client disconnects from the hub. It sends a "UserDisconnected" message to all connected clients and handles any exception that may have occurred during the disconnection.
+
+## Methods
+
+### `SendPriceUpdate(string symbol, decimal price)`
+
+This method updates the latest price for a given symbol and sends the price update to all connected clients.
+
+```csharp
+public async Task SendPriceUpdate(string symbol, decimal price)
+{
+    _latestPrices[symbol] = price;
+    await Clients.All.SendAsync("ReceivePriceUpdate", symbol, price);
+}
+```
+
+### `GetLastKnownPrice(string symbol)`
+
+This method retrieves the latest known price for a given symbol. If the symbol is not found, it returns null.
+
+```csharp
+public decimal? GetLastKnownPrice(string symbol)
+{
+    if (_latestPrices.TryGetValue(symbol, out var price))
+        return price;
+    return null;
+}
+```
+
+### `OnConnectedAsync()`
+
+This method is called when a client connects to the hub. It sends a "ConnectionEstablished" message to the client with their connection ID.
+
+```csharp
+public override async Task OnConnectedAsync()
+{
+    await Clients.Caller.SendAsync("ConnectionEstablished", Context.ConnectionId);
+    await base.OnConnectedAsync();
+}
+```
+
+### `OnDisconnectedAsync(Exception? exception)`
+
+This method is called when a client disconnects from the hub. It sends a "UserDisconnected" message to all connected clients and handles any exception that may have occurred during the disconnection.
+
+```csharp
+public override async Task OnDisconnectedAsync(Exception? exception)
+{
+    await Clients.All.SendAsync("UserDisconnected", Context.ConnectionId);
+    await base.OnDisconnectedAsync(exception);
+}
+```�

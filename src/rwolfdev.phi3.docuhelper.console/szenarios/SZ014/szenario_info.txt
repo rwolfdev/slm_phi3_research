@@ -1,0 +1,1 @@
+﻿Funktion zur Prüfung und Bewertung von Benutzereingaben für ein Formularsystem mit Validierung, Priorisierung und abhängigen Prüfungen.

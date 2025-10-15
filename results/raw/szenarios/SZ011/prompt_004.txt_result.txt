@@ -1,0 +1,62 @@
+ # AuditSaveChangesInterceptor Class Documentation
+
+## Purpose
+
+The `AuditSaveChangesInterceptor` class is designed to extend the `SaveChangesInterceptor` functionality to audit changes made to entities tracked by Entity Framework. It logs changes to the audit table, capturing the action performed, the entity modified, the resource identifier, the performing user, and the timestamp of the change.
+
+## Class Members
+
+### Properties
+
+- `_serviceProvider`: A private field of type `IServiceProvider` used to retrieve the `IIdentityContextService`.
+
+### Constructor
+
+- `AuditSaveChangesInterceptor(IServiceProvider serviceProvider)`: Initializes the `AuditSaveChangesInterceptor` by storing the provided `IServiceProvider` instance.
+
+### Methods
+
+#### `override async ValueTask<InterceptionResult<int>> SavingChangesAsync(DbContextEventData eventData, InterceptionResult<int> result, CancellationToken cancellationToken = default)`
+
+This method overrides the `SavingChangesAsync` method from the `SaveChangesInterceptor` class. It intercepts the saving changes process, audits the changes made to tracked entities, and returns the result of the operation.
+
+### Parameters
+
+- `DbContextEventData eventData`: The event data object containing information about the current event.
+- `InterceptionResult<int> result`: The result of the original `SaveChanges` operation.
+- `CancellationToken cancellationToken`: An optional cancellation token to support cooperative cancellation of the operation.
+
+### Method Return
+
+- `InterceptionResult<int>`: The result of the original `SaveChanges` operation after auditing the changes.
+
+## Method Details
+
+1. Checks if the `DbContext` is null and, if so, returns the result of the base method call.
+2. Retrieves the current UTC time.
+3. Obtains the `IIdentityContextService` using the `_serviceProvider`.
+4. Filters the change entries to include only modified, added, or deleted entities.
+5. Iterates through the filtered change entries and creates a `ChangeTrackingEntry` object for each.
+6. If the entity is modified, appends the modified properties to the `ChangeTrackingEntry` action.
+7. Adds the `ChangeTrackingEntry` to the `DbContext`.
+8. Returns the result of the base method call.
+
+## Public Methods
+
+1. `SavingChangesAsync(DbContextEventData eventData, InterceptionResult<int> result, CancellationToken cancellationToken)`
+
+## Public Fields
+
+- `_serviceProvider`: A private field of type `IServiceProvider`.
+
+## Public Methods
+
+1. `SavingChangesAsync(DbContextEventData eventData, InterceptionResult<int> result, CancellationToken cancellationToken)`
+
+## Private Fields
+
+- `_serviceProvider`: A private field of type `IServiceProvider`.
+
+## Summary
+
+The `AuditSaveChangesInterceptor` class extends the `SaveChangesInterceptor` to audit changes made to tracked entities in Entity Framework. It logs the action performed, the modified entity, the resource identifier, the performing user, and the timestamp of the change.�

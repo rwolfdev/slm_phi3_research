@@ -1,0 +1,77 @@
+ # FullNameToColorConverter Class Documentation
+
+## Overview
+
+The `FullNameToColorConverter` class is a custom value converter that converts a full name string into a color based on the hash value of the name. This class is implemented in the `rwolfdev.gists` namespace and inherits from `IValueConverter`.
+
+## Class Members
+
+### Namespace
+
+- `namespace rwolfdev.gists`
+
+### Class
+
+- `public class FullNameToColorConverter : IValueConverter`
+
+### Methods
+
+1. `Convert(object value, Type targetType, object parameter, CultureInfo culture)`
+
+    - Converts a full name string to a color.
+    - If the value is null, returns `Brushes.Black`.
+    - Calculates the hash value of the name and uses it to determine the color.
+
+2. `ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)`
+
+    - Returns the original value, as the conversion is not reversible.
+
+## Method Details
+
+### Convert(object value, Type targetType, object parameter, CultureInfo culture)
+
+This method takes four parameters:
+
+- `value`: The full name string to be converted.
+- `targetType`: The type of the target object.
+- `parameter`: An optional parameter that can be used to pass additional data.
+- `culture`: The culture information used for localization purposes.
+
+The method first checks if the value is not null. If it is null, it returns `Brushes.Black`. Otherwise, it calculates the hash value of the name and uses it to determine the color.
+
+### ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+
+This method returns the original value passed to it, as the conversion is not reversible.
+
+## Color Conversion Algorithm
+
+The `FullNameToColorConverter` class uses the `ColorScale` class to convert the hash value of the name into a color. The `ColorScale` class contains the `HslToRgb` method, which converts HSL (Hue, Saturation, Lightness) values to RGB (Red, Green, Blue) values.
+
+The `HslToRgb` method takes three parameters:
+
+- `h_original`: The original hue value.
+- `s_original`: The original saturation value.
+- `l_original`: The original lightness value.
+
+The method first normalizes the hue value to the range of 0 to 1. Then, it calculates the intermediate values `var1` and `var2` based on the lightness value. Finally, it uses the hue value and the intermediate values to calculate the final RGB values.
+
+## Usage
+
+To use the `FullNameToColorConverter` class, you need to add it as a resource in your XAML file:
+
+```xml
+<Window.Resources>
+    <rwolfdev:gists:FullNameToColorConverter x:Key="FullNameToColorConverter"/>
+</Window.Resources>
+```
+
+Then, you can use the converter in your binding expressions:
+
+```xml
+<TextBlock Text="John Doe"
+           TextWrapping="Wrap"
+           TextAlignment="Center"
+           Foreground="{Binding Path=FullName, Converter={StaticResource FullNameToColorConverter}}"/>
+```
+
+This will display the full name "John Doe" in the color determined by the hash value of the name.�

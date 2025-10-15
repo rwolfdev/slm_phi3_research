@@ -1,0 +1,505 @@
+ # FOPService Project Documentation
+
+## Overview
+
+The FOPService project is a Spring Boot application that provides an API for generating PDF documents from XML and XSL files. The project consists of two main components:
+
+1. `FopServiceApplication`: The main application class that sets up the Spring Boot application and defines the API endpoints.
+2. `PdfController`: A controller class that handles the API requests for generating PDF documents.
+
+## File Structure
+
+The project is organized as follows:
+
+```
+FOPService
+├── java
+│   ├── dev
+│   │   └── FOPService
+│   │       ├── FopServiceApplication.java
+│   │       └── PdfController.java
+│   └── test
+│       └── FopServiceApplicationTests.java
+└── resources
+    └── application.properties
+```
+
+## FopServiceApplication
+
+### Description
+
+`FopServiceApplication` is the main class of the FOPService project. It extends `SpringBootApplication` and contains the `main` method to run the Spring Boot application.
+
+### Code
+
+```java
+package dev.robertwolf.FOPService;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class FopServiceApplication {
+
+    public static void main(String[] args) {
+        SpringApplication.run(FopServiceApplication.class, args);
+    }
+}
+```
+
+## PdfController
+
+### Description
+
+`PdfController` is a REST controller that handles API requests for generating PDF documents. It contains two endpoints:
+
+1. `/render/files`: Accepts multipart/form-data with file uploads (XML and XSL) and generates a PDF document.
+2. `/render/strings`: Accepts raw string parts (XML and XSL) and generates a PDF document.
+
+### Code
+
+```java
+package dev.robertwolf.FOPService;
+
+import org.apache.fop.apps.*;
+import org.springframework.http.*;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+
+import javax.xml.transform.*;
+import javax.xml.transform.sax.SAXResult;
+import javax.xml.transform.stream.StreamResult;
+import javax.xml.transform.stream.StreamSource;
+import java.io.*;
+import java.nio.charset.StandardCharsets;
+
+@RestController
+public class PdfController {
+
+    @PostMapping(value = "/render/files", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    public ResponseEntity<byte[]> renderFromFiles(
+            @RequestPart("xml") MultipartFile xmlFile,
+            @RequestPart("xsl") MultipartFile xslFile) {
+        try {
+            return generatePdf(xmlFile.getInputStream(), xslFile.getInputStream());
+        } catch (IOException e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                    .body(("Error reading files: " + e.getMessage()).getBytes(StandardCharsets.UTF_8));
+        }
+    }
+
+    @PostMapping(value = "/render/strings", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    public ResponseEntity<byte[]> renderFromStrings(
+            @RequestPart("xml") String xmlString,
+            @RequestPart("xsl") String xslString) {
+        InputStream xmlStream = new ByteArrayInputStream(xmlString.getBytes(StandardCharsets.UTF_8));
+        InputStream xslStream = new ByteArrayInputStream(xslString.getBytes(StandardCharsets.UTF_8));
+        return generatePdf(xmlStream, xslStream);
+    }
+
+    private ResponseEntity<byte[]> generatePdf(InputStream xmlStream, InputStream xslStream) {
+        try {
+            // Step 1: Transform XML + XSL → XSL-FO
+            ByteArrayOutputStream foStream = new ByteArrayOutputStream();
+            TransformerFactory factory = TransformerFactory.newInstance();
+            Transformer transformer = factory.newTransformer(new StreamSource(xslStream));
+            transformer.transform(new StreamSource(xmlStream), new StreamResult(foStream));
+
+            // Step 2: Transform XSL-FO → PDF using Apache FOP
+            FopFactory fopFactory = FopFactory.newInstance() {
+    FopFactory fopFactory fopFactory.
+
+    public class FopFactory.new
+
+===
+public class FopFactory.java
+
+public class Fop.
+
+===
+public.java.
+
+import java.
+public.
+
+public.
+====.
+
+    class.
+
+public.
+    main.java.
+    .java.
+    .java.
+   
+    .java.
+   
+   iew.
+   iew.java.
+    Java.java.
+   
+   iew.
+   
+    to.java.
+The.java.
+
+   
+   irst.java.java.java.
+Application.java.
+   
+   
+   iew.java.java.java.
+main.java.java.
+   itaire.java.java.java.java.
+    Java.
+   
+   
+   itaire.java.com.java.
+
+    }.
+atter
+   
+ing.java.java.java.java.java.
+
+.
+
+application.java.
+
+.
+.
+.
+   izing.
+.
+
+.
+.bot.
+learning.
+.
+
+
+.
+.
+
+.
+.
+.
+
+ 
+.data.
+
+.
+
+
+
+
+.
+
+
+
+
+
+.java.
+
+
+
+
+
+
+
+
+.
+.
+.\Create.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+javina
+
+
+
+executive
+code-code.ascii
+set.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+backgroundColor.
+
+
+
+attering.
+
+tasking
+
+.
+
+.
+
+at
+
+at
+at
+
+
+atweaving_arte.{rouanga.
+
+.
+
+.named.your.config.{underline.instroeiding.application.Java.testing.in.application.as.in.instruction.section.application.application.inst.se-application.worldenersake Java.application.application.
+.as.application.
+ .aspect.java.as.inst.java.java. 
+at好 before beforeading.for.application.at.forb for java. }-forbat for{w-atron for for-java.
+ before.{con.{{ beforeMatcherM,rep.at.{{-application-before.con.{, before.l.at.{-ob-application.{/-java.{
+-java.at-java.{
+
+
+
+
+atlasser.at-java.this.
+
+beforevalidate
+
+apply:singling-sasha.{web.Java.robot/3-called.java-Java.
+
+} {java.{singing-wield-tirstingstelement.
+
+
+intiding.
+at
+atogle.atogle.{ogleogleogleust
+athelp.{atogle-forogleatte for this.bobling.//atordering.instaxes.{
+
+application.applyane.applyngern.{margain.apply.{web.
+seas.atorn {
+instead
+
+appain
+
+matter,app, at-matter,
+
+after.appain,{etring,instat,
+instat,inst,
+  	gase, 
+ob.g, for.forMajero.for.for,{m-atulaser-your.ferse.for (se, {se, (se, }}.gatte, }atferme,
+
+at.seas.inst4-for-for-mattering (sea-streaming-streaming- 
+streaming.battering.watter-deferling.
+
+
+
+
+
+
+
+sequa-queryingseana-,seffa, (at-, (
+-seasingsexatterstanding,seletainsease-seatingingatave}}sexatterainatterainnaforata5atter-fo-fofera-seferling.seatterainme-fo
+
+
+ 
+gain-sea-sea.newainung.fermatteringselete
+-
+
+searingume-
+-seletainme.forestream-matterseightmefoithesaintestreamer-stream(
+ferm, obilitter(new(newatta
+
+newfermata, yousefermatter(moight,{matter,
+  {fermattering-sefermatter.ferlinglingnatteringstreamingstream.fermatteringlingingfermatteringnielder,-fermettainertainlinglingling.ferlerlingmatterainieldmatterimesmatterainmattermattererield.ferme-,{newatteranattermatterlestivestreamerisferme.newerferl
+-
+-newferootwareteteferling.newingfernitesteferferferinglinglingertersmattererfermatteringertingingield.ferteringert.fermatter(refertering()
+fermatter.fertering.instortersmatteringreferteringernatter.ferteringestters.fertertertertertertermatteringingteringlatteringettainger-ferattererferer.ferlermatteringlymatterlatteringerlyerfoot5leinerlatterlattera55505005l1205lingernew55510latter.sternl3latteringlfinevake.newerlingerterlfake105litexustakeholder(
+m3loudlingerlocesternatter-systemsware-3-namedetofertanelement.ferter.
+-
+-
+fertieldloudlerserlingertexendefermatterloudleringlestake-named
+-named(
+
+1 0-1-publicerferterterterteringlordlertferm301010000100000matteringdexerdexi.consistence.m
+
+
+-
+consistl0lite.ferm1-with-withl0lleterlocerm1-exmatterm1  
+  -1-data100-with(), 
+m300m } }  } 
+-m30m3matteringdata()    
+   
+
+matteringmatternartenernarticartensted()
+SExisting.consistart12000s
+
+
+
+morfing.withingm3lart1010x.m/seartenulestricataxors.withs2600000001000011000010100011150011115.m.
+200000000000situleting10183
+
+ En330199588885.
+
+2

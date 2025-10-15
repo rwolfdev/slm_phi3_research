@@ -1,0 +1,51 @@
+ ## Function Name: Addiere
+
+### Description:
+This function, `Addiere`, takes two integer parameters and returns their sum. It performs a simple addition operation on the two input integers and returns the result.
+
+### Parameters:
+1. `zahl1` (int): The first integer to be added.
+2. `zahl2` (int): The second integer to be added.
+
+### Return Type:
+The function returns an integer, which is the sum of the two input integers.
+
+### Function Syntax:
+```csharp
+public int Addiere(int zahl1, int zahl2)
+{
+    return zahl1 + zahl2;
+}
+```
+
+### Function Documentation:
+
+#### Function Name:
+`Addiere`
+
+#### Function Description:
+This function performs a basic addition operation on two integer values and returns their sum.
+
+#### Parameters:
+- `zahl1` (int): The first integer to be added.
+- `zahl2` (int): The second integer to be added.
+
+#### Return Value:
+The function returns an integer, which is the sum of the two input integers.
+
+#### Function Syntax:
+```csharp
+public int Addiere(int zahl1, int zahl2)
+{
+    return zahl1 + zahl2;
+}
+```
+
+#### Function Usage:
+To use the `Addiere` function, pass the two integers you want to add as arguments. The function will return their sum.
+
+Example:
+```csharp
+int result = Addiere(5, 10);
+Console.WriteLine(result); // Output: 15
+```�

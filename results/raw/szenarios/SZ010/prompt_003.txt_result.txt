@@ -1,0 +1,297 @@
+ # FullNameToColorConverter Class Documentation
+
+## Purpose
+
+The `FullNameToColorConverter` class is designed to convert a full name into a color based on the hash value of the name. It implements the `IValueConverter` interface to provide this conversion functionality.
+
+## Class Members
+
+### FullNameToColorConverter Class
+
+- `Convert(object value, Type targetType, object parameter, CultureInfo culture)`: Converts the given value (full name) into a color.
+  - `value`: The full name to be converted.
+  - `targetType`: The target type of the conversion.
+  - `parameter`: An optional parameter for the conversion.
+  - `culture`: The culture information used for the conversion.
+
+- `ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)`: Returns the original value (full name) as it is.
+  - `value`: The value to be converted back.
+  - `targetType`: The target type of the conversion.
+  - `parameter`: An optional parameter for the conversion.
+  - `culture`: The culture information used for the conversion.
+
+### ColorScale Class
+
+- `HslToRgb(double h_original, double s_original, double l_original)`: Converts an HSL color value to an RGB color value.
+  - `h_original`: The original hue value.
+  - `s_original`: The original saturation value.
+  - `l_original`: The original lightness value.
+
+## Public Methods
+
+### Convert Method
+
+The `Convert` method takes a full name as input and returns a `SolidColorBrush` object representing the color corresponding to the hash value of the name. If the input value is null, it returns a `Brushes.Black`.
+
+### ConvertBack Method
+
+The `ConvertBack` method returns the original full name value as it is, without any conversion.
+
+## Public Properties
+
+- `TargetType`: The target type of the conversion, which is `object`.
+- `Parameter`: An optional parameter for the conversion, which is `null` by default.
+- `Culture`: The culture information used for the conversion, which is `null` by default.
+
+## Public Methods
+
+### Convert Method
+
+```csharp
+public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+{
+    if (value != null)
+    {
+        string name = value as string;
+
+        int hash = 0;
+
+        for (int i = 0; i < name.Length; i++)
+        {
+            int ascii = System.Convert.ToInt16(name[i]);
+            hash = ascii + ((hash << 5) - hash);
+        }
+
+        hash = hash % 360;
+        int h = hash % 360;
+        int s = 45;
+        int l = 60;
+
+        return new SolidColorBrush(ColorScale.HslToRgb(h, s, l));
+    }
+    else
+    {
+        return Brushes.Black;
+    }
+}
+```
+
+### ConvertBack Method
+
+```csharp
+public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+{
+    return value;
+}
+```
+
+## ColorScale Class
+
+The `ColorScale` class contains a static method `HslToRgb` that converts an HSL color value to an RGB color value.
+
+```csharp
+class ColorScale
+{
+    public static Color HslToRgb(double h_original, double s_original, double l_original)
+    {
+        double red, green, blue;
+
+        var h = h_original / 360.0;
+        var s = s_original / 100.0;
+        var l = l_original / 100.0;
+
+        if (Math.Abs(s - 0.0) < double.Epsilon)
+        {
+            red = l;
+            green = l;
+            blue = l;
+        }
+        else
+        {
+            double var2;
+
+            if (l < 0.5)
+            {
+                var2 = l;
+            }
+            else
+            {
+                var2 = l + s - s * l;
+            }
+
+            var var1 = 2.0 * l;
+
+            var1 = hue2Rgb(var1, var2, h);
+
+            red = var1, green = var1;
+            green = var1;
+            red = var1;
+            blue;
+            blue;
+            System.ColorSpace.System.Variables.parse;
+   they/api:
+   System. AsStrings.parse.parse.System.System. I.parse.parse.System.parse.parse.parse.parse.parse.parse.parse.parse.parse.parse.parse.parse.parse.parse.parse.parse.parse.parse.parse.parse.parse. I.parse. Thebesponse.parse.
+   they.parse.parse. They.parse.parse.parse.parse.parse.parse.parse.parse.parse.parse.parse.parse.parse.parse.parse.parse.parse(
+
+   parse.parse.parse.parse.parse.parse.parse.parse.parse.parse.parse.parse.
+lline.parse.
+return
+
+
+  
+
+
+   
+
+   variables.
+  
+   theyenscr nt and 
+  
+  
+
+
+
+  
+  
+  
+  
+  
+  
+
+  
+  
+  
+  
+   to beams.
+  
+   Output.
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+   with, and type.
+  
+   to generate.
+  
+  
+  
+  
+   return they generate.
+behint. They atomAs they generate.
+ they generate. They. Importage.  
+ theyadive.
+ theyaces.\rates. 
+
+ents. Theya requte
+ asingascii 
+asterisasesyontalieny.nates theyestruongameas forortexarnity forenerunctionadding, theyyielding theyyielding 
+
+
+
+
+
+
+
+
+
+
+
+   #
+ed theyema-output;
+
+texting:
+oroing themheducatectricaand,
+
+
+texture forasi 
+
+ingrelecting
+
+yoroingonoingoro(arguments to beingsungAItereasing they:
+
+acoraram
+, write toct template, to return to:format : they they they to to to to to they.oro,  toars:
+
+ #
+ toing to representinging. Asinory: for  for:
+ for for 
+ for for following,, ,instor. They. Youters, whenaiem ; foring :return  as theyinksogatterum,
+ to charanging.parameters,seinks they  returning 
+ctruct  returning ianei  reingni   to helpi to i to   following
+idingi ia    
+format inline  as they (
+  indexi (inigheste :div  #     :   #ighighive   mystic isingoring  ing ous cniield      
+inglene  ,,pi  concilero  for the (cdr  propreasing (or context  (generator foria   //uucu ia (contexting   for {cetteing : for help forcette forctree for iighiv   for (expression for forcing for forcoringrt   ( 
+igei   {noldiighiestastic   #cousivinglyettung structc  :
+ivldockileoroessqueinldiveclinglsn charuptorenler        
+in variables for for for ifcwellescwelle if (context  for for foref for   outputigt;bronly forc for for for  description 7 (selecting  ighield  (return ighighortieu ;asciblesuc  theyighighighllllculectemsuques  ľetten contluieldcuighighieldiest
+    ex 
+   conditions cive;    forcc; ousin;ingingcing =>Ii ieldersnielding   returncaneveiolacc 
+ c 
+cng (checklinglllderslling  //returnlyastic  i  ring 
+queserieldlliidll  
+   outputblesi   , judgelyllldersing igeDeltaqulde (contextler  {addler ousertldllldldldbldldldeltaevculementllinginesu 
+lductllenaci lldeskuln (burbles (instance  //re ersion 
+    //re  {onlde (m (q (seelliq  (vipsucuptullde  model  ascii (intu 
+forrom (forcuct (qcuileasccuintuault1 (contextantenaustquelex, (ly, (se (se (, c array 
+  (, iilityllootwandsioment ootlleroled (gerooterly 
+llenailtylyltastex (queigheroxighlerlightableto 5anditu (for light 5 ,ldehystault instance ichtityc 
+   (, 
+ ieldltesetldesecelle ||s structllls liningromeberootldromldlerI #rtustoiceingrs 
+aspectedandsole chcoinglylerabileholdldestandstouthlerlinglightly ounnotrainlingaquilityand  ìlylylllylyllly 
+   foveinglyrtlyquecilelightablelyn ootltess , lyingeeroinglingsole 8ing ingoneugoldsdlingnorganlinglinglinglingromelecilequeustinglingldo(setust 2, ous ínt 1iotaiustieldsm _i(, and (lightsqueiestn  bottsoleassexnerniestainlynagynesinglaser  {andomplementromsaserldeithoromstigeousetteiceousiquearticiottornii8888andniniojudlysonciestiandromstartitnromestacequeestietteciesticiestiitlynencirome(,andlinglerlinglybeaningececcartseeeandlysolementeadlylereswitecceccedefeedefaciti(scaildlylightlightlightitlye
+
+
+solemetsoleartessessessessesseedlymaldestlyldlysoleingsolelyferni44lllystallyingsole 43ingehsollystalrt 8ysteuiasereshotso 
+ andarteyandidiocustolerasessessingingale =             assoleashotaleassoleasetly2asas2and1sted124veasferlyingand3148363lyinglynandlyeas36eserlyartituit3efe 
+               43e8                              33eccartlyr33ulletlylyly43               3lyr3eccaleveveolleinleinigerllaite4eigene                                
+romstrome
+               eccsone
+               
+                              iaekestolugolce
+intersole
+
+
+
+
+
+
+               
+
+lylyly
+
+               
+               
+solce98ecc
+               
+
+
+                                              
+               
+               
+                               
+                
+                               
+               
+                              
+               
+                           
+                                                           
+                                              
+
+1                                                                        312                prlylyr       lydivlyf3sts
+Prlyltuglytandprand
+
+stand01 (                                              0           
+
+
+
+                      
+               0                           3                       0lya       33       0ltace       

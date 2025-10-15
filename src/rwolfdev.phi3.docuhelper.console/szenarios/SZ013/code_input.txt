@@ -1,0 +1,95 @@
+﻿public Dictionary<string, decimal> AnalyzeTransactions(List<Transaction> transactions)
+{
+    Dictionary<string, decimal> result = new Dictionary<string, decimal>();
+    decimal suspiciousTotal = 0;
+    decimal recurringTotal = 0;
+    decimal highValueTotal = 0;
+    decimal weekendTotal = 0;
+
+    foreach (Transaction t in transactions)
+    {
+        bool isWeekend = t.Date.DayOfWeek == DayOfWeek.Saturday || t.Date.DayOfWeek == DayOfWeek.Sunday;
+        bool isHighValue = t.Amount > 10000m;
+        bool isSuspicious = (t.Amount > 5000m && t.Category == "Cash") ||
+                            (t.Amount > 2000m && t.IsRecurring && t.Category == "Gift") ||
+                            (isWeekend && t.Amount > 1000m && t.Category == "Online");
+
+        if (isSuspicious)
+        {
+            suspiciousTotal += t.Amount;
+            if (!result.ContainsKey("Suspicious"))
+                result["Suspicious"] = 0;
+            result["Suspicious"] += t.Amount;
+        }
+
+        if (t.IsRecurring)
+        {
+            recurringTotal += t.Amount;
+            if (t.Amount < 50m && !isSuspicious)
+            {
+                if (!result.ContainsKey("SmallRecurring"))
+                    result["SmallRecurring"] = 0;
+                result["SmallRecurring"] += t.Amount;
+            }
+            else if (t.Amount >= 50m && t.Amount <= 500m)
+            {
+                if (!result.ContainsKey("NormalRecurring"))
+                    result["NormalRecurring"] = 0;
+                result["NormalRecurring"] += t.Amount;
+            }
+            else if (t.Amount > 500m)
+            {
+                if (!result.ContainsKey("LargeRecurring"))
+                    result["LargeRecurring"] = 0;
+                result["LargeRecurring"] += t.Amount;
+            }
+        }
+
+        if (isHighValue)
+        {
+            highValueTotal += t.Amount;
+            if (t.Category == "Investment")
+            {
+                if (!result.ContainsKey("InvestmentHighValue"))
+                    result["InvestmentHighValue"] = 0;
+                result["InvestmentHighValue"] += t.Amount;
+            }
+            else if (t.Category == "Luxury")
+            {
+                if (!result.ContainsKey("LuxuryHighValue"))
+                    result["LuxuryHighValue"] = 0;
+                result["LuxuryHighValue"] += t.Amount;
+            }
+            else
+            {
+                if (!result.ContainsKey("OtherHighValue"))
+                    result["OtherHighValue"] = 0;
+                result["OtherHighValue"] += t.Amount;
+            }
+        }
+
+        if (isWeekend)
+        {
+            weekendTotal += t.Amount;
+            if (t.Category == "Food")
+            {
+                if (!result.ContainsKey("WeekendFood"))
+                    result["WeekendFood"] = 0;
+                result["WeekendFood"] += t.Amount;
+            }
+            else if (t.Category == "Travel")
+            {
+                if (!result.ContainsKey("WeekendTravel"))
+                    result["WeekendTravel"] = 0;
+                result["WeekendTravel"] += t.Amount;
+            }
+        }
+    }
+
+    result["TotalSuspicious"] = suspiciousTotal;
+    result["TotalRecurring"] = recurringTotal;
+    result["TotalHighValue"] = highValueTotal;
+    result["TotalWeekend"] = weekendTotal;
+
+    return result;
+}

@@ -1,0 +1,82 @@
+ # ValidateForm Function Documentation
+
+## Overview
+
+The `ValidateForm` function is designed to validate a list of `FieldInput` objects representing form fields. It checks each field based on its type and requirements, and returns a dictionary of errors for any fields that fail validation.
+
+## Function Signature
+
+```csharp
+public Dictionary<string, string> ValidateForm(List<FieldInput> inputs)
+```
+
+## Parameters
+
+- `inputs`: A list of `FieldInput` objects, where each object represents a form field with properties such as `Name`, `Type`, `Value`, and `Priority`.
+
+## Return Value
+
+- A dictionary with key-value pairs, where the key is the field name and the value is the error message associated with that field. If there are no errors, the dictionary will contain a single key-value pair with the key "FormStatus" and the value "Valid".
+
+## Error Handling
+
+- The function checks for required fields and whether their values are null or whitespace.
+- It validates the length, format, and content of text, number, date, email, and password fields.
+- Critical errors are flagged and trigger form rejection.
+
+## Error Categories
+
+- "Field is required."
+- "Text too short."
+- "Text too long."
+- "Invalid number."
+- "Value must be positive."
+- "Value exceeds limit."
+- "Invalid date."
+- "Suspicious email."
+- "Password too short."
+- "Password must contain upper, lower, digit, and special."
+- "Password should not contain field name."
+
+## Error Triggering
+
+- Critical errors are triggered when a high-priority field fails validation.
+
+## Ordering of Fields
+
+- The function processes the fields in descending order of their priority.
+
+## Password Validation
+
+- The function checks if the password contains the field name and adds an error if it does.
+
+## Example Usage
+
+```csharp
+List<FieldInput> inputs = new List<FieldInput>
+{
+    new FieldInput { Name = "Name", Type = FieldType.Text, Value = "John Doe", Priority = 10 },
+    new FieldInput { Name = "Email", Type = FieldType.Email, Value = "johndoe@example.com", Priority = 5 },
+    new FieldInput { Name = "Password", Type = FieldType.Password, Value = "Password123JohnDoe", Priority = 1 }
+};
+
+Dictionary<string, string> errors = ValidateForm(inputs);
+
+// Output:
+// {
+//   "Name": "Field is required.",
+//   "Email": "Invalid email format.",
+//   "Password": "Password should not contain field name."
+// }
+```
+
+## Note
+
+This function assumes that the `FieldInput` class has the following properties:
+
+- `Name` (string): The name of the field.
+- `Type` (enum): The type of the field (e.g., Text, Number, Date, Email, Password).
+- `Value` (string): The value entered in the field.
+- `Priority` (int): The priority of the field (higher values indicate higher priority).
+
+The function does not handle all possible edge cases and may need to be extended to cover additional validation requirements.�

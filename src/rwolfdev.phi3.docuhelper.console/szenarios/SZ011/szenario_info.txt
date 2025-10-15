@@ -1,0 +1,4 @@
+﻿https://gist.github.com/rwolfdev/eb5ed648fa80e1126d377c241e25134d
+ AuditSaveChangesInterceptor.cs
+
+Zyklomatische Komplexität: 97

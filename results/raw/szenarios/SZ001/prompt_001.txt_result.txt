@@ -1,0 +1,39 @@
+ ## Function Name: Addiere
+
+### Description:
+This function, `Addiere`, takes two integer parameters, `zahl1` and `zahl2`, and returns their sum as an integer. The purpose of this function is to perform a simple addition operation on two integer values.
+
+### Parameters:
+1. `zahl1` (int): The first integer value to be added.
+2. `zahl2` (int): The second integer value to be added.
+
+### Return Type:
+The function returns an integer value, which is the sum of the two input parameters.
+
+### Function Syntax:
+```java
+public int Addiere(int zahl1, int zahl2)
+```
+
+### Function Behavior:
+The function adds the two input integer values, `zahl1` and `zahl2`, and returns the result.
+
+### Example Usage:
+```java
+int result = Addiere(5, 10); // result will be 15
+```
+
+### Exception Handling:
+This function does not throw any exceptions as it performs a simple arithmetic operation. However, it is assumed that the input parameters are valid integers.
+
+### Notes:
+- The function does not perform any type checking on the input parameters.
+- The function does not handle overflow or underflow scenarios.
+- The function does not have any side effects.
+- The function does not modify the input parameters.
+
+### Time Complexity:
+The time complexity of this function is O(1), as it performs a constant-time operation.
+
+### Space Complexity:
+The space complexity of this function is O(1), as it only uses a fixed amount of space for the input parameters and the return value.�

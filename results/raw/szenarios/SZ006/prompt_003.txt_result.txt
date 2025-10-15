@@ -1,0 +1,84 @@
+ # Document Class Documentation
+
+## Purpose
+
+The `Document` class is designed to represent a document with associated metadata and tags. It provides functionality to manage tags and retrieve document-related information.
+
+## Properties
+
+### Title
+
+**Type:** `string`
+
+**Description:** Gets the title of the document.
+
+### FileName
+
+**Type:** `string`
+
+**Description:** Gets the name of the file associated with the document.
+
+### Content
+
+**Type:** `byte[]`
+
+**Description:** Gets the content of the document as a byte array.
+
+### CreatedAt
+
+**Type:** `DateTime`
+
+**Description:** Gets the date and time when the document was created.
+
+### CreatedBy
+
+**Type:** `string`
+
+**Description:** Gets the name of the user who created the document.
+
+### Tags
+
+**Type:** `IReadOnlyList<string>`
+
+**Description:** Gets a read-only list of tags associated with the document.
+
+## Constructor
+
+The `Document` class has a single constructor that initializes the document's metadata and content.
+
+### Parameters
+
+- `title: string` - The title of the document.
+- `fileName: string` - The name of the file associated with the document.
+- `content: byte[]` - The content of the document as a byte array.
+- `createdBy: string` - The name of the user who created the document.
+
+## Methods
+
+### AddTag(string tag)
+
+**Description:** Adds a new tag to the document's list of tags, if the tag is not null or whitespace and does not already exist.
+
+**Parameters:**
+
+- `tag: string` - The tag to be added.
+
+**Returns:** None.
+
+### HasTag(string tag)
+
+**Description:** Checks if the document has a specific tag.
+
+**Parameters:**
+
+- `tag: string` - The tag to check for.
+
+**Returns:** `bool` - `true` if the document has the specified tag, `false` otherwise.
+
+### GetSummary()
+
+**Description:** Returns a summary of the document, including its title, file name, and content size.
+
+**Parameters:** None.
+
+**Returns:** `string` - A summary string containing the document' elements.�

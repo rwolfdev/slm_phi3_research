@@ -1,0 +1,202 @@
+ # AnalyzeTransactions Method Documentation
+
+## Purpose
+Analyzes a list of `Transaction` objects to categorize transactions into suspicious, recurring, high-value, and weekend transactions, and calculates their respective totals. The results are returned as a `Dictionary<string, decimal>`.
+
+## Parameters
+- `transactions`: A list of `Transaction` objects to be analyzed.
+
+## Return Value
+- `Dictionary<string, decimal>`: A dictionary containing the categorized transactions and their respective totals.
+
+## Key Notes/Limitations
+- The method assumes that the `Transaction` class has the following properties: `Date`, `Amount`, `Category`, `IsRecurring`, and `IsWeekend`.
+- The categorization logic is based on predefined criteria for suspicious, recurring, high-value, and weekend transactions. Adjustments may be needed based on specific business rules.
+- The method does not handle potential exceptions that may occur during the execution.
+
+## Method Signature
+```csharp
+public Dictionary<string, decimal> AnalyzeTransactions(List<Transaction> transactions)
+{
+    Dictionary<string, decimal> result = new Dictionary<string, decimal>();
+    decimal suspiciousTotal = 0;
+    decimal recurringTotal = 
+===
+# AnalyzeTransactions Method Documentation
+
+## Purpose
+The `AnalyzeTransactions` method processes a list of `Transaction` objects to categorize and sum transactions based on suspicious, recurring, high-value, and weekend criteria. The results are returned as a dictionary mapping categories to their respective total amounts.
+
+## Parameters
+- `transactions`: A list of `Transaction` objects to be analyzed.
+
+## Return Value
+- `Dictionary<string, decimal>`: A dictionary where each key represents a transaction category (e.g., "Suspicious", "Recurring", "HighValue", "Weekend") and the corresponding value is the total amount of transactions in that category.
+
+## Key Notes/Limitations
+- The method assumes the existence of a `Transaction` class with properties: `Date`, `Amount`, `Category`, `IsRecurring`, and `IsWeekend`.
+- The categorization logic is based on predefined criteria for each category. Adjustments may be necessary to align with specific business rules.
+- The method does not handle potential exceptions that may occur during execution.
+- The method does not account for transactions that may fall into multiple categories.
+
+## Method Signature
+
+```csharp
+public Dictionary<string, decimal> AnalyzeTransactions(List<Transaction> transactions)
+{
+    Dictionary<string, decimal> result = new Dictionary<string, decimal>();
+    decimal suspiciousTotal = 0;
+    decimal recurringTotal = 0;
+    decimal highValueTotal = 0;
+    decimal weekendTotal = 0;
+
+    foreach (var t in transactions)
+    {
+        bool isWeekend = t.Date.DayOfWeek == DayOfWeek.Saturday || t.Date.DayOfWeek == DayOfWeek.Sunday;
+        bool isHighValue = t.Amount > 10000m;
+        bool isSuspicious = (t.Amount > 5000m && t.Category == "Cash") ||
+                            (t.Amount > 2000m && t.IsRecurring && t.Category == "Gift") ||
+                            (isWeekend && t.Amount > 1000m && t.Category == "Online");
+
+        if (isSuspicious)
+        {
+            suspiciousTotal += t.Amount;
+            if (!result.ContainsKey("Suspicious"))
+                result["Suspicious"] = 0;
+            result["Suspicious"] += t.Amount;
+        }
+
+        if (t.IsRecurring)
+        {
+            recurringTotal += t.Amount;
+            if (t.Amount < 50m && !isSuspicious)
+            {
+                if (!result.ContainsKey("SmallRecurring"))
+                    result["SmallRecurring"] = 0;
+                result["SmallRecurring"] += t.Amount;
+            }
+            else if (t.Amount >= 50m && t.Amount <= 500m)
+            {
+                if (!result.ContainsKey("NormalRecurring"))
+                    result["NormalRecurring"] = 0;
+                result["NormalRecurring"] += t.Amount;
+            }
+            else if (t.Amount > 500m)
+            {
+                if (!result.ContainsKey("LargeRecurring"))
+                    result["LargeRecurring"] = 0;
+                result["LargeRecurring"] += t.Amount;
+            }
+
+            result.Add("OtherHighValue"
+===
+documenTxt
+
+  
+  
+ 
+  
+  
+  
+  
+  
+  
+  
+   thetedocumentation thead thedocumentext thead thead thead the document, description thead thead thead thead thead thead thead thead thead thead thead thead thead thead thead thead thead thead thead thead thead thead thead thead thead thead theadad thead thead thead theadad thead theadad thead thead theadad thead thead thead thead thead thead thead thead thead, andadatead theadadad. Theadad thead for the theadap. Theadadad of the code theadad: youad, and a description. Theadadadadad thead. The action.adrop theadate of thead. The code in Python. Theadatexactsnipping code: your code:code of code. Describe. The code (theadatist. The code(in theadat of the code. Thead(butadate(argreasing the output.argument, including. This.
+ for the format. You. You.
+. Toad.argument. Describe. Your.format. Theading line. Your argument to explain. Your sentence.
+ for the argument, toposwaste. Output. of the7 parameter. of information. Output asent. Descri. Each.
+asent. The example.asyntax. of the: ascii of the. As. Output. Output.
+ for.
+Youtjacamp asing:Output.
+ output.format1. For your version.your example.forth of your, describing: of your of your parameter. Your key.
+ for:nars. name: name.wit. The:end. of your. withing as your(your:sentence. You.code. Also(your(your:leness. Your.
+ for,d output. The for/output. Your output. 
+
+, for for:
+ndata from.
+
+
+example.  sentence. 
+what. 
+ of paramount.ett' 
+ of your.format3, type.Output. To, and to represent, as 1, asentivari. of your example.format, reading.otheriding,  helping of 
+    Output. Whenn 5 1  description. 
+ of your of your. concrete
+pected. of  of 
+ of this of  for/ 
+ format. I, to each. 
+ 
+  
+,( 
+ 
+  : for 
+  
+  parse. Assume. 
+  of(aspected 
+ 
+'conolu 
+  # expression.  Output. Each.  Output{params of output  descrias. abstracting.  description '',. The. of . As needed any  #paramis.
+.,  -/edit/,, context.endabetween.gwelane  Output/view.end.day and (re  complelous.{ (example  of your 
+    of 
+ {{. It: (concept. W(ing. Wince    iterate --  Any, 
+ of Writeman. --;esti-, for for; :---
+. For. Write for. --view for.; for. for for us for us.; for for for for (  ; line ( Output(       ;  Add (top;  ; Write; ;   ,write  ,lieve;  -'any.  ;(output. ounce izing if  details  -- ( If  definition, name.  e 
+ ( Write (output  line , output  if  such (line 7 
+       .  of  line  example  according each line. of all for each ifinnisla    each  DateTime of your   return  Return, oup  :  Donnot 
+  --write.your any  Write(  Write. 
+.  you.re (your 3  resUve 1 
+  resighbe 
+  Output.  stream.  Line  your. Your.  line. of  p.  se  se  , 否. � 
+ category., any.,  On  any.   , 
+ l  Output. c 0 �resand.l if  if  ifliste.  if  if  if if.  ;. api  if  you.  :  of  ;  {  { nd  :  representing  comma. ,  ( any.  (if  #  : 
+ {  res  : 
+ context  context format  exp.  ;  (if  if  format 
+ pected. I inst.  el (ne  Under  :   notpeon. any (notestpe {if .follow  { any any ousel  Output  anyou , format. For. For any. output for 
+ (l.l {l 
+{ \rec\ve
+ {under.{output.lunderstand (if(if  { your { 
+ { of.
+ 0 
+  em 
+vevelo any- any-, 
+ 
+  Onluctor 
+ 
+  
+  UnderHistituly  youlieve.lifternerna emostenhold .for underlyl @  
+    (l ndonode .donustaunderly.liftive.l (.  yournta. Your.lousifiction. Keep 
+ any.l.l.luster.lernlieve. based.lernlernly.lifting.l., , , 5resmernoot  output;  ;  ;lous   ,  { l  { { any any any.,  any any anylustlofofloud pected pected   notation, notnestaulteithernenl, ( n is.   you.n  . ( ( labeled.ly.lous., youuste.Isultlust.         l(    est{(       { { any { { { anyluclequalulesternandsend.    
+ luclearlU dataucesteducleustulust., (A.Output; ifllive.       (( ( inserting; 
+ (       ( (         0.  llousiflera.,     
+leveveveveustingievevelevretanyundestlareived (toferingitunestequesteckleviokularlysole  ifutive ||ifette.,
+ififachtweenn. 
+
+ocale. Ifif . for . 	   
+elly.0.   
+   ifundide.   
+urring .if., (   
+   
+                                 { { { (   if       {lestands.0verlyundocurring (   
+         83lise.            Reculrecernis.0.   
+      3uerable (    (                                            (n.                
+                    {                   
+
+
+vea.           ountestivaluequund   
+   
+            {                                  
+              
+           3mh                        3arnesoc.       s.                                                   Recul       
+                                           3uer.
+           
+                      recue                                                                          
+                                                                                                                                                                                                             .                                                                                                              .
+ (
+               
+               
+                                                         ificessultuequ.
+           und                                                                                                                                                                                                                    {
+ (                                                                                                                               (
+                (                                                                                                                                                                           
+                

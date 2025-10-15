@@ -1,0 +1,38 @@
+ ## Function Name: CountWords(string text)
+
+### Description:
+This function takes a string `text` as input and returns a `Dictionary<string, int>`, where each key represents a unique word found in the input text, and the corresponding value represents the frequency of that word in the text.
+
+### Parameters:
+1. `text` (string): The input string from which the word frequencies will be counted.
+
+### Returns:
+- `Dictionary<string, int>`: A dictionary where each key is a unique word from the input text, and the corresponding value is the frequency of that word in the text.
+
+### Exceptions:
+- If the input `text` is null or empty, the function will return an empty dictionary.
+
+### Functionality:
+1. The function first splits the input string into an array of words using the space character (' ') as the delimiter.
+2. It then groups the words by their unique values using the `GroupBy` method.
+3. Finally, it converts the grouped words into a dictionary using the `ToDictionary` method, where each key is the unique word and the corresponding value is the count of that word in the input text.
+
+### Example:
+```csharp
+string inputText = "This is a sample text. This text contains sample words.";
+Dictionary<string, int> wordCounts = CountWords(inputText);
+
+// Output:
+// {
+//   "This": 2,
+//   "is": 1,
+//   "a": 1,
+//   "sample": 2,
+//   "text.": 1,
+//   "text": 1,
+//   "contains": 1,
+//   "words.": 1
+// }
+```
+
+Note: The function treats words with punctuation as separate words (e.g., "text." and "text" are considered different words). If you want to treat words with punctuation as the same word, you may need to preprocess the input text to remove punctuation or use a more sophisticated tokenization method.�

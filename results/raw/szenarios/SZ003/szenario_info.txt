@@ -1,0 +1,1 @@
+﻿Filter Funktion zum herausfiltern von geraden Zahlen eines Integer Arrays

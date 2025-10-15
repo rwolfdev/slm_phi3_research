@@ -1,0 +1,14 @@
+ /// <summary>Counts the occurrences of each word in a given text string.</summary>
+    /// <param name="text">The input string containing the text to be analyzed.</param>
+    /// <returns>A dictionary with words as keys and their respective counts as values.</returns>
+    /// <remarks>
+    /// - Input text is expected to be a single string.
+    /// - Words are considered as sequences of characters separated by spaces.
+    /// - Punctuation marks attached to words are not separated and are treated as part of the word.
+    /// - Case sensitivity is considered; 'Word' and 'word' are treated as different words.
+    /// </remarks>
+    public Dictionary<string, int> CountWords(string text) {
+        return text.Split(' ')
+                   .GroupBy(w => w)
+                   .ToDictionary(g => g.Key, g => g.Count());
+    }�

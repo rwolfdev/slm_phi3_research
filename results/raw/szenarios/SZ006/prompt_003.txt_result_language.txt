@@ -1,0 +1,78 @@
+ # Document Class Document
+
+## Purpose
+
+The `Document` class represents a document with associated metadata and tags. It provides functionality to manage tags and retrieve document-related information.
+
+## Properties
+
+### Title
+
+A read-only string representing the title of the document.
+
+- Type: `string`
+
+### FileName
+
+A read-only string representing the name of the file associated with the document.
+
+- Type: `string`
+
+### Content
+
+A read-only byte array representing the content of the document.
+
+- Type: `byte[]`
+
+### CreatedAt
+
+A read-only DateTime object representing the creation date and time of the document.
+
+- Type: `DateTime`
+
+### CreatedBy
+
+A read-only string representing the creator of the document.
+
+- Type: `string`
+
+### Tags
+
+A read-only list of strings representing the tags associated with the document.
+
+- Type: `IReadOnlyList<string>`
+
+## Constructor
+
+The `Document` class has a single constructor that takes the following parameters:
+
+- `title`: A string representing the title of the document.
+- `fileName`: A string representing the name of the file associated with the document.
+- `content`: A byte array representing the content of the document.
+- `createdBy`: A string representing the creator of the document.
+
+## Methods
+
+### AddTag(string tag)
+
+Adds a new tag to the document's tags list if it does not already exist.
+
+- Parameters:
+  - `tag`: A string representing the tag to be added.
+
+- Returns: None
+
+### HasTag(string tag)
+
+Checks if the document has a specific tag.
+
+- Parameters:
+  - `tag`: A string representing the tag to check.
+
+- Returns: A boolean indicating whether the document has the specified tag.
+
+### GetSummary()
+
+Returns a string summarizing the document's title, file name, and content size.
+
+- Returns: A string representing the summary of the document.�

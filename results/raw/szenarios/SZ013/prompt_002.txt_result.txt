@@ -1,0 +1,50 @@
+ # AnalyzeTransactions Function Documentation
+
+## Overview
+
+The `AnalyzeTransactions` function analyzes a list of `Transaction` objects and categorizes them into various groups based on their amount, date, and category. The function returns a `Dictionary<string, decimal>` containing the total amounts for each category.
+
+## Parameters
+
+1. `transactions`: A list of `Transaction` objects.
+
+## Return Value
+
+A `Dictionary<string, decimal>` containing the total amounts for each category.
+
+## Function Details
+
+The function iterates through each transaction in the input list and performs the following checks:
+
+1. Determines if the transaction is suspicious based on the amount and category.
+2. Determines if the transaction is recurring and categorizes it as small, normal, or large recurring.
+3. Determines if the transaction is high-value and categorizes it as investment, luxury, or other high-value.
+4. Determines if the transaction occurred on a weekend and categorizes it as food or travel.
+
+The function accumulates the total amounts for each category and returns the resulting dictionary.
+
+## Example
+
+```csharp
+Dictionary<string, decimal> result = AnalyzeTransactions(transactions);
+```
+
+## Example Output
+
+```
+{
+    "Suspicious": 15000m,
+    "SmallRecurring": 200m,
+    "NormalRecurring": 300m,
+    "LargeRecurring": 400m,
+    "InvestmentHighValue": 5000m,
+    "LuxuryHighValue": 2000m,
+    "OtherHighValue": 1000m,
+    "WeekendFood": 500m,
+    "WeekendTravel": 1000m,
+    "TotalSuspicious": 15000m,
+    "TotalRecurring": 1000m,
+    "TotalHighValue": 8000m,
+    "TotalWeekend": 1500m
+}
+```�

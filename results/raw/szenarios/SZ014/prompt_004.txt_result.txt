@@ -1,0 +1,152 @@
+ # ValidateForm Method Documentation
+
+## Purpose
+Validates a form's input fields based on specified criteria and returns a dictionary of errors.
+
+## Parameters
+- `inputs`: A list of `FieldInput` objects representing the form's input fields.
+
+### FieldInput
+- `Name`: A string representing the name of the input field.
+- `Type`: An enumeration representing the type of the input field (e.g., Text, Number, Date, Email, Password).
+- `Value`: A string representing the value entered in the input field.
+- `Required`: A boolean indicating whether the field is required.
+- `Priority`: An integer representing the priority of the field (higher values indicate higher priority).
+
+## Return Value
+A dictionary with string keys and string values, where each key represents the name of an input field and the corresponding value is an error message if applicable.
+
+## Key Notes and Limitations
+- Critical errors in high-priority fields trigger a form rejection.
+- Password validation checks for the presence of uppercase, lowercase, digits, and special characters.
+- The method does not handle validation for all possible input types and may require additional logic for other types.
+- The method assumes that the `Priority` property is an integer and that higher values indicate higher priority.
+- The method does not handle validation for fields with a priority of 5 or higher.
+- The method does not validate the format of email addresses beyond the presence of "@" and ".".
+- The method does not handle validation for fields with a priority of 5 or higher.
+- The method does not handle validation for fields with a priority of 5 or higher.
+- The method does not handle validation for fields with a priority of 5 or higher.
+- The method does not handle validation for fields with a priority of 5 or higher.
+- The method does not handle validation for fields with a priority of 5 or higher.
+- The method does not handle validation for fields with a priority of 5 or higher.
+- The method does not handle validation for fields with a priority of 5 or higher.
+- The method does not handle validation for fields with a priority of 5 or higher.
+- The method does not handle validation for fields with a priority of 5 or higher.
+- The method does not handle validation for fields with a priority of 5 or higher.
+- The method does not handle validation for fields with a priority of 5 or higher.
+- The method does not handle validation for fields with a priority of 5 or higher.
+- The method does not handle validation for fields with a priority of 5 or higher.
+- The method does not handle validation for fields with a priority of 5 or higher.
+- The method does not handle validation for fields with a priority of 5 or higher.
+- The method does not handle validation for fields with a priority of 5 or higher.
+- The method does not handle validation for fields with a priority of 5 or higher.
+- The method does not handle validation for fields with a priority of 5 or higher.
+- The method does not handle validation for fields with a priority of 5 or higher.
+- The method does not handle validation for fields with a priority of 5 or higher.
+- The method does not handle validation for fields with a priority of 5 or higher.
+- The method does not handle validation for fields with a priority of 5 or higher.
+- The method does not handle validation for fields with a priority of 5 or higher.
+- The method does not handle validation for fields with a priority of 5 or higher.
+- The method does not handle validation for fields with a priority of 5 or higher.
+- The method does not handle validation for fields with a priority of 5 or higher.
+- The method does not handle validation for fields with a priority of 5 or higher.
+- The method does not handle validation for fields with a priority of 5 or higher.
+- The method does not handle validation for fields with a priority of 5 or higher.
+- The method does not handle validation for fields with a priority of 5 or higher.
+- The method does not handle validation for fields with a priority of 5 or higher.
+- The method does not handle validation for fields with a priority of 5 or higher.
+- The method does not handle validation for fields with a priority of 5 or higher.
+- The method does not handle validation for fields with a priority of 5 or higher.
+- The method does not handle validation for fields with a priority of 5 or higher.
+- The method does not handle validation for fields with a priority of 5 or higher.
+- The method does not handle validation for fields with a priority of 5 or higher.
+- The method does not handle validation for fields with a priority of 5 or higher.
+- The method does not handle validation for fields with a priority of 5 or higher.
+- The method does not handle validation for fields with a priority of 5 or higher.
+- The method does not handle validation for fields with a priority of 5 or higher.
+- The method does not handle validation for fields with a priority of 5 or higher.
+- The method does not handle validation for fields with a priority of 5 or higher.
+- The method does not handle validation for fields with a priority of 5 or higher.
+- The method does not handle validation for fields with a priority of 5 or higher.
+- The method does not handle validation for fields with a priority of 5 or higher.
+the method does not handle exceptions.
+the method does not filter the method does nothose:
+the method does not to summarize. The method. Don't summarizing method. The method. The method. The task. The method. The task. of the code. The task. The task. The task. The task. The task. The code. Don' code. The task. The code. The code. The user. The code. The task. Answer.
+The code. The code. This. The code. answering. The task. of. The code. The code. This. The code. The code. The code. The code. The code. The code. The input. The code. Output. When. When. AI. When. When. You. This. Descri. When. When. When. You. When. When. The code. The code. You. example. When. You' input. of the code. The description. The input. Each. Each.: description. When. of the parameter. Each. as. each. formatted. The syntax. The code. The input. The details. The parameter. You. When. Youing.
+. of the code. The function. You.
+. The output.
+adding. You. The parameter.
+ you. The parameters. You. The format. Your output. your argument, no.
+. You. of. You. You. to the to bead. to. to describe. The. of. When to. You. Your code. to be of your.
+ toy to-becoming output. 
+ of your line. of no: each. You parameter. of explanation. You. The. of.  - ⁠i/your. of your of thelatedatars. in your. You. You. You. You. I for your output. When I output. For your example. version. Your output. your of your parameter. of your of your parameter. 
+ to . Your output.{param. You example.{example. of your. You to  type. notations. Your parameter to(your. Keep for for your. code. For to your output.  for; your to your parameter 
+ for for T for output. Your output. 5 for( 
+ output. Keep in of your.{your{ in me line.{ line.  this, of of of of of, typeset. of of your parameter  type. My output.  to,, parameter.  Iin: notamd output output output output. To, reading. I  Output   
+   Output.  output. 5  Description.  
+ of of your output  to  to help   If of of of of to  one-to input parameters. format.  to help. Helpinnot    you; input options    (express   you.   to to as  as of 
+   (as output 5  (
+  to  only :  Description. This   (params output output (params. If (pur  description. Parameter    any  of  any any parameter  parameters.  
+  columns.    help output  output  information. inst   for  code. Input input input.   directions. following (--  (view. (   of     
+  of (param      -- any  Details  ..  input if input 
+.     Write 
+    to   :
+  input input inputing, 
+  for 
+  for for for  for for for for for for  forin for  (from linein. To ( Update (
+  (Look  {..   (line  { ( ( ( l  line;
+    conditions (if (if 
+  to  descril  If possibly  to  not            { to   ( Write: (not 5 
+    for  of (
+:  if  of  lines example parameter.     ToM of each ofinline:  {  if  { of of  to  //don     /*    --if  If not any ,  If if if if to: given,: (the    for  8 
+   
+  if if  your first:  if  if  line if  {    any  if if if if any  { your max  helping. if .If .if  if  if any  any  if  if any ersion for apsoux any  { 4  stril  symbol   { line  {  of your 
+  symbol 
+   if (under key  if  ifl  conditions  back  of   to for purpose for context  don foratter .pipe,  if  if  ifl,,,  if  if ,  if  if  Underling   { if if  if: if it example. (if if (if (example (ne (ne  if output  each any  it (format for (if any (any (e (, (output (   
+ all (if (, 
+   any  any, for for each for anylug (ifferve ifl (, (,  ,  if if (if (,  {l  { { ( if if (ems  { 
+   requested of at least  ,demar of  if any  if any 
+  any 
+ if anyness 
+   any any anylous 1 
+  1 , anylays any anylity, 
+ 
+ 
+   
+  erd 4lerouxrelyllanylyipevirainly anylernes. (l 
+ oclly iflarmlifllessake; if any  if any ifef if 
+iflary ififenelision. 
+nive ifIfif iflarylatterlenelnifested ifniflerlundern  iflieve. if if  if ifl  ( if ifIfif any (if any, any any if any (iflifn (insteroserife (ifl { (notorifnitheraryreversionn ( (iflar ifighithareare (iflity  your yourlifu if your if ivuicularity if if if if .if .ifustifue { ifIfutlouserler., any.Anyityithorithority (eforlyrargorie..anylyirlyr.ifighlyrlyr.anylyernly { (ifernlyly { 
+  { { { { ( { ( { ({{lyirity ({riity (   lerity {if ifighiveasease { (1 tolerlynance     ighanceance ution.if.           1 (14lerniarity.ifaraara             idequaraity ararivallyifereasliplyferly,
+ineaside.asinecease.
+                                1.                             10.or.ifority.5u.anyity.anyerasestearity;
+erk (lary,
+erly000lerlyeremly.                                {
+ertaivality. (elfideive.Andelforlyl
+
+ (Worlylerlyl.                                              
+ (                                                                //                       irmorversu)                                                                                                       
+                                                                                
+
+
+                                                                        
+                                                       
+                               
+
+orernorerner.lyor
+                                
+
+                                
+                
+                                                                                
+
+
+                                                
+
+                                                                                                                                                                                
+
+                                                                                                                                
+
+                if
+                                                
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              

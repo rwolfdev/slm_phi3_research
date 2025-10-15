@@ -1,0 +1,71 @@
+ # FinancialDataHub Class Documentation
+
+## Overview
+
+The `FinancialDataHub` class is a SignalR hub that provides real-time financial data updates to connected clients. It uses a `ConcurrentDictionary` to store the latest prices of various financial symbols and facilitates communication between the server and clients.
+
+## Dependencies
+
+- `Microsoft.AspNetCore.SignalR`: A library for building real-time web applications using SignalR.
+- `System.Collections.Concurrent`: Provides thread-safe collections for concurrent programming.
+
+## Properties
+
+### `_latestPrices`
+
+A static, thread-safe `ConcurrentDictionary` that stores the latest prices of financial symbols.
+
+```csharp
+private static readonly ConcurrentDictionary<string, decimal> _latestPrices = new();
+```
+
+## Methods
+
+### `SendPriceUpdate(string symbol, decimal price)`
+
+Asynchronously sends a price update for a given financial symbol to all connected clients.
+
+```csharp
+public async Task SendPriceUpdate(string symbol, decimal price)
+{
+    _latestPrices[symbol] = price;
+    await Clients.All.SendAsync("ReceivePriceUpdate", symbol, price);
+}
+```
+
+### `GetLastKnownPrice(string symbol)`
+
+Returns the last known price for a given financial symbol, or null if the symbol is not found.
+
+```csharp
+public decimal? GetLastKnownPrice(string symbol)
+{
+    if (_latestPrices.TryGetValue(symbol, out var price))
+        return price;
+    return null;
+}
+```
+
+### `OnConnectedAsync()`
+
+Called when a client connects to the SignalR hub. Sends a "ConnectionEstablished" message to the client and calls the base class's `OnConnectedAsync()` method.
+
+```csharp
+public override async Task OnConnectedAsync()
+{
+    await Clients.Caller.SendAsync("ConnectionEstablished", Context.ConnectionId);
+    await base.OnConnectedAsync();
+}
+```
+
+### `OnDisconnectedAsync(Exception? exception)`
+
+Called when a client disconnects from the SignalR hub. Sends a "UserDisconnected" message to all connected clients and calls the base class's `OnDisconnectedAsync()` method.
+
+```csharp
+public override async Task OnDisconnectedAsync(Exception? exception)
+{
+    await Clients.All.SendAsync("UserDisconnected", Context.ConnectionId);
+    await base.OnDisconnectedAsync(exception);
+}
+```�

@@ -1,0 +1,273 @@
+ ```csharp
+/// <summary>
+/// Analyzes a list of transactions and categorizes them into various totals based on their characteristics.
+/// </summary>
+/// <param name="transactions">A list of Transaction objects to be analyzed.</param>
+/// <returns>A Dictionary<string, decimal> containing the categorized totals of transactions.</returns>
+public Dictionary<string, decimal> AnalyzeTransactions(List<Transaction> transactions)
+{
+    // Dictionary to hold the categorized totals
+    Dictionary<string, decimal> result = new Dictionary<string, decimal>();
+    decimal suspiciousTotal = 0; // Total amount of suspicious transactions
+    decimal recurringTotal = 0; // Total amount of recurring transactions
+    decimal highValueTotal = 0; // Total amount of high-value transactions
+    decimal weekendTotal = 0; // Total amount of transactions on weekends
+
+    // Iterate through each transaction
+    foreach (Transaction t in transactions)
+    {
+        // Determine if the transaction is on a weekend
+        bool isWeekend = t.Date.DayOfWeek == DayOfWeek.Saturday || t.Date.DayOfWeek == DayOfWeek.Sunday;
+
+        // Determine if the transaction is suspicious
+        bool isSuspicious = (t.Amount > 5000m && t.Category == "Cash") ||
+                            (t.Amount > 2000m && t
+{
+    bool isHighValue = t.Amount > 10000m; // Determine if the transaction is high-value
+    bool isRecurring = t.IsRecurring; // Determine if the transaction is recurring
+
+    // Accumulate suspicious transaction amounts
+    if (isSuspicious)
+    {
+        suspiciousTotal += t.Amount;
+        if (!result.ContainsKey("Suspicious"))
+            result["Suspicious"] = 0;
+        result["Suspicious"] += t.Amount;
+    }
+
+    // Accumulate recurring transaction amounts based on amount thresholds
+    if (isRecurring)
+    {
+        recurringTotal += t.Amount;
+        if (t.Amount < 50m && !isSuspicious)
+        {
+            if (!result.ContainsKey("SmallRecurring"))
+                result["SmallRecurring"] = 0;
+            result["SmallRecurring"] += t.Amount;
+        }
+        else if (t.Amount >= 50m && t.Amount <= 500m)
+        {
+            if (!result.ContainsKey("NormalRecurring"))
+                result["NormalRecurring"] = 0;
+            result["NormalRecurring"] += t.Amount;
+        }
+        else if (t.Amount > 500m)
+        {
+            if (!result.ContainsKey("LargeRecurring"))
+                result["LargeRecurring"] = 0;
+            result["LargeRecurring"] += t.Amount;
+        }
+    }
+
+    // Categorize high-value transactions
+    if (isHighValue)
+    {
+        highValueTotal += t.Amount;
+        if (t.Category == "Investment")
+        {
+            if (!result.ContainsKey("InvestmentHighValue"))
+                result["InvestmentHighValue"] = 0;
+            result["InvestmentHighValue"] += t.Amount;
+        }
+        else if (t.Category == "Luxury")
+        {
+            if (!result.ContainsKey("LuxuryHighValue"))
+                result["LuxuryHighValue"] = 0;
+            result["LuxuryHighValue"] += t.Amount;
+        }
+        else
+        {
+            if (!result.ContainsKey("OtherHighValue"))
+                result["OtherHighValue"] = 0;
+            result["OtherHighValue"] += t.Amount;
+        }
+    }
+
+    // Categorize weekend transactions
+    if (isWeekend)
+    {
+        weekendTotal += t.Amount;
+        if (t.Category == "Food")
+        {
+            if (!result.ContainsKey("WeekendFood"))
+                result["WeekendFood"] = 0;
+            result["WeekendFood"] += t.Amount;
+        }
+        else if (t.Category == "Travel")
+        {
+            if (!result.ContainsKey("WeekendTravel"))
+            {
+                result["WeekendTravel"] = 0;
+            }
+        }
+    }
+
+    // Summarize the results
+    result["TotalSuspicious"] = suspiciousTotalRecurringTotalRecurringTotalRecurringTotalRecurringTotalRecurringTotalRecurringTotalRecurringTotalRecurringTotalRecurringTotalRecapitalRecap(functioningTotalRecap(functioningTotalRecap(functioningTotal, functioningTotal, functioningTotal, functioningTotal, functioningTotal, you outputTotal, you output, you output, as a functioning, output, assertsyntax, output, functioning, output, asserting, asserts the functioning, asserting, androles, output, output, asserts, assertsyntax, assertsyntax, asserting, asserts, asserts, asserting, asserts, asserts, you, asserting, asserts, asserts, asserts, asserts, as:code, as to be the asserts. Assume,parse, asserting.
+narration.code:code:code:code:code:
+code:code,code:code:
+output,output,code,code,code, code, code:code:code:code:
+code(code, code, your code, code, and code, code: code: your:
+    to the code: code: your code.code:
+ 
+. You are toll, and to, from:
+from, you:nate. Youtio, you wentefor: to explain, youtine the following, you:tio: tollinesyntax:weenvirikey, a the code: yourtie. The code: yoursnium, the code, ascii, the between yourtaparamlite between, ascii, between the: your code, you. between, between,nate parsed. name. formatted,late, youreviestandate, you'lltie. value: your code:yourting: your code:.exe.name; and andlease. betweenthint.
+and between between your ownlthe code.
+
+ between.your between.
+illegal.
+ the yourliste.
+
+. body.read the code. yourliste.your, between, between your, between your. 
+ yourtoprunt. 
+format.your, from, from, yourthemore, name. Your' tops,,:  #  Read,  interpre,iding.your.  but. between between, the. If.
+,ate. between:
+, when:
+. 
+.where:
+
+
+
+
+
+whening.
+:
+: parsed. between: 
+:
+:out (code:
+. 
+
+
+
+
+. 
+.
+.
+ between.
+:
+:
+
+
+
+console between your.
+ in,
+
+
+
+
+
+
+
+  
+ your. between, between,repreces between your top.Conc (your code.,.  
+ between your 
+
+
+
+
+
+
+
+
+
+
+
+console between the 
+for the-your. Yournipparena. Answer, task andwars.n between your explanation.,.  
+.  
+ (
+    this.  
+. 
+ original sample.
+. Toe your: 
+ 
+.  
+.   :l.   :.
+.
+.
+.   if.
+.
+.  
+ between.
+.   your or,
+. -------- :
+. 
+ between the.   //;   //;   //., the your. Read. (concept., (, Read. 
+  and.   //;   { if.   if. If. If if (, if, if if. 
+n sample. 
+ ( 
+
+: 
+c, on on,
+  -, 
+ 
+ Readafka:  #e.Ce between, 
+   #  
+   #system:  #any. html.  #code. not.mtres.Keil. If: 
+  your resl. -cyc.m.asa. -your:  //  {your. between this.any.your. Your.If your between your output.Supportive, between your output.    �  your "Output.     Output.    { mc.    Output;    Output.; in (out.your;    result.; m define., in.   
+. 
+
+
+
+. if. if if if if , if if if if if if if. if.if your. if. if.if. 
+res.
+ (your.   :code (accept. if. if prompt. if. if if if    :  
+ if if if.if , help your in this if : res if: if, if if. if: , if  if if your res. 
+ : added. if   
+  
+
+ertrustert yourformed. //. 
+   if : your.kres.okore... if  res. instrument.g 
+.m.r if if if 
+
+  from., visible 
+ 
+ iferth(), { mainresust main.
+ main your output output -, between.   
+   context 
+ if.
+ 
+ if lu 
+    #m 
+  not not.Ke 
+ 
+ 
+ 
+  # 
+
+
+ 
+  rec. 
+  #
+ 
+  visible.   romett visible.You.t in your.  {  { (,
+ in your your..   #your., and .m not m mc mains you.you., if you you.given.youuitainert..Gener.T(Gener. Gener option., not.  
+     re. you .not .you.,., you you. you.you. you.,in-, you.you., .you., you.ifuthonal . { {. is generate.,  #n recpresm;recpresuit.  ( 
+ m  
+  
+. uw .uthuluthn. !=lya.l @.ly..ly.
+  {.
+ in...., notoucher  T() T()         () 0.ocly() { { { ( { { { {  { your { {oUwette { ( { any ularlylukuloudulverly  8ullouvers  {your.,  {wAware.  
+ 
+
+recrisnute.,
+
+solen      , rec {output., m ,  {recanned {sole { {  { if (,  ,  { { {if 
+       7onllestllonsolelynnotonfermetriclyette., 
+e.,., ensolelyingstanderaticly().m, en. 
+  { .if if (, if (8mantversa.8m., only., only.,
+ ()                                                             85ulest.8ayle.               8aylary.ad. Do not88ly       888
+() {88and (888 {8 {.8888888888ayartainandangythernative (
+    (                
+                urring (   
+                                                                       0bear                                   
+                                                                                  
+                          
+   
+                                                                                                     
+ (                              (                                                             {                                                                       {                       {            {           
+ (                                                                                                                                                                                                                                       
+   5.                .                               .                                                                             .                                                                                                                                                                                                                                                                                                     
+s (                          335                                                     
+and.                                                                      (               3.                                                                                                          (                                         
+                                                                                                                                                 (        (       

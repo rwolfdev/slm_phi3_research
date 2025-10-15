@@ -1,0 +1,9 @@
+ ```csharp
+/// <summary>Counts the occurrences of each word in a given text.</summary>
+/// <param name="text">The input string containing the text to be analyzed.</param>
+/// <returns>A Dictionary<string, int> where each key is a unique word and its value is the count of occurrences in the text.</returns>
+public Dictionary<string, int> CountWords(string text)
+{
+    // Function implementation
+}
+```�

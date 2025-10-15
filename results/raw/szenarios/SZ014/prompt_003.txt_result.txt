@@ -1,0 +1,28 @@
+ ## ValidateForm Method Documentation
+
+### Purpose
+Validates a form's input fields based on their type, required status, and value constraints.
+
+### Parameters
+
+- `inputs`: A list of `FieldInput` objects representing the form's input fields.
+
+    - `FieldInput`: A class representing an input field with properties:
+        - `Name`: A string representing the name of the field.
+        - `Type`: A `FieldType` enum representing the type of the field (e.g., Text, Number, Date, Email, Password).
+        - `Value`: A string representing the value entered in the field.
+        - `Required`: A boolean indicating whether the field is required.
+        - `Priority`: An integer representing the priority of the field (higher values indicate higher priority).
+
+### Returns
+A `Dictionary<string, string>` where the key is the field name and the value is an error message if the field fails validation, or "Valid" if all fields pass validation.
+
+### Key Notes/Limitations
+- Critical errors in high-priority fields trigger a form rejection.
+- Password validation checks for the presence of uppercase, lowercase, digits, and special characters.
+- The method assumes that the `FieldInput` class and `FieldType` enum are defined elsewhere in the codebase.
+- The method does not handle all possible edge cases for each field type.
+- The method does not validate the date format beyond checking if it's in the future or too far in the past.
+- The method does not handle cases where the input value is null or empty for non-text fields.
+- The method does not validate the email format beyond checking for the presence of "@" and ".".
+- The method does not handle suspicious email patterns beyond checking for ".con" or spaces.�

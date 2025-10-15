@@ -1,0 +1,10 @@
+ /// <summary>
+/// Adds two integer values and returns the sum.
+/// </summary>
+/// <param name="zahl1">The first integer to be added.</param>
+/// <param name="zahl2">The second integer to be added.</param>
+/// <returns>The sum of zahl1 and zahl2.</returns>
+/// <remarks>
+/// This method performs a simple addition operation on two integers.
+/// It does not handle overflow scenarios.
+/// </remarks>�

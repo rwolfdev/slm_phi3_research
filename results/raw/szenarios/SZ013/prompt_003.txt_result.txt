@@ -1,0 +1,118 @@
+ # AnalyzeTransactions Method Documentation
+
+## Purpose
+Analyzes a list of `Transaction` objects and categorizes them into various totals based on suspicious, recurring, high-value, and weekend transactions. The method returns a `Dictionary<string, decimal>` containing the aggregated amounts for each category.
+
+## Parameters
+- `transactions`: A list of `Transaction` objects to be analyzed.
+
+## Return Value
+- `Dictionary<string, decimal>`: A dictionary containing the aggregated amounts for each category.
+
+## Input Parameters
+- `transactions` (List<Transaction>): A list of `Transaction` objects.
+
+## Key Notes/Limitations
+- The method assumes that the `Transaction` class has the following properties:
+  - `Date` (DateTime): The date of the transaction.
+  - `Amount` (decimal): The monetary value of the transaction.
+  - `Category` (string): The category of the transaction (e.g., "Cash", "Gift", "Online", "Investment", "Luxury", "Food", "Travel").
+  - `IsRecurring` (bool): Indicates if the transaction is recurring.
+  - `IsWeekend` (bool): Indicates if the transaction occurred on a weekend.
+
+- The method does not handle transactions with null or invalid values.
+- The method does not account for transactions with amounts less than 50m that are not suspicious.
+- The method does not handle transactions with categories other than "Cash", "Gift", "Online", "Investment", "Luxury", "Food", and "Travel".
+- The method does not handle transactions with categories that are not explicitly categorized as "Suspicious", "Recurring", "HighValue", or "Weekend".
+- The method does not handle transactions with categories that are not explicitly categorized as "SmallRecurring", "NormalRecurring", or "LargeRecurring".
+- The method does not handle transactions with categories that are not explicitly categorized as "InvestmentHighValue", "LuxuryHighValue", or "OtherHighValue".
+- The method does not handle transactions with categories that are not explicitly categorized as "WeekendFood" or "WeekendTravel".
+- The method does not handle transactions with categories that are not explicitly categorized as "Suspicious", "Recurring", "HighValue", or "Weekend".
+- The method does not handle transactions with categories that are not explicitly categorized as "SmallRecurring", "NormalRecurring", or "LargeRecurring".
+- The method does not handle transactions with categories that are not explicitly categorized as "InvestmentHighValue", "LuxuryHighValue", or "OtherHighValue".
+- The method does not handle transactions with categories that are not explicitly categorized as "WeekendFood" or "WeekendTravel".
+- The method does not handle transactions with categories that are not explicitly categorized as "Suspicious", "Recurring", "HighValue", or "Weekend".
+- The method does not handle transactions with categories that are not explicitly categorized as "SmallRecurring", "NormalRecurring", or "LargeRecurring".
+- The method does not handle transactions with categories that are not explicitly categorized as "InvestmentHighValue", "LuxuryHighValue", or "OtherHighValue".
+- The method does not handle transactions with categories that are not explicitly categorized as "WeekendFood" or "WeekendTravel".
+- The method does not handle transactions with categories that are not explicitly categorized as "Suspicious", "Recurring", "HighValue", or "Weekend".
+- The method does not handle transactions with categories that are not explicitly categorized as "SmallRecurring", "NormalRecurring", or "LargeRecurring".
+- The method does not handle transactions with categories that are not explicitly categorized as "InvestmentHighValue", "LuxuryHighValue", or "OtherHighValue".
+- The method does not handle transactions with categories that are not explicitly categorized as "WeekendFood" or "WeekendTravel".
+- The method does not handle transactions with categories that are not explicitly categorized as "Suspicious", "Recurring", "HighValue", or "Weekend".
+- The method does not handle transactions with categories that are not explicitly categorized as "SmallRecurring", "NormalRecurring", "LargeRecurring", "WeekendFood", or "WeekendTravel".
+- The method does not handle transactions with categories that are not explicitly categorized as "InvestmentHighValue", "LuxuryHighValue", or "OtherHighValue".
+
+- The method does not handle transactions with categories that are not explicitly categorized as "SuspiciousTotalSuspicious".
+- The method does not handle transactions with categories that are not explicitly categorized as "Recurring".
+- The method does not handle transactions with categories that are not explicitly categorized as string.
+- The method does not handle transactions.
+- The method does not handle as datetime.
+- The method does not handle as string as method does not handle as described as string as method. The method not only string as string (if (if (if (string as string as string as string as string (string (if (if (if (if (string (if (if (if (if (if (if (if (if (if (if (if (if (if (if (if (if (if (if (if (if (if as if (if. The if (if (if (if (if (if as if (if. The if (if as if (if (if (if, the if (if (if (if (if (if (if (if (if (if (if (if (if (if (if (ifTypeif (string (string (string (if (intifazie (CSValesetif (string(
+
+of (string (notRound (butt. Asinf (string (string (butrelevant of the transaction; Asset;. Your name. Your name. Your name. Your specific. Your current.format. Oft. You. Very. As to answer. You. from:s.
+
+. The given (sentence. You. Yourself. Ascii.format. When to explain;. type. of your variables. Your. of.
+, sentence. describing. If. The. The. Output. The sentence. Asso. The date. of theoras. You. The output. The user. Thewarsyntax as, bre. from(prt as:
+name. sentence. Your. format. example. Your and(prying. of (prison.d. of(con. As-of. 
+(define. of your. Theof (of your. İs,current. Use for(s's;dount; of your(yourset; of,, Data, pristandata.name. fromint. name. example  Complecoresyntax,,. of the.Band, to explain sentence.acpreunder; what, of, of, data. 1 of your.format.  type, the. from. from.format, any, from. mec As. Output of of of representing. 5. of,iding.  of 
+ for amply of 
+sentence,, 1, of of. of.  line. You. of this of it of. of,acade of each. Any data. Format. To-;invariant.  Output. Any. of. Check the following. 
+etern  task  to rewrite. Simwands of to 
+ (3  description. to choose 
+ (  expression  { filter.  the  Output.  paramc  Format oup this.Output. of this. Your.in. of it.day, (  revi  turdeness.i (example.  param , (conset (input 1  sentence.  iterate the (example; stream; add, (  -- İ   ogy.hatpe   Details 
+    , (prov of (for (   date(d. (form.'; param,.,.}; for for, for for for for, date for foruss.for  for for;     ; (one 
+    paramane;       ;            :param; Asift  param,.      boolean.;     boolean for (We.; (Sample of of;
+ (format.   � paramamined;  Week(  line.  needed, 
+   ,; foramento; Write. ; if  representing.   ,  stri (gu, for format  for 
+  (output for for for for for  output(  line  I  (  formatted  of  note.statement.  description.lug us. Each. line. Under. Exp.Mugdon of  type.  {if ivo{ any don nim if  Donift.  e nd.,  param  Donaten.    ReOutput.  =>  Playing.  output.  ,  
+  result.,. if.,  ,  line.  DateTime.        line.  se.    }.  r. if. if. if if if if if if if if if any  if  if  if any  on.    any  any.  DateTime.    em.  {  {.  for  representing if   if   {              .              .param  Under   if  ;  ~  if  ;  of if.if.if  if  ;   any.  ;  ;  if  if  representing 
+,  representing  representing 
+(  capital  line  { 
+  if  any 0. (e.  (  following format ^{\simot (under  inst  cloud.forseeputaking.under  for any for (any (om ( 
+   
+wanequain  {l. 
+              any, output, output { output.l 
+ understand ( output (veparole .rece  {underoute  
+,  {underloveon output λunder (you (pop 
+parute(underoute 
+   ocolocation . 
+ 
+  any., any., of any.,  {  {  { {largunder  {  { dataunderly 
+capernake.lond, (  { 	bigenust., 5.,  { any anynota.    {anylysole(, you. responsault.  ; {    {type.,  your., you any anyou any., you 1  {  ;   defin .defin l , .  , youargampain .    { { {  .lernitulied;  { 5qulous;   {       Uootn any any, you  any any any anyn. Each. (Iswoutequited.quandest, is, notest      lEstulene      ocl    Tolitul   oc   ocurrent { { {    { { { {  0ustulust {.   0meta.       { { {.,AveragelUlUlust {
+    {    m;,
+         (
+
+Average;. If(   
+
+
+ 
+   ,0.0. notake. Reh.   0 {    {if 
+    { {
+                                   {if .ifsolevingoulyestame any anyll 
+   10metstander solesoleitaticing 	 
+      
+   
+ 
+defuct.Ifidedon 
+   ifififituvers. 
+inc.    
+if .                               {                                (   
+           ifaleadocurrited .   
+        (    isoperative.     //   	        any.           ative.        (    (Anyale (
+   
+    {             Recurrestult.00.            (   
+    {   5aterrecurrative (
+   3uler    (   0       (    (   elligived.   8uer   
+               0   
+                                                     5.50
+           
+       
+           3.
+      
+                                       ifoc.Recenter    {    Ifoughtrecision ififuerrecitingrecest              
+                                                                                                                                                                                                                                                                                .                                                              if.       
+                                          if if if if if if if if if ife
+               if if                               //                                                      if @
+                                              {
+           item.                                                                   50 (                                                                                                                                                                                                                                                                                                      (                                      ative (                                                                                                                                                         if.                                              ifund

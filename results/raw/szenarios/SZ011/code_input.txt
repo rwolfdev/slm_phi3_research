@@ -1,0 +1,64 @@
+﻿public class AuditSaveChangesInterceptor : SaveChangesInterceptor
+{
+    private readonly IServiceProvider _serviceProvider;
+
+    public AuditSaveChangesInterceptor(IServiceProvider serviceProvider)
+    {
+        _serviceProvider = serviceProvider;
+    }
+
+    public override async ValueTask<InterceptionResult<int>> SavingChangesAsync(
+        DbContextEventData eventData,
+        InterceptionResult<int> result,
+        CancellationToken cancellationToken = default)
+    {
+        var context = eventData.Context;
+        if (context == null) return await base.SavingChangesAsync(eventData, result, cancellationToken);
+
+        DateTime occurenceTime = DateTime.UtcNow;
+        IIdentityContextService identityContext = _serviceProvider.GetRequiredService<IIdentityContextService>();
+
+        List<EntityEntry> changeEntries = context.ChangeTracker.Entries()
+            .Where(e =>
+                e.Entity is ITrackable &&
+                (e.State == EntityState.Modified ||
+                 e.State == EntityState.Added ||
+                 e.State == EntityState.Deleted))
+            .ToList();
+
+        foreach (EntityEntry entry in changeEntries)
+        {
+            ITrackable entity = (ITrackable)entry.Entity;
+
+            ChangeTrackingEntry change = new ChangeTrackingEntry
+            {
+                Action = entry.State.ToString(),
+                Resource = entry.Entity.GetType().Name,
+                ResourceId = (Guid)entry.Property("Id").CurrentValue,
+                PerformingUser = identityContext.CurrentUser.Username,
+                Timestamp = occurenceTime
+            };
+
+            if (entry.State == EntityState.Modified)
+            {
+                StringBuilder sb = new StringBuilder();
+                foreach (var prop in entry.Properties)
+                {
+                    if (prop.IsModified)
+                    {
+                        sb.AppendLine($"{prop.Metadata.Name} geändert von {prop.OriginalValue} => {prop.CurrentValue}");
+                    }
+                }
+
+                if (sb.Length > 0)
+                {
+                    change.Action = sb.ToString().Trim();
+                }
+            }
+
+            context.Add(change);
+        }
+
+        return await base.SavingChangesAsync(eventData, result, cancellationToken);
+    }
+}

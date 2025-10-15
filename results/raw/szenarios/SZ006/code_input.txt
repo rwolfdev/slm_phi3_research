@@ -1,0 +1,39 @@
+﻿public class Document
+{
+    private readonly List<string> _tags = new();
+
+    public string Title { get; }
+    public string FileName { get; }
+    public byte[] Content { get; }
+    public DateTime CreatedAt { get; }
+    public string CreatedBy { get; }
+
+    public IReadOnlyList<string> Tags => _tags.AsReadOnly();
+
+    public Document(string title, string fileName, byte[] content, string createdBy)
+    {
+        Title = title;
+        FileName = fileName;
+        Content = content;
+        CreatedBy = createdBy;
+        CreatedAt = DateTime.UtcNow;
+    }
+
+    public void AddTag(string tag)
+    {
+        if (!string.IsNullOrWhiteSpace(tag) && !_tags.Contains(tag))
+        {
+            _tags.Add(tag);
+        }
+    }
+
+    public bool HasTag(string tag)
+    {
+        return _tags.Contains(tag);
+    }
+
+    public string GetSummary()
+    {
+        return $"{Title} ({FileName}), {Content.Length} bytes";
+    }
+}

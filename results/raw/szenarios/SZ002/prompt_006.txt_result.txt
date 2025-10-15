@@ -1,0 +1,15 @@
+ /// <summary>
+/// Counts the occurrences of each word in the given text.
+///
+/// This method takes a string input and returns a dictionary where the keys are the unique words found in the text,
+/// and the values are the number of occurrences of each word.
+///
+/// <param name="text">The input string containing the text to be analyzed.</param>
+/// <returns>A Dictionary<string, int> where each key is a unique word from the input text and the corresponding value is the count of that word'
+/// in the text. Words are considered case-sensitive and are delimited by spaces.
+/// </returns>
+/// <exception cref="ArgumentException">Thrown when the input text is null or empty.</exception>
+public Dictionary<string, int> CountWords(string text)
+{
+    // Method implementation...
+}�

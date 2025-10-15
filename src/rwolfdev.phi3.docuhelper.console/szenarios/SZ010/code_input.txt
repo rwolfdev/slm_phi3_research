@@ -1,0 +1,132 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Globalization;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Data;
+using System.Windows.Media;
+
+namespace rwolfdev.gists
+{
+    public class FullNameToColorConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            if (value != null)
+            {
+                string name = value as string;
+
+                int hash = 0;
+
+                for (int i = 0; i < name.Length; i++)
+                {
+                    int ascii = System.Convert.ToInt16(name[i]);
+                    hash = ascii + ((hash << 5) - hash);
+                }
+
+                hash = hash * name.Length;
+
+                int h = hash % 360;
+                int s = 45;
+                int l = 60;
+
+                return new SolidColorBrush(ColorScale.HslToRgb(h, s, l));
+            }
+            else
+            {
+                return Brushes.Black;
+            }
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            return value;
+        }
+
+
+        class ColorScale
+        {
+            public static Color HslToRgb(
+                double h_original, double s_original, double l_original)
+            {
+                double red, green, blue;
+
+                var h = h_original / 360.0;
+                var s = s_original / 100.0;
+                var l = l_original / 100.0;
+
+                if (Math.Abs(s - 0.0) < double.Epsilon)
+                {
+                    red = l;
+                    green = l;
+                    blue = l;
+                }
+                else
+                {
+                    double var2;
+
+                    if (l < 0.5)
+                    {
+                        var2 = l * (1.0 + s);
+                    }
+                    else
+                    {
+                        var2 = l + s - s * l;
+                    }
+
+                    var var1 = 2.0 * l - var2;
+
+                    red = hue2Rgb(var1, var2, h + 1.0 / 3.0);
+                    green = hue2Rgb(var1, var2, h);
+                    blue = hue2Rgb(var1, var2, h - 1.0 / 3.0);
+                    if (blue < 0)
+                    {
+                        blue = blue * -1;
+                    }
+                }
+
+                // --
+
+                var nRed = System.Convert.ToInt32(red * 255.0);
+                var nGreen = System.Convert.ToInt32(green * 255.0);
+                var nBlue = System.Convert.ToInt32(blue * 255.0);
+
+
+                System.Drawing.Color c = System.Drawing.Color.FromArgb(nRed, nGreen, nBlue);
+
+                return Color.FromRgb(c.R, c.G, c.B);
+            }
+
+            private static double hue2Rgb(
+                double v1,
+                double v2,
+                double vH)
+            {
+                if (vH < 0.0)
+                {
+                    vH += 1.0;
+                }
+                if (vH > 1.0)
+                {
+                    vH -= 1.0;
+                }
+                if (6.0 * vH < 1.0)
+                {
+                    return v1 + (v2 - v1) * 6.0 * vH;
+                }
+                if (2.0 * vH < 1.0)
+                {
+                    return v2;
+                }
+                if (3.0 * vH < 2.0)
+                {
+                    return v1 + (v2 - v1) * (2.0 / 3.0 - vH) * 6.0;
+                }
+
+                return v1;
+            }
+
+        }
+    }
+}

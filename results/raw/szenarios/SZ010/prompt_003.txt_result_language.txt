@@ -1,0 +1,64 @@
+ # FullNameToColorConverter Class Documentation
+
+## Purpose
+
+The `FullNameToColorConverter` class is designed to convert a full name into a color based on the hash value of the name. It implements the `IValueConverter` interface to provide this conversion functionality.
+
+## Class Members
+
+### FullNameToColorConverter Class
+
+- `Convert(object value, Type targetType, object parameter, CultureInfo culture)`: Converts the given value (full name) into a color.
+  - `value`: The full name to be converted.
+  - `targetType`: The target type, which is not used in this implementation.
+  - `parameter`: The optional parameter, which is not used in this implementation.
+  - `culture`: The culture info, which is not used in this implementation.
+  - Returns: A `SolidColorBrush` object representing the color based on the hash value of the full name.
+
+- `ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)`: Returns the original value (full name) as it is not possible to convert back from a color to a full name.
+  - `value`: The value to be converted back.
+  - `targetType`: The target type, which is not used in this implementation.
+  - `parameter`: The optional parameter, which is not used in this implementation.
+  - `culture`: The culture info, which is not used in this implementation.
+  - Returns: The original value (full name) as a string.
+
+### ColorScale Class
+
+- `HslToRgb(double h_original, double s_original, double l_original)`: Converts an HSL color value to an RGB color value.
+  - `h_original`: The original hue value.
+  - `s_original`: The original saturation value.
+  - `l_original`: The original lightness value.
+  - Returns: A `System.Drawing.Color` object representing the RGB color value.
+
+## Methods
+
+### FullNameToColorConverter.Convert Method
+
+- Parameters:
+  - `value`: The full name to be converted.
+  - `targetType`: The target type, which is not used in this implementation.
+  - `parameter`: The optional parameter, which is not used in this implementation.
+  - `culture`: The culture info, which is not used in this implementation.
+  - Returns: A `SolidColorBrush` object representing the color based on the hash value of the full name.
+
+### FullNameToColorConverter.ConvertBack Method
+
+- Parameters:
+  - `value`: The value to be converted back.
+  - `targetType`: The target type, which is not used in this implementation.
+  - `parameter`: The optional parameter, which is not used in this implementation.
+  - `culture`: The culture info, which is not used in this implementation.
+  - Returns: The original value (full name) as a string.
+
+## Methods of ColorScale Class
+
+- `HslToRgb(double h_original, double s_original, double l_original)`: Converts an HSL color value to an RGB color value.
+  - Parameters:
+    - `h_original`: The original hue value.
+    - `s_original`: The original saturation value.
+    - `l_original`: The original lightness value.
+  - Returns: A `System.Drawing.Color` object representing the RGB color value.
+
+## Summary
+
+The `FullNameToColorConverter` class provides a conversion from a full name to a color based on the hash value of the name. The `ColorScale` class is used to convert HSL color values to RGB color values. Both classes implement the `IValueConverter` interface to provide the conversion functionality.�

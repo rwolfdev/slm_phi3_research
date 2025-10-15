@@ -1,0 +1,456 @@
+ # FullNameToColorConverter Class Documentation
+
+## Namespace
+Namespace: `rwolfdev.gists`
+
+## Class
+Namespace: `rwolfdev.gists`
+
+### Class: `FullNameToColorConverter`
+
+This class implements the `IValueConverter` interface and provides a conversion method to convert a full name string into a color.
+
+### Properties
+
+- `Convert(object value, Type targetType, object parameter, CultureInfo culture)`: Converts a full name string to a color.
+  - Parameters:
+    - `value`: The full name string to convert.
+    - `targetType`: The target type (not used in this implementation).
+    - `parameter`: The optional parameter (not used in this implementation).
+    - `culture`: The culture info (not used in this implementation).
+  - Returns: A `SolidColorBrush` object representing the color.
+
+- `ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)`: Converts a color back to a full name string.
+  - Parameters:
+    - `value`: The color to convert.
+    - `targetType`: The target type (not used in this implementation).
+    - `parameter`: The optional parameter (not used in this implementation).
+    - `culture`: The culture info (not used in this implementation).
+  - Returns: The original string value (always returns `null`).
+
+## Methods
+
+### `Convert(object value, Type targetType, object parameter, CultureInfo culture)`
+
+This method takes a full name string and converts it to a color using the `ColorScale.HslToRgb` method. If the input value is null, it returns a black color.
+
+### `ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)`
+
+This method returns the original string value, as it is not possible to convert a color back to a full name string.
+
+## Helper Class: `ColorScale`
+
+Namespace: `rwolfdev.gists`
+
+### Class: `ColorScale`
+
+This class contains a static method `HslToRgb` that converts HSL color values to RGB color values.
+
+### Method: `HslToRgb(double h_original, double s_original, double l_original)`
+
+This method takes HSL color values and converts them to RGB color values.
+
+### Method: `hue2Rgb(double v1, double v2, double vH)`
+
+This method calculates the RGB color value based on the hue, saturation, and lightness values.
+
+### Method: `hue2Rgb(double v1, double v2, double vH)`
+
+This method calculates the RGB color value based on the hue, saturation, and lightness values.
+
+### Method: `hue2Rgb(double v1, double v2, double vH)`
+
+This method calculates the RGB color value based on the hue, saturation, and lightness values.
+
+### Method: `hue2Rgb(double v1, double v2, double vH)`
+
+This method calculates the RGB color value based on the hue, saturation, and lightness values.
+
+### Method: `hue2Rgb(double v1, double v2, double vH)`
+
+This method calculates the RGB color value based on the hue, saturation, and lightness values.
+
+### Method: `hue2Rgb(double v1, double v2, double vH)`
+
+This method calculates the RGB color value based on the hue, saturation, and lightness values.
+
+### Method: `hue2Rgb(double v1, double v2, double vH)`
+
+This method calculates the RGB color value based on the hue, saturation, and lightness values.
+
+### Method: `hue2Rgb(double v1, double v2, double vH)`
+
+This method calculates the RGB color value based on the hue, saturation, and lightness values.
+
+### Method: `hue2Rgb(double v1, double v2, double vH)`
+
+This method calculates the RGB color value based on the hue, saturation, and lightness values.
+
+### Method: `hue2Rgb(double v1, double v2, double vH)`
+
+This method calculates the RGB color value based on the hue, saturation, and lightness values.
+
+### Method: `hue2Rgb(double v1, double v2, double vH)`
+
+This method calculates the RGB color value based on the hue, saturation, and lightness values.
+
+### Method: `public Solrray.i nt namespace rwolf
+
+namespace rwolf.i
+
+### Method
+
+namespace rwolf.i
+
+namespace iwrawnamespaces.
+namespace iwolf
+
+namespace iwolf.
+namespace iwolf.
+namespace iwolf.
+namespace.
+namespace.
+
+namespace.
+
+namespace.
+namespace.
+namespace.
+namespace.
+namespace.
+namespace.
+namespace.
+namespace.
+namespace.
+
+namespace.
+
+namespace.
+namespace.
+
+namespace.
+
+namespace.
+
+namespace.
+namespace.
+
+namespace.
+namespace.
+
+
+
+
+
+namespace
+
+namespace.
+
+namespace;
+
+namespace;
+
+namespace;
+
+namespace;
+
+namespace;
+
+namespace.
+
+namespace
+
+namespace.
+
+namespace
+
+
+
+namespace.
+
+namespace.
+
+namespace.
+
+  
+  
+  
+   
+  
+   //
+  
+  
+  
+  
+  
+
+  
+
+  
+  
+  
+  
+  
+  
+  
+
+
+
+  
+  
+generating.
+
+  
+ ascii.
+
+  
+  
+  
+  
+  
+
+instru.
+
+.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.Netricling.
+ as
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Bores.
+
+
+
+
+
+
+texting.
+227
+  
+lingo.Net
+   
+cing.
+in
+
+textortoncore.Coreringmanu.Textimonizing
+oninin.
+oring.
+in, as text.Code
+in Lighting. For txtlyaconling text.in.Querying;in outinig { inonoceizing {arging as ascii.Eigtimer.ascii,in.as, ascii andling and
+ Asigcing asig as lining.asymaranooting. AsIiin
+ asynargasigin ascore ascoreaconiancingin.in
+in
+
+Checking aselling aspersyniigicultinizingin
+
+
+
+
+ Reutinin
+
+lylerin
+
+ringining.finity.asistant.in
+iclingin
+
+
+in
+using asin.in
+tying  
+ ly 
+in
+
+
+cexiclivingExpression.   
+icon.Asynchronous.Gicicicicingtoninferiilingtoncingicieldinfermlinfermy at i atimericiccing. (for (for yourenlyinig for
+
+
+
+
+inig
+
+lyrtield
+for(thisfermy {in   iaootromaticultableicicilooticieldringiciclingldrome.;
+                   
+
+lyinginniinginig 
+Dbldicicldicitingldocorencing-forcing paramicldiclordustable ;ly as Core.fixedable;ifldin.yourlyringing.   ersionigeser.    {
+ ulinglyreasyn
+by;
+   
+i;
+in. 
+   
+  
+asigeasasasasinascore;
+return in.ascorein.asigeckling
+Dbu
+
+  ersionlyiginlyling.foferlyldaringby.for.
+lyllingldersingldingliasingldasinglding;lllyldleringldllldldldolldleringol
+
+llingc
+
+
+llinglinginferlyingringlingldinglyllingldlinglderldlinglingldicldginglinglingldockrtieldlinglingldlingldocklderldlerableldleldatldleldelevlyldlyldlyldicldo   
+.Bin   
+ 
+lyldlyld,lyllinglyllldllldlinglinglinglinglylllddldldlinglyldlylllyglywldllldldldllly
+,   
+ 
+lld1oclyllsll1idlylldromeldldlylllylld1
+
+
+intc1lliquldoilldromsllinexillylyllbyldromeousifrontlylyllinflylyldromexaserlderldromeberlde
+inferlderldlerldlerldoledlyldlylderldlylynde
+ldlerldilelinglylerldocilelylerlyleront
+
+
+oldocldviferldlyldoclinglysftofoofooforeserltlyoc
+
+
+
+
+assolelderforigeo       ndserldeaserrtldigeigeigeoforlderldige1ocleldside(
+stldldldeagldocldocldoclde1stldocleldocldldldocldocldocsoleldocrt10swocveldequeldequeveldevalueoledlerlyequeldecomeceacherldoledeletldolecilelelewaleciletosewldlerldoilc181stldestulstalesolebrostostillingstlerstststsolesteferstlinestlingststldsttostlingstststringlingrometostnderolingstesoleldestlereserldestlerldestlerldesterongst1steaderolderoldo2ndstlerlylerlystigelingoaglerostigeigeigestlerlynglinglinglylerlingngsteadsoleigeldige1.g8sterolderrtlergigesteadeigeeasesersteadeeserldeserlligestlersonesolestsole3lersolestorigeassolelylerlersolelleigeigeldeildsolesolesolesoleldigeldsoleldsoleldilyldileldigeldsoleasigeigesoleige5solesolesole4igeildeilde44solesolesolesolesole               
+ sole444solesolesolesolesolesolesolegsoleeigesolesolesolesolesole44solesolesolesolesolesolelysolebysolesolestallestigeasnglystsolesolesole484484848484484484848484ste                rbyte2nd               ty33.g3484848333rd               3st3rdst8315343               
+
+
+34848ige848484848consolee4               4                               lye8484484                              4848               44e
+
+               
+
+
+
+
+           
+               
+               
+
+
+                      
+888
+               
+
+               
+
+               
+               
+               4               
+               
+               
+               
+
+
+                
+
+
+               
+
+               
+
+               
+                                             
+               1                8e               4               88                                                            3                                                                                                                                                                                                 L                       
+
+
+
+
+
+
+
+1                                                                            Rs
+                          510           
+                                                      23           3       0agy        }       0           0                       3                3igig551.               3           3.       3535353ig485           3                          35353ly303rdigig

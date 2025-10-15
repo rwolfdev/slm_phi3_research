@@ -1,0 +1,1 @@
+﻿Analyse einer Liste von Transaktionen, die basierend auf Regeln verschiedene Klassifikationen und Summen berechnet.

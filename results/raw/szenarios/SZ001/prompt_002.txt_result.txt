@@ -1,0 +1,20 @@
+ ## Function Name: Addiere
+### Description:
+This function takes two integer parameters, `zahl1` and `zahl2`, and returns their sum as an integer.
+
+### Parameters:
+1. `zahl1` (int): The first integer value to be added.
+2. `zahl2` (int): The second integer value to be added.
+
+### Return Type:
+The function returns an integer value representing the sum of `zahl1` and `zahl2`.
+
+### Function Signature:
+```java
+public int Addiere(int zahl1, int zahl2)
+```
+
+### Example Usage:
+```java
+int result = Addiere(5, 10); // result will be 15
+```�

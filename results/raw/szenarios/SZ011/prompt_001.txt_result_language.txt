@@ -1,0 +1,52 @@
+ # AuditSaveChangesInterceptor Class Documentation
+
+## Overview
+
+The `AuditSaveChangesInterceptor` class is a custom implementation of the `SaveChangesInterceptor` interface in C#. It is designed to audit changes made to entities tracked by Entity Framework (EF) by logging the changes to an audit log. This class extends the functionality of the base `SaveChangesInterceptor` to capture and store audit information about modifications, additions, and deletions of entities.
+
+## Class Members
+
+### Class Properties
+
+- `_serviceProvider`: A private field of type `IServiceProvider` that is used to retrieve the required `IIdentityContextService` instance.
+
+### Class Constructor
+
+- `AuditSaveChangesInterceptor(IServiceProvider serviceProvider)`: The constructor initializes the `_serviceProvider` field with the provided `IServiceProvider` instance.
+
+### Class Methods
+
+#### `override async ValueTask<InterceptionResult<int>> SavingChangesAsync(DbContextEventData eventData, InterceptionResult<int> result, CancellationToken cancellationToken = default)`
+
+This method overrides the `SavingChangesAsync` method from the base `SaveChangesInterceptor` class. It intercepts the `DbContextEventData` and performs the following actions:
+
+1. Checks if the `DbContext` is null. If it is, the method returns the result from the base implementation.
+
+2. Retrieves the current UTC time and the required `IIdentityContextService` instance using the `_serviceProvider`.
+
+3. Filters the `DbContext.ChangeTracker.Entries()` to include only entities that are in the `Modified`, `Added`, or `Deleted` state.
+
+4. Iterates through the filtered entities and creates a `ChangeTrackingEntry` object for each entity, containing the action, resource type, resource ID, performing user, and timestamp.
+
+5. If the entity is in the `Modified` state, it appends the modified properties to the `ChangeTrackingEntry.Action` string.
+
+6. Adds the `ChangeTrackingEntry` to the `DbContext`.
+
+7. Returns the result from the base implementation.
+
+## Usage
+
+To use the `AuditSaveChangesInterceptor` class, instantiate it with an `IServiceProvider` instance and pass it to the `SaveContext` object's `Use` method. This will enable the auditing functionality for the `DbContext` operations.
+
+```csharp
+var serviceProvider = new ServiceCollection().AddSingleton<IServiceProvider>(ServiceProvider.Create(serviceProvider)).BuildServiceProvider();
+var auditInterceptor = new AuditSaveChangesInterceptor(serviceProvider);
+
+using (var context = new DbContext())
+{
+    context.Database.Use(auditInterceptor);
+    // Perform database operations
+}
+```
+
+This will ensure that the auditing functionality is applied to the `DbContext` operations, and the audit log will contain the necessary information about the changes made to the tracked entities.�

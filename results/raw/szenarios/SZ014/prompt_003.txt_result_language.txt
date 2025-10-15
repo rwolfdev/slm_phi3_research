@@ -1,0 +1,29 @@
+ # ValidateForm Method Documentation
+
+## Purpose
+Validates a form's input fields based on their type, required status, and value constraints.
+
+## Parameters
+
+- `inputs`: A list of `FieldInput` objects representing the form's input fields.
+
+### FieldInput
+- `Name`: A string representing the name of the input field.
+- `Type`: A `FieldType` enum value representing the type of the input field (e.g., Text, Number, Date, Email, Password).
+- `Required`: A boolean indicating whether the field is required.
+- `Value`: A string representing the value of the input field.
+- `Priority`: An integer representing the priority of the field (higher values indicate higher priority).
+
+## Return Value
+A `Dictionary<string, string>` that maps input field names to error messages, if any. If no errors are found, the dictionary will contain a single key-value pair: "FormStatus": "Valid".
+
+## Key Notes and Limitations
+- The function prioritizes validation based on the `Priority` property of each input field.
+- If a critical error is detected (high priority field with an invalid value), the function sets the "FormStatus" key in the error dictionary to "Critical error: high priority field invalid." and stops further validation.
+- The function does not validate the format of the email address beyond checking for the presence of "@" and "." symbols.
+- The password validation checks for the presence of at least one uppercase letter, one lowercase letter, one digit, and one special character.
+- The password validation also checks for the presence of the field name within the password value.
+- The function does not handle cases where the input value is null or empty for non-text fields.
+- The date validation checks for dates in the future and dates more than 120 years ago.
+- The number validation checks for negative values and values greater than 100,000.
+- The function does not handle cases where the input value exceeds the maximum length for text fields.�

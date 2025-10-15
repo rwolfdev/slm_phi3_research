@@ -1,0 +1,70 @@
+ # AnalyzeTransactions Function Documentation
+
+## Overview
+
+The `AnalyzeTransactions` function takes a list of `Transaction` objects as input and returns a `Dictionary<string, decimal>` that categorizes and sums the transaction amounts based on various criteria such as suspicious transactions, recurring transactions, high-value transactions, and weekend transactions.
+
+## Function Signature
+
+```csharp
+public Dictionary<string, decimal> AnalyzeTransactions(List<Transaction> transactions)
+```
+
+## Parameters
+
+1. `transactions` (List<Transaction>): A list of `Transaction` objects that represent individual transactions.
+
+## Return Value
+
+A `Dictionary<string, decimal>` that contains the following keys and their corresponding values:
+
+- `Suspicious`: The total amount of suspicious transactions.
+- `TotalSuspicious`: The sum of all suspicious transactions.
+- `Recurring`: The total amount of recurring transactions.
+- `SmallRecurring`: The sum of small recurring transactions (less than 50).
+- `NormalRecurring`: The sum of normal recurring transactions (50 to 500).
+- `LargeRecurring`: The sum of large recurring transactions (more than 500).
+- `HighValue`: The total amount of high-value transactions.
+- `InvestmentHighValue`: The sum of high-value transactions categorized as "Investment".
+- `LuxuryHighValue`: The sum of high-value transactions categorized as "Luxury".
+- `OtherHighValue`: The sum of high-value transactions categorized as "Other".
+- `WeekendFood`: The total amount of weekend transactions categorized as "Food".
+- `WeekendTravel`: The total amount of weekend transactions categorized as "Travel".
+- `TotalWeekend`: The sum of all weekend transactions.
+- `TotalRecurring`: The sum of all recurring transactions.
+- `TotalHighValue`: The sum of all high-value transactions.
+
+## Functionality
+
+1. Initialize a `Dictionary<string, decimal>` called `result` to store the categorized transaction amounts.
+2. Iterate through each `Transaction` object in the input list.
+3. Determine if the transaction is suspicious, recurring, high-value, or a weekend transaction based on the transaction amount and category.
+4. Update the `result` dictionary with the appropriate key and value based on the transaction's category and amount.
+5. Return the `result` dictionary containing the categorized and summed transaction amounts.
+
+## Example
+
+```csharp
+List<Transaction> transactions = new List<Transaction>();
+// Populate the transactions list with Transaction objects
+Dictionary<string, decimal> analyzedTransactions = AnalyzeTransactions(transactions);
+```
+
+## Note
+
+This function assumes that the `Transaction` class has the following properties:
+
+- `Amount`: A decimal value representing the transaction amount.
+- `Date`: A `DateTime` object representing the transaction date.
+- `Category`: A string representing the transaction category (e.g., "Cash", "Gift", "Investment", "Luxury", "Food", "Travel").
+- `IsRecurring`: A boolean value indicating whether the transaction is recurring or not.
+- `IsHighValue`: A boolean value indicating whether the transaction is considered high-value or not.
+- `IsWeekend`: A boolean value indicating whether the transaction occurred on a weekend or not.
+- `IsSuspicious`: A boolean value indicating whether the transaction is considered suspicious or not.
+
+The function uses the following criteria to categorize transactions:
+
+- Suspicious transactions: Amount greater than 5000m with a "Cash" category or amount greater than 2000m with "Gift" category and "IsRecurring" set to true.
+- Recurring transactions: Amount less than 50m and not suspicious, or amount between 50m and 500m and not suspicious.
+- High-value transactions: Amount greater than 1000m.
+- Weekend transactions: Transaction date falls on a weekend (Saturday or Sunday).�

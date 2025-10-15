@@ -1,0 +1,23 @@
+ # Function: Addiere
+
+## Purpose
+To perform addition of two integer values.
+
+## Parameters
+1. `zahl1` (int): The first integer to be added.
+2. `zahl2` (int): The second integer to be added.
+
+## Return Value
+The function returns an `int` which is the sum of `zahl1` and `zahl2`.
+
+## Description
+The `Addiere` function takes two integer parameters and returns their sum.
+
+## Syntax
+```plaintext
+public int Addiere(int zahl1, int zahl2)
+```
+
+## Notes
+- The function assumes that the inputs are valid integers.
+- No error handling is implemented for non-integer inputs.�

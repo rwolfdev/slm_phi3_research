@@ -1,0 +1,16 @@
+﻿Szenario;Durchläufe;Korrekt;CC;Korrektheit in Prozent;Typ
+SZ001;12;12;1;100%;Funktion
+SZ002;12;12;1;100%;Funktion
+SZ003;12;12;1;100%;Funktion
+;;;;;
+SZ005;8;7;10;88%;Klasse
+SZ006;8;8;13;100%;Klasse
+SZ007;8;5;5;63%;Klasse
+SZ008;8;6;6;75%;Projekt
+SZ009;8;0;58;0%;Projekt
+SZ010;8;4;100;50%;Klasse
+SZ011;8;6;97;75%;Klasse
+SZ012;8;0;23;0%;Projekt
+SZ013;12;4;32;33%;Funktion
+SZ014;12;11;32;92%;Funktion
+;;;Korrelation CC Korrektheit %=;-0,392760805;

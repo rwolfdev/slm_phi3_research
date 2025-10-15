@@ -1,0 +1,84 @@
+ # Patient Class Documentation
+
+## Purpose
+
+The `Patient` class represents a patient with a unique identifier, first name, last name, date of birth, and insurance number. It provides functionality to calculate the patient's age and update the insurance number.
+
+## Properties
+
+### Private Readonly Field
+
+- `_id`: A unique identifier for the patient, represented as a `Guid`.
+
+### Public Properties
+
+- `FirstName`: A read-only property that returns the patient's first name.
+- `LastName`: A read-only property that returns the patient's last name.
+- `DateOfBirth`: A read-only property that returns the patient's date of birth.
+- `InsuranceNumber`: A read-write property that returns the patient's insurance number. The setter is private, allowing only the class to update the insurance number.
+
+### Constructor
+
+- The constructor initializes the `_id`, `FirstName`, `LastName`, `DateOfBirth`, and `InsuranceNumber` properties.
+
+### Methods
+
+- `GetAge()`: Calculates and returns the patient's age based on their date of birth.
+- `UpdateInsurance(string newInsuranceNumber)`: Updates the patient's insurance number.
+- `ToString()`: Returns a string representation of the patient's full name and date of birth.
+
+## Summary
+
+The `Patient` class encapsulates patient information and provides methods to calculate age and update insurance details.
+
+## Public Methods
+
+### GetAge()
+
+Calculates the age of the patient based on their date of birth.
+
+**Parameters:** None
+
+**Returns:** int
+
+```csharp
+public int GetAge()
+{
+    var today = DateTime.Today;
+    var age = today.Year - DateOfBirth.Year;
+    if (DateOfBirth.Date > today.AddYears(-age)) age--;
+    return age;
+}
+```
+
+### UpdateInsurance(string newInsuranceNumber)
+
+Updates the patient's insurance number.
+
+**Parameters:**
+
+- `newInsuranceNumber`: A string representing the new insurance number.
+
+**Returns:** None
+
+```csharp
+public void UpdateInsurance(string newInsuranceNumber)
+{
+    InsuranceNumber = newInsuranceNumber;
+}
+```
+
+### ToString()
+
+Returns a string representation of the patient's full name and date of birth.
+
+**Parameters:** None
+
+**Returns:** string
+
+```csharp
+public override string ToString()
+{
+    return $"{FirstName} {LastName} ({DateOfBirth:yyyy-MM-dd})";
+}
+```�

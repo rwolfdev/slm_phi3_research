@@ -1,0 +1,22 @@
+ Project Overview:
+The project consists of two main components: `FopServiceApplication` and `PdfController`. The `FopServiceApplication` serves as the entry point for the Spring Boot application, while the `PdfController` handles PDF generation requests.
+
+Project Structure:
+1. `main\java\dev\robertwolf\FOPService`: Contains the `FopServiceApplication` class and the `PdfController` class.
+2. `main\resources\application.properties`: Houses the Spring Boot application properties configuration.
+3. `test\java\dev\robertwolf\FOPService\FopServiceApplicationTests`: Contains the unit tests for the `FopServiceApplication`.
+
+`FopServiceApplication` Class:
+This class is annotated with `@SpringBootApplication`, indicating it's a Spring Boot application. It contains a `main` method that runs the Spring Boot application using `SpringApplication.run(FopServiceApplication.class, args)`.
+
+`PdfController` Class:
+This class is annotated with `@RestController`, indicating it's a controller for handling HTTP requests. It contains two endpoints:
+1. `/render/files`: Accepts multipart/form-data with file uploads (XML and XSL) and generates a PDF.
+2. `/render/strings`: Accepts multipart/form-data with raw string parts (XML and XSL) and generates a PDF.
+
+Both endpoints use the `generatePdf` method to perform the PDF generation process. This method reads the input streams, transforms XML and XSL into XSL-FO using Apache FOP, and then converts XSL-FO into a PDF.
+
+`FopServiceApplicationTests` Class:
+This class contains a single unit test method, `contextLoads`, which verifies that the Spring context loads without errors.
+
+Overall, the project provides a Spring Boot application that generates PDFs from XML and XSL files, supporting both file uploads and string inputs.�

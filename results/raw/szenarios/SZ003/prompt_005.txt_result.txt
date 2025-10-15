@@ -1,0 +1,14 @@
+ ```csharp
+/// <summary>
+/// Filters even numbers from the given array and returns them as a new array.
+/// </summary>
+/// <param name="numbers">Array of integers to be filtered.</param>
+/// <returns>An array containing only the even numbers from the input array.</returns>
+/// <remarks>
+/// This method uses LINQ to filter even numbers. Note that the original array is not modified.
+/// </remarks>
+public int[] FilterEvenNumbers(int[] numbers)
+{
+    // Method implementation
+}
+```�

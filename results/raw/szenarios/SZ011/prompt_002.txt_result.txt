@@ -1,0 +1,52 @@
+ # AuditSaveChangesInterceptor Class Documentation
+
+## Overview
+
+The `AuditSaveChangesInterceptor` class is a custom implementation of the `SaveChangesInterceptor` interface. It is designed to audit changes made to entities tracked by Entity Framework (EF) by logging the changes to an audit table.
+
+## Class Members
+
+### Properties
+
+- `_serviceProvider`: A private field of type `IServiceProvider` that provides access to the required services.
+
+### Constructor
+
+- `AuditSaveChangesInterceptor(IServiceProvider serviceProvider)`: Initializes the `AuditSaveChangesInterceptor` class by storing the provided `IServiceProvider` instance in the `_serviceProvider` field.
+
+### Methods
+
+#### `override async ValueTask<InterceptionResult<int>> SavingChangesAsync(DbContextEventData eventData, InterceptionResult<int> result, CancellationToken cancellationToken = default)`
+
+This method overrides the `SavingChangesAsync` method from the `SaveChangesInterceptor` interface. It intercepts the saving changes process in a `DbContext` and logs the changes to an audit table.
+
+1. Checks if the `DbContext` is null and returns the result from the base implementation if true.
+2. Retrieves the current UTC time and the required `IIdentityContextService` from the service provider.
+3. Filters the change entries based on the entity type and state (Modified, Added, or Deleted).
+4. Iterates through the filtered change entries and creates a `ChangeTrackingEntry` object for each entry.
+5. If the entity state is Modified, it appends the modified properties to the `ChangeTrackingEntry` object.
+6. Adds the `ChangeTrackingEntry` to the `DbContext`.
+7. Returns the result from the base implementation.
+
+## Usage
+
+To use the `AuditSaveChangesInterceptor` class, instantiate it with an `IServiceProvider` and pass it to the `SaveChanges` method of the `DbContext` as a dependency.
+
+```csharp
+var serviceProvider = new ServiceCollection().AddSingleton<IServiceProvider, ServiceProvider>();
+var auditInterceptor = new AuditSaveChangesInterceptor(serviceProvider);
+
+using (var context = new DbContext(options))
+{
+    context.Database.SetNoAccess();
+    context.Database.UseTransaction(transaction =>
+    {
+        transaction.SetInterceptionEnabled(false);
+        context.Database.SetCommandInterceptor(auditInterceptor);
+        context.Database.SetCommandInterceptor(new TransactionInterceptor(transaction));
+        context.Database.SetCommandInterceptor(new LoggingInterceptor(auditInterceptor));
+
+        context.SaveChanges();
+    });
+}
+```�

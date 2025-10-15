@@ -1,0 +1,108 @@
+ # Document Class Document
+
+## Description
+
+The `Document` class represents a document with associated metadata and tags. It provides properties for title, file name, content, creation date, and creator, as well as methods for adding and checking tags, and generating a summary.
+
+## Properties
+
+### Title
+
+A read-only property that returns the title of the document.
+
+```csharp
+public string Title { get; }
+```
+
+### FileName
+
+A read-only property that returns the file name of the document.
+
+```csharp
+public string FileName { get; }
+```
+
+### Content
+
+A read-only property that returns the content of the document as a byte array.
+
+```csharp
+public byte[] Content { get; }
+```
+
+### CreatedAt
+
+A read-only property that returns the creation date and time of the document in UTC.
+
+```csharp
+public DateTime CreatedAt { get; }
+```
+
+### CreatedBy
+
+A read-only property that returns the name of the creator of the document.
+
+```csharp
+public string CreatedBy { get; }
+```
+
+### Tags
+
+An IReadOnlyList property that returns a read-only list of tags associated with the document.
+
+```csharp
+public IReadOnlyList<string> Tags => _tags.AsReadOnly();
+```
+
+## Constructor
+
+The `Document` class has a constructor that initializes the title, file name, content, and creator. The creation date is set to the current UTC date and time.
+
+```csharp
+public Document(string title, string fileName, byte[] content, string createdBy)
+{
+    Title = title;
+    FileName = fileName;
+    Content = content;
+    CreatedBy = createdBy;
+    CreatedAt = DateTime.UtcNow;
+}
+```
+
+## Methods
+
+### AddTag(string tag)
+
+Adds a new tag to the document's tags list if it doesn't already exist.
+
+```csharp
+public void AddTag(string tag)
+{
+    if (!string.IsNullOrWhiteSpace(tag) && !_tags.Contains(tag))
+    {
+        _tags.Add(tag);
+    }
+}
+```
+
+### HasTag(string tag)
+
+Checks if the document has a specific tag.
+
+```csharp
+public bool HasTag(string tag)
+{
+    return _tags.Contains(tag);
+}
+```
+
+### GetSummary()
+
+Returns a summary of the document, including the title, file name, and content size.
+
+```csharp
+public string GetSummary()
+{
+    return $"{Title} ({FileName}), {Content.Length} bytes";
+}
+```�

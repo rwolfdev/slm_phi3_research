@@ -1,0 +1,4 @@
+﻿FullName to Color Converter – WPF Converter
+https://gist.github.com/rwolfdev/f6879f538df81131f9199200870537dd
+
+Zyklomatische Komplexität: 100

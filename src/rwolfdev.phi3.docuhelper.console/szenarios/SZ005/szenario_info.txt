@@ -1,0 +1,3 @@
+﻿Patientendatenstammdaten Klasse
+
+Zyklomatische Komplexität: 10

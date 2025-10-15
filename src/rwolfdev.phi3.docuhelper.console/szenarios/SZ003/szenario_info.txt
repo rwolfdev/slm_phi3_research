@@ -1,0 +1,3 @@
+﻿Filter Funktion zum herausfiltern von geraden Zahlen eines Integer Arrays
+
+Zyklomatische Komplexität: 1

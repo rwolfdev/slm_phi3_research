@@ -1,0 +1,457 @@
+ # FullNameToColorConverter Class Documentation
+
+## Overview
+
+The `FullNameToColorConverter` class is a custom value converter that converts a full name string into a color based on the hash value of the name. This class is implemented in the `rwolfdev.gists` namespace and inherits from `IValueConverter`.
+
+## Class Members
+
+### Namespace
+
+- `namespace rwolfdev.gists`
+
+### Class
+
+- `public class FullNameToColorConverter : IValueConverter`
+
+### Methods
+
+1. `Convert(object value, Type targetType, object parameter, CultureInfo culture)`
+
+    - Converts a full name string to a color.
+    - If the value is null, returns `Brushes.Black`.
+    - Calculates the hash value of the name and converts it to a color using the `ColorScale.HslToRgb` method.
+
+2. `ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)`
+
+    - Returns the original value, as the conversion is not reversible.
+
+### Class Implementation
+
+```csharp
+using System;
+using System.Collections.Generic;
+using System.Globalization;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Data;
+using System.Windows.Media;
+
+namespace rwolfdev.gists
+{
+    public class FullNameToColorConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            if (value != null)
+            {
+                string name = value as string;
+
+                int hash = 0;
+
+                for (int i = 0; i < name.Length; i++)
+                {
+                    int ascii = System.Convert.ToInt16(name[i]);
+                    hash = ascii + ((hash << 5) - hash);
+                }
+
+                hash = hash % 360;
+                int h = hash % 360;
+                int s = 45;
+                int l = 60;
+
+                return new SolidColorBrush(ColorScale.HslToRgb(h, s, l));
+            }
+            else
+            {
+                return Brushes.Black;
+            }
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            return value;
+        }
+    }
+
+    class ColorScale
+    {
+        public static Color HslToRgb(double h_original, double s_original, double l_original)
+        {
+            double red, green, blue;
+
+            var h = h_original / 360.0;
+            var s = s_original / 100.0;
+            var l = l_original / 100.0;
+
+            if (Math.Abs(s - 0.0) < double.Epsilon)
+            {
+                red = l;
+                green = l;
+                blue = l;
+            }
+            else
+            {
+                double var2;
+
+                if (l < 0.5)
+                {
+                    var2 = l * (1.0 + s);
+                }
+                else
+                {
+                    var2 = l + s - s * l;
+                }
+
+                var var1 = 2.0 * l - var2;
+
+                red = hue2Rgb(var1, var2, h + 1.0 / 3.0);
+                green = hue2Rgb(var1, var2, h);
+                blue = hue2Rgb(var1, var2, h - 1.0 / 3.0);
+                if (blue < 0)
+                {
+                    blue = blue * -1;
+                }
+
+                // --
+
+                var nRed = System.Convert.ToInt32(red * 255.0);
+                var nGreen = System.Convert.ToInt32(green * 255.0);
+                var nBlue = System.Convert.ToInt32(blue * 255.0);
+
+                System.Drawing.Color c = System.Drawing.Color.FromArgb(nRed, nGreen, nBlue);
+
+                return Color.FromArgb(c.R, c.G, c.B);
+            }
+
+            private static double hue2Rgb(
+                double v1,
+                double v2,
+                double vH)
+            {
+                if (vH < 0.0)
+                {
+                    vH += 1.0;
+                {
+                if (v1
+
+                double hue2Rgb(double hue2Rgb(double hue2Rgb(double hue2Rgb(double hue2Rgb(double hue2Rgb(double hue2Rgb(double(double(double(double(double(double(double(double(System.
+
+   
+
+    using(System.Text.NET.
+
+    using.NET.
+
+    using.NET.
+    using.NET.
+
+    using.NET.
+
+    using.NET.NET.NET.
+
+
+
+
+
+   
+   
+
+   
+
+
+
+
+
+
+   
+
+   
+
+   
+   
+   
+
+   
+
+   
+
+   
+
+   
+
+   
+
+
+
+   
+
+   
+
+   
+
+   
+
+   
+   
+   
+
+   
+   
+   
+   
+  
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+
+   
+   
+   
+
+   
+   
+   
+   
+
+   
+
+   
+   
+   
+
+.
+
+   
+ converting.
+
+   
+.NET
+   
+   
+   
+   
+   
+
+   
+
+   
+
+   
+
+   
+
+   
+ for
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+textingling.Atomlorefoxing.
+
+ive.Checking
+
+intlerner.
+forcing.Checklightly.Name
+oringmana.Format.Data.Name.
+oringlingmaneswieldingielding.Data.Dataeforing Textlingcore.Ilingangling System.intoring.Generorichling.Gener forewieldlyling.Textling with {
+oring.Trouveing Systemin.Emonling.Generling.Generin.Enumerable.Genericaner {stringlinglingin.as-wrapper.ascii asIlinghedi as-asizing for theulooted.in.asce to, instructing, instructingling instructinavigungiungemyin.
+ for(ascii for for icanidingviwitzexlifting. Genericianineasingcore.
+in
+in
+
+
+ring for for
+in.Generican.namedizingciscii.in
+suppinginlingleriintextiidingi.
+ic,iininginistricicemasian 
+iclingin
+   
+ingiclericimerin
+   iacingingieldicmiercing.
+iclivingootlingootingootlycinginrtieldicincingcingeringinfermar  //generatoricicicrt {forfor for
+ucing {foringieldinferootingieldingforemldicielding foriciveableicerieldicicicieldicicieldic ringclingoniculton{cingootldocicultiffertexicldic ////istrightingielding igeilikieldielding ableiifcing : if for my(w able;
+wifieldcieldciclingi: your { ifilif for for forin notingin.return il 
+ igeas;
+; for for;     . ;.
+intingen;
+usingi.ldoniilingingldoable  ifootlerser
+
+
+losing
+
+ 
+generator.bing-,
+linglyc 
+arrayingler ldonarylingler.returningldocleringinging i 
+ ingldldonti 
+  
+ 
+ablec 
+forcontlingin
+fori iing 
+ing iableiieldiorningingableldingableiicldingingablei i
+
+
+
+iinvariantiableldocklinglinglingldocrt 
+ forldldocldocoren 
+
+  1 
+ 
+ 
+ 
+ 
+ 
+ 
+, 
+  {
+               
+ ndlinglyldlingldd1 
+ 
+-lylllyldonlingolly 
+                    //siklinglysparlyll               ndatlllyllexllldexlllyll11i14llldllldo               
+               
+inserldo1stitu 
+1 {
+       
+forde for (
+
+lylderlderldinexieldly
+ 
+ 
+ 1.asc 
+gldldoclderoldlylyldero
+ {exililinglylyeroldexler.exerlerldiflingeroo 
+               exlderolderoldlylderole3exofoarylderolderoldofo
+
+
+
+serooforooeroe forldscole forldo1                se 
+igeulldulldlyldrome3ldocldldldldeagldocldocldewsole
+wldldocldocldocldldldld1ingexc4slipinginnerldortldeinglycvewachinginglylero valueoo5ecerldeilldoledlingsecilec n 
+excsole ,ilililciclec1stlerstsolestsolestsolebroexstetnumerstler 
+shersoee 
+brstlingstlysterost (,sterost (mystringstringlingste4stststlinge 
+1lystlyeroldesti1201st141stldolyld8Tole3rdsteadlingeag8olelinglylerlyleringlylinglyleringrtlinglinglyrome1string.ste19strome8efergeske igeeigeeeserachersolee 1coloreable
+
+
+
+
+
+
+
+
+3oellowe
+.sbytesoleeige15333euilsoe14llstildeldeskldeskldly33s884444s445ldeskld444                                              
+                              844s4sole15s48soleablesole181884               1ableholder1stsonitsostringsolestingly44341stsole2884
+ocbleson4484444
+                4344bye2443242433.3.3333ly3333rd               3rdly3dilde31543               3lyach43doclycildeas898484888cone94stigerlye9e               48e                                                    ia               49494returnecsone
+               
+       
+                              
+               
+               
+                              
+                          8888
+                                             
+               
+               84               
+               
+               
+               
+               
+
+               
+                               
+               
+               
+               
+                                                                    859                               4               88                                      
+                       8                                            
+3                                                                                            lylyltul                
+33                       
+                
+vertol                                                                            s
+                           55       0r        0           0                       
+                       3249595951                395                                3bedige548                           53.0                05539395533           3               395                3lylyly3.3.2424               

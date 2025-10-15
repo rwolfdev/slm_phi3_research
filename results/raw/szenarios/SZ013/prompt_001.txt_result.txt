@@ -1,0 +1,301 @@
+ # AnalyzeTransactions Function Documentation
+
+## Overview
+
+The `AnalyzeTransactions` function analyzes a list of `Transaction` objects and categorizes them into various groups based on their amount, category, and whether the transaction occurred on a weekend. The function returns a `Dictionary<string, decimal>` that contains the total amounts for each category.
+
+## Parameters
+
+### `transactions`
+
+A list of `Transaction` objects that represent the transactions to be analyzed.
+
+### Returns
+
+A `Dictionary<string, decimal>` that contains the total amounts for each category, including:
+
+- `Suspicious`: Total amount of suspicious transactions.
+- `Recurring`: Total amount of recurring transactions.
+- `HighValue`: Total amount of high-value transactions.
+- `Weekend`: Total amount of transactions that occurred on a weekend.
+- `Suspicious`: Total amount of suspicious transactions.
+- `Recurring`: Total amount of recurring transactions.
+- `HighValue`: Total amount of high-value transactions.
+- `Weekend`: Total amount of transactions that occurred on a weekend.
+
+## Function Details
+
+```csharp
+public Dictionary<string, decimal> AnalyzeTransactions(List<Transaction> transactions)
+{
+    Dictionary<string, decimal> result = new Dictionary<string, decimal>();
+    decimal suspiciousTotal = 0;
+    decimal recurringTotal = 0;
+    decimal highValueTotal = 0;
+    decimal weekendTotal = 0;
+
+    foreach (Transaction t in transactions)
+    {
+        bool isWeekend = t.Date.DayOfWeek == DayOfWeek.Saturday || t.Date.DayOfWeek == DayOfWeek.Sunday;
+        bool isHighValue = t.Amount > 10000m;
+        bool isSuspicious = (t.Amount > 5000m && t.Category == "Cash") ||
+                            (t.Amount > 2000m && t.IsRecurring && t.Category == "Gift") ||
+                            (isWeekend && t.Amount > 1000m && t.Category == "Online");
+
+        if (isSuspicious)
+        {
+            suspiciousTotal += t.Amount;
+            if (!result.ContainsKey("Suspicious"))
+                result["Suspicious"] = 0;
+            result["Suspicious"] += t.Amount;
+        }
+
+        if (t.IsRecurring)
+        {
+            recurringTotal += t.Amount;
+            if (t.Amount < 50m && !isSuspicious)
+            {
+                if (!result.ContainsKey("SmallRecurring"))
+                    result["SmallRecurring"] = 0;
+                result["SmallRecurring"] += t.Amount;
+            }
+            else if (t.Amount >= 50m && t.Amount <= 500m)
+            {
+                if (!result.ContainsKey("NormalRecurring"))
+                    result["NormalRecurring"] = 0;
+                result["NormalRecurring"] += t.Amount;
+            }
+            else if (t.Amount > 500m)
+            {
+                if (!result.ContainsKey("LargeRecurring"))
+                    result["LargeRecurring"] = 0;
+                result["LargeRecurring"] += t.Amount;
+            }
+        }
+
+        if (isHighValue)
+        {
+            highValueTotal += t.Amount;
+            if (t.Category == "Investment")
+            {
+                if (!result.ContainsKey("InvestmentHighValue"))
+                    result["InvestmentHighValue"] = 0;
+                result["InvestmentHighValue"] += t.Amount;
+            }
+            else if (t.Category == "Luxury")
+            {
+                if (!result.ContainsKey("LuxuryHighValue"))
+                    result["LuxuryHighValue"] = 0;
+                result["LuxuryHighValue"] += t.Amount;
+            }
+            else
+            {
+                if (!result.ContainsKey("OtherHighValue"))
+                    result["OtherHighValue"] = 0;
+                result["OtherHighValue"] += t.Amount;
+            }
+        }
+
+        if (isWeekend)
+        {
+            weekendTotal += t.Amount;
+            if (t.Category == "Food")
+            {
+                if (!result.ContainsKey("WeekendFood"))
+                    result["WeekendFood"] = 0;
+                result["WeekendFood"] += t.Amount;
+            }
+            else if (t.Category == "Travel")
+            {
+                if (!result.ContainsKey("WeekendTravel"))
+                    result["WeekendTravel"] = 0;
+                result["WeekendTravel"] += t.Amount;
+            }
+        }
+    }
+
+    result["TotalSuspicious"] = suspiciousTotal;
+    result["TotalRecurring"] = recurringTotal;
+    result["TotalHighValue"] = highValueTotal;
+    result["TotalWeekend"] = weekendTotal;
+
+    return result;
+
+    return result;
+
+    return result;
+}
+    return result;
+    }
+    return;
+    }
+    }
+    return;
+    }
+    }
+    return;
+    return;
+    }
+    }
+    }
+    return;
+    return;
+    return;
+    return;
+return;
+    return;
+return;
+    return;
+    return;
+
+    return;
+return;
+return;
+    return;
+return;
+return;
+    return;
+return;
+    return;
+return;
+return;
+    return;
+return;
+return;
+    return;
+for Code;
+
+    return;
+Code;
+    return;
+
+    return;
+Code;
+    return;
+return;
+    ascii.
+
+    ascii.
+Code.
+    {
+
+    int.
+    double.
+    }.
+
+   3.
+   3atime.
+
+    }.
+.
+.
+   3.
+
+.
+.
+.
+
+   3. You.
+
+    {.
+.
+. Your. Your. Your. Your.
+.
+.
+.int. You. Your. Your. Your. Your.
+.
+.
+.
+.
+. Your.
+.
+.
+    your.
+.
+.
+. Your.
+    {.
+.
+    . Your.
+.
+   ing.1.
+. Your.
+    of.
+.Data.
+.
+    with.
+with.
+. A. Your. Your.
+.Check.
+    for.
+    for.
+   3. Your. Your.Data.
+   30. Your. Your. Your. 
+    . 
+    for. 
+   3ly. Your. 
+   . Your. Your.    and.    .as. 
+   .for.  Prace.for.4.Bucast.4. Your. As. As.B.B.for. for.for.for.for.for. 
+        for.for.for.for.for.for.for.as.for.for.for.for. As.as. Your.as.as.as.as.as. As.for.as.as.Dim.as. As, helping. As, Insty. As, from. Your. As. 
+. for. {    for. 
+    , Your. Your.    {at. Your. Your. Your. Your. Your. Your. Your. Your. Your. Instance. 
+    when. Count. Your. Your. Marked.at. Inst. for. 
+    for your. Your. Your. Your. Your. Your. Yourness.  {    for the. {    {    for. for. { { from.   
+            string;    {.    .expres. not.I.
+        if if.   1. and. Exlam. inst.Subartim.{ { ersion.    {.        Out.    Check. 
+        
+        at.        Out.at.at.    {if.        ,    {    {B.        if.    if. If. If.If.If.        if. If.                   if. If.       out.    if.    if.if.    if if.    if. If.if. If.if.    if if.if.    if. if.    if. if.if.if. If. If. If.  {if.    if.
+lamine. Wsi.
+.
+we. {B.BBelt.Bug.Bug. { {B {Bug.{
+Bug.{
+if.   B ifB.                   Result.Both.   Result.    int.   if.    if.    if. If.if. if.B.  { {if.if. Out.if. 
+    if.if.if.if.if.if if if if if if if if.if.if if if.if.if.if.   nd.if.     0.if.   if if if. if.if. if.        if.if.if if if if, if if day.if if if if.if if if.if.if.if if.if.if.if if if.if.if.if.    {  {    if.                if.if.    { if if if.if.if.if.if.if.if.if.int.o. { { { {if { { (if (if { oc { { { { { { { { { { { { { { {your { { { { { { { { ( {( {if {if { { { { { { { { { { { { { { { { { { { { {if  {
+
+
+ {if    {  {
+   ,  {}{   if.
+  {
+  {
+
+    { {    { {   if.    {    { { { { { { {   ,BB.   Your    {    {          if.    (      }; { {
+ {    {    { { { { { { {  {.  { { { { { { { { { {    { { { { {iforifif { { { { { { { { {  {  { { { {     { { {  {   if if.ififig { { { { {xorn { { if.   iflequerkolestiture    { 10orqueustivule { { { { { {you {your { { if {yournestelevain. { { {if { {your    {}; recularif  
+   if   10    {    {   { { { {{ {your { { { {
+ {   {     10lladulestult {  
+       F   100100010101.1. {
+.if 151. 
+
+
+       
+        1.
+
+
+
+
+
+
+
+        {10;
+ 
+
+ 50.0 {
+                { 
+                
+                                                       {
+        
+          }
+        0; 1.0; 
+
+                                        155555444515.   
+                 {
+    //
+18885488888848est {
+
+
+
+       1 
+                              5     
+    {   5ateresklequaloc {    {   188est 18    (    (   5oc585at. {58518585atarg    Recurrec   88ust.                   (                                                               5eructret80   5undorrecanadequalorundana.
+
+                                                                                                                                  
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           5555recund                                                                                    fly.              5                                                                                                                                                                                                                                                                                    5888                                             f88                                                        50.                                                                                                           f8888888                                                           88                                                                                                                                                                                                88und       f8888undulrec888                              f                                                             (                                                                                                       (T (                                                                                                                                                                                                                                                                                                               {                                             (                           (                                         

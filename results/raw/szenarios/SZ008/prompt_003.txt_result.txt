@@ -1,0 +1,24 @@
+ Project Overview:
+This project consists of two main components: the `FopServiceApplication` and the `PdfController`. The `FopServiceApplication` serves as the entry point for the Spring Boot application, while the `PdfController` handles PDF generation requests.
+
+Project Structure:
+1. `main\java\dev\robertwolf\FOPService`: Contains the `FopServiceApplication` class and the `PdfController` class.
+2. `main\resources\application.properties`: Houses the Spring Boot application properties.
+3. `test\java\dev\robertwolf\FOPService\FopServiceApplicationTests`: Contains the unit tests for the `FopServiceApplication`.
+
+Project Components:
+1. `FopServiceApplication`: A Spring Boot application annotated with `@SpringBootApplication`. It serves as the entry point for the application and runs the `PdfController` using `SpringApplication.run(FopServiceApplication.class, args)`.
+2. `PdfController`: A REST controller that handles PDF generation requests. It has two endpoints:
+   - `/render/files`: Accepts multipart/form-data with file uploads (XML and XSL) and generates a PDF.
+   - `/render/strings`: Accepts raw string parts (XML and XSL) and generates a PDF.
+3. `application.properties`: Contains Spring Boot application properties, such as the application name.
+4. `FopServiceApplicationTests`: A JUnit test class for the `FopServiceApplication`.
+
+Project Interactions:
+- The `FopServiceApplication` is the entry point for the Spring Boot application and runs the `PdfController` using `SpringApplication.run(FopServiceApplication.class, args)`.
+- The `PdfController` handles PDF generation requests and delegates the actual PDF generation to the `generatePdf` method.
+- The `application.properties` file contains Spring Boot application properties, such as the application name.
+- The `FopServiceApplicationTests` class contains unit tests for the `FopServiceApplication`.
+
+Overview:
+This project provides a Spring Boot application that generates PDFs using Apache FOP. The `FopServiceApplication` serves as the entry point, and the `PdfController` handles PDF generation requests. The project includes a test class for the `FopServiceApplication` and a properties file for Spring Boot application configuration.�

@@ -1,0 +1,3 @@
+﻿Dokumentenklasse eines DMS-Systems
+
+Zyklomatische Komplexität: 13

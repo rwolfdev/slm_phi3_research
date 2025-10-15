@@ -1,0 +1,27 @@
+ ## Function Name: Addiere
+## Language: C#
+## Access Level: Public
+## Return Type: int
+
+### Description:
+This function takes two integer parameters, `zahl1` and `zahl2`, and returns their sum as an integer.
+
+### Parameters:
+1. `zahl1` (int): The first integer to be added.
+2. `zahl2` (int): The second integer to be added.
+
+### Return Value:
+The function returns the sum of `zahl1` and `zahl2` as an integer.
+
+### Syntax:
+```csharp
+public int Addiere(int zahl1, int zahl2)
+{
+    return zahl1 + zahl2;
+}
+```
+
+### Example Usage:
+```csharp
+int result = Addiere(5, 10); // result will be 15
+```�

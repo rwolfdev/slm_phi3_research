@@ -1,0 +1,64 @@
+ Project: FOPService
+
+Overview:
+The FOPService project is a Spring Boot application that provides PDF generation functionality using Apache FOP. It includes two endpoints: one for accepting multipart/form-data with file uploads (XML and XSL) and another for accepting raw string parts (XML and XSL).
+
+Key Components:
+1. FopServiceApplication.java: The main class of the project, annotated with @SpringBootApplication. It contains the main method to run the Spring Boot application.
+2. PdfController.java: A REST controller that handles PDF generation requests. It has two endpoints: "/render/files" and "/render/strings".
+3. application.properties: A Spring Boot application properties file that sets the application name.
+4. FopServiceApplicationTests.java: A JUnit test class for testing the Spring Boot application context.
+
+Key Functions:
+1. FopServiceApplication: The main class that runs the Spring Boot application.
+2. PdfController: A REST controller that handles PDF generation requests.
+3. generatePdf: An internal method that transforms XML and XSL into a PDF using Apache FOP.
+
+Key Features:
+1. PDF generation using Apache FOP.
+2. Two endpoints for PDF generation: one accepting multipart/form-data with file uploads, and another accepting raw string parts.
+3. Spring Boot and Spring MVC integration for handling HTTP requests and responses.
+4. Spring Boot application properties configuration.
+
+Key Dependencies:
+1. Spring Boot
+2. Spring MVC
+3. Apache FOP
+4. JUnit
+5. Apache Commons IO
+
+Key Functions:
+1. FopServiceApplication: The main class that runs the Spring Boot application.
+2. PdfController: A REST controller that handles PDF generation requests.
+3. generatePdf: An internal method that transforms XML and XSL into a PDF using Apache FOP.
+
+Key Tests:
+1. FopServiceApplicationTests: A JUnit test class for testing the Spring Boot application context.
+
+Key Configuration:
+1. application.properties: A Spring Boot application properties file that sets the application name.
+
+Key Endpoints:
+1. /render/files: Accepts multipart/form-data with file uploads (XML and XSL).
+2. /render/strings: Accepts raw string parts (XML and XSL).
+
+Key Exception Handling:
+1. IOException handling in generatePdf method.
+
+Key Code Style:
+1. Java naming conventions and code formatting.
+2. Use of Spring Boot annotations and Spring MVC annotations.
+3. Proper exception handling and response generation.
+
+Key Documentation:
+1. Short descriptions of the project, components, and key functions.
+2. Code snippets and explanations for the main and controller classes.
+3. File and package structure documentation.
+4. Test class documentation.
+5. Properties file documentation.
+
+Key Deployment:
+1. Spring Boot application that can be packaged and deployed as a standalone JAR or WAR file.
+2. PDF generation functionality can be used in web applications or standalone services.
+
+This project documentation provides an overview of the FOPService project, its key components, and their functionalities. It also includes code snippets and explanations for the main and controller classes, as well as the test class. The properties file and file structure are documented to help understand the project's configuration and organization.�

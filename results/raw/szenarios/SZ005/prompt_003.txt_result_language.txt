@@ -1,0 +1,78 @@
+ # Patient Class Documentation
+
+## Purpose
+
+The `Patient` class represents a patient with a unique identifier, first name, last name, date of birth, and insurance number. It provides functionality to calculate the patient's age and update the insurance number.
+
+## Properties
+
+### `_id`
+
+- **Type**: `Guid`
+- **Description**: A unique identifier for the patient.
+- **Access**: Read-only.
+
+### `FirstName`
+
+- **Type**: `string`
+- **Description**: The first name of the patient.
+- **Access**: Read-only.
+
+### `LastName`
+
+- **Type**: `string`
+- **Description**: The last name of the patient.
+- **Access**: Read-only.
+
+### `DateOfBirth`
+
+- **Type**: `DateTime`
+- **Description**: The date of birth of the patient.
+- **Access**: Read-only.
+
+### `InsuranceNumber`
+
+- **Type**: `string`
+- **Description**: The insurance number of the patient.
+- **Access**: Read-only (with a private setter).
+
+## Constructor
+
+### `Patient(string firstName, string lastName, DateTime dateOfBirth, string insuranceNumber)`
+
+- **Description**: Initializes a new instance of the `Patient` class with the given first name, last name, date of birth, and insurance number.
+- **Parameters**:
+  - `firstName` (string): The first name of the patient.
+  - `lastName` (string): The last name of the patient.
+  - `dateOfBirth` (DateTime): The date of birth of the patient.
+  - `insuranceNumber` (string): The insurance number of the patient.
+
+## Methods
+
+### `GetAge()`
+
+- **Description**: Calculates and returns the age of the patient based on their date of birth.
+- **Parameters**: None.
+- **Return**: `int` representing the age of the patient.
+
+### `UpdateInsurance(string newInsuranceNumber)`
+
+- **Description**: Updates the insurance number of the patient.
+- **Parameters**:
+  - `newInsuranceNumber` (string): The new insurance number to be set.
+- **Return**: None.
+
+### `ToString()`
+
+- **Description**: Returns a string representation of the patient's full name and date of birth.
+- **Parameters**: None.
+- **Return**: `string` representing the patient' elements.
+
+## Example Usage
+
+```csharp
+Patient patient = new Patient("John", "Doe", new DateTime(1990, 1, 1), "1234567890");
+int age = patient.GetAge();
+patient.UpdateInsurance("0987654321");
+string patientInfo = patient.ToString();
+```�

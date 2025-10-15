@@ -1,0 +1,4 @@
+﻿https://github.com/rwolfdev/Architecture.Mediator/
+RWolfDev.Architecture.Mediator
+
+Zyklomatische Komplexität: 23

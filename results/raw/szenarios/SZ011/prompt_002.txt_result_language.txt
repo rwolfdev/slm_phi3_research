@@ -1,0 +1,45 @@
+ # AuditSaveChangesInterceptor Class Documentation
+
+## Overview
+
+The `AuditSaveChangesInterceptor` class is derived from the `SaveChangesInterceptor` class. It is designed to intercept and audit changes made to entities in a `DbContext` during the `SaveChangesAsync` operation.
+
+## Properties
+
+- `_serviceProvider`: A private field of type `IServiceProvider` that provides access to the required services.
+
+## Constructor
+
+The `AuditSaveChangesInterceptor` constructor takes an `IServiceProvider` as a parameter and assigns it to the `_serviceProvider` field.
+
+```csharp
+public AuditSaveChangesInterceptor(IServiceProvider serviceProvider)
+{
+    _serviceProvider = serviceProvider;
+}
+```
+
+## Methods
+
+### `SavingChangesAsync(DbContextEventData eventData, InterceptionResult<int> result, CancellationToken cancellationToken = default)`
+
+This method overrides the `SavingChangesAsync` method from the `SaveChangesInterceptor` class. It intercepts the `SaveChangesAsync` operation and audits the changes made to entities in the `DbContext`.
+
+1. Checks if the `DbContext` is null and returns the result from the base class if true.
+2. Retrieves the current UTC time.
+3. Gets the `IIdentityContextService` from the `_serviceProvider`.
+4. Filters the change entries based on the entity type and state.
+5. Iterates through the filtered change entries and creates a `ChangeTrackingEntry` object for each.
+6. Appends the change details to the `ChangeTrackingEntry` object.
+7. Adds the `ChangeTrackingEntry` to the `DbContext`.
+8. Returns the result from the base class.
+
+```csharp
+public override async ValueTask<InterceptionResult<int>> SavingChangesAsync(
+    DbContextEventData eventData,
+    InterceptionResult<int> result,
+    CancellationToken cancellationToken = default)
+{
+    // Method implementation...
+}
+```�

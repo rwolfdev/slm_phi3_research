@@ -1,0 +1,61 @@
+ # FullNameToColorConverter Class Documentation
+
+## Namespace
+Namespace: `rwolfdev.gists`
+
+## Class
+Namespace: `rwolfdev.gists`
+
+### FullNameToColorConverter
+
+The `FullNameToColorConverter` class implements the `IValueConverter` interface and provides a conversion method to convert a full name string into a color.
+
+### Properties
+
+- `Convert(object value, Type targetType, object parameter, CultureInfo culture)`: Converts a full name string to a color.
+    - Parameters:
+        - `value`: The full name string to convert.
+        - `targetType`: The target type (not used in this implementation).
+        - `parameter`: The optional parameter (not used in this implementation).
+        - `culture`: The culture info (not used in this implementation).
+    - Returns: A `SolidColorBrush` object representing the color.
+
+### Methods
+
+- `ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)`: Converts a color back to a full name string.
+    - Parameters:
+        - `value`: The color to convert.
+        - `targetType`: The target type (not used in this implementation).
+        - `parameter`: The optional parameter (not used in this implementation).
+        - `culture`: The culture info (not used in this implementation).
+    - Returns: A string representing the full name.
+
+## Method Implementations
+
+### `Convert(object value, Type targetType, object parameter, CultureInfo culture)`
+
+This method converts a full name string to a color. If the value is null, it returns a black color. Otherwise, it calculates a hash value from the name and uses it to determine the color.
+
+### `ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)`
+
+This method returns the original full name string, as it is not possible to convert a color back to a full name string.
+
+## Helper Class: ColorScale
+
+Namespace: `rwolfdev.gists`
+
+### Class: ColorScale
+
+The `ColorScale` class contains a static method `HslToRgb` that converts HSL color values to RGB color values.
+
+### Method: `HslToRgb(double h_original, double s_original, double l_original)`
+
+This method converts HSL color values to RGB color values. It uses the hue, saturation, and lightness values to calculate the corresponding red, green, and blue values. The resulting RGB values are then converted to a `System.Drawing.Color` object.
+
+### Method Implementation
+
+The `HslToRgb` method uses the hue, saturation, and lightness values to calculate the red, green, and blue values. The resulting RGB values are then converted to a `System.Drawing.Color` object.
+
+## Conclusion
+
+The `FullNameToColorConverter` class provides a conversion method to convert a full name string to a color. The `ColorScale` class contains a static method to convert HSL color values to RGB color values. Both classes are part of the `rwolfdev.gists` namespace.�

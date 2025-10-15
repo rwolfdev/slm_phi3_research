@@ -1,0 +1,11 @@
+ /// <summary>Filters even numbers from an array of integers.</summary>
+/// <param name="numbers">An array of integers to filter.</param>
+/// <returns>An array containing only the even numbers from the input array.</returns>
+/// <remarks>
+/// This method uses LINQ to filter even numbers. It does not modify the original array.
+/// Note: The returned array will be sorted in the same order as the input array.
+/// </remarks>
+public int[] FilterEvenNumbers(int[] numbers)
+{
+    // Function implementation
+}�

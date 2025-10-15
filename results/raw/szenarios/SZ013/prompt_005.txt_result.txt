@@ -1,0 +1,177 @@
+ /// <summary>
+/// Analyzes a list of transactions to categorize and sum suspicious, recurring, high-value, and weekend transactions.
+/// </summary>
+/// <param name="transactions">
+/// A list of Transaction objects to be analyzed.
+/// </param>
+/// <returns>
+/// A Dictionary<string, decimal> containing the total amounts categorized as suspicious, recurring, high-value, and weekend transactions.
+/// </returns>
+public Dictionary<string, decimal> AnalyzeTransactions(List<Transaction> transactions)
+{
+    Dictionary<string, decimal> result = new Dictionary<string, decimal>();
+    decimal suspiciousTotal = 0;
+    decimal recurringTotal = 0;
+    decimal highValueTotal = 0;
+    decimal weekendTotal = 0;
+
+    foreach (Transaction t in transactions)
+    {
+        bool isWeekend = t.Date.DayOfWeek == DayOfWeek.Saturday || t.Date.DayOfWeek == DayOfWeek.Sunday;
+        bool isHighValue = t.Amount > 10000m;
+        bool isSuspicious = (t.Amount > 5000m && t.Category == "Cash") ||
+                            (t.Amount > 2000m && t.IsRecurring && t.Category == "Gift") ||
+                            (isWeekend && t.Amount > 1000m && t.Category == "Online");
+
+        if (isSuspicious)
+        {
+            suspiciousTotal += t.Amount;
+            if (!result.ContainsKey("Suspicious"))
+                result["Suspicious"] = 0;
+            result["Suspicious"] += t.Amount;
+        }
+
+        if (t.IsRecurring)
+        {
+            recurringTotal += t.Amount;
+            if (t.Amount < 50m && !isSuspicious)
+            {
+                if (!result.ContainsKey("SmallRecurring"))
+                    result["SmallRecurring"] = 0;
+                result["SmallRecurring"] += t.Amount;
+            }
+            else if (t.Amount >= 50m && t.Amount <= 500m)
+            {
+                if (!result.ContainsKey("NormalRecurring"))
+                    result["NormalRecurring"] = 0;
+                result["NormalRecurring"] += t.Amount;
+           
+output: /// <summary>
+/// Analyzes a list of Transaction objects to categorize and sum suspicious, recurring, high-value, and weekend transactions.
+/// </summary>
+/// <param name="transactions">
+/// A list of Transaction objects to be analyzed.
+/// </param>
+/// <returns>
+/// A Dictionary<string, decimal> containing the total amounts categorized as suspicious, recurring, high-value, and weekend transactions.
+/// </returns>
+public Dictionary<string, decimal> AnalyzeTransactions(List<Transaction> transactions)
+{
+    Dictionary<string, decimal> result = new Dictionary<string, decimal>();
+    decimal suspiciousTotal = 0;
+    decimal recurringTotal = 0;
+    decimal highValueTotal = 0;
+    decimal weekendTotal = 0;
+
+    foreach (Transaction t in transactions)
+    {
+        bool isWeekend = t.Date.DayOfWeek == DayOfWeek.Saturday || t.Date.DayOfWeek == DayOfWeek.Sunday;
+        bool isHighValue = t.Amount > 10000m;
+        bool isSuspicious = (t.Amount > 5000m && t.Category == "Cash") ||
+                            (t.Amount > 2000m && t.IsRecurring && t.Category == "Gift") ||
+                            (isWeekend && t.Amount > 1000m && t.Category == "Online");
+
+        if (isSuspicious)
+        {
+            suspiciousTotal += t.Amount;
+            if (!result.ContainsKey("Suspicious"))
+                result["Suspicious"] = 0;
+            result["Suspicious"] += t.Amount;
+       
+        }
+
+        if (t.IsRecurring)
+        {
+            recurringTotal += t.Amount;
+            if (t.Amount < 50m && !result.ContainsKey("SmallRecurring"))
+                result["SmallRecurring"] = 0;
+            else if (t.Amount >= 501m && !result.ContainsKeywords:
+output: /// <summary>
+output: /// <para>
+output: /// <para output: /// <para output: /// <para output: /// <para output: /// <para output: <para output: <para output: /// <para output: /// <para output: <para output: output:output:para output: output: output: output: output: output: output: output: output: output: output: output: output: output: output: output: output:output: output:output: output: output: output: output: output: output: output: output: output:output: output: output: output: output: output: output: output: output: output: output: output: output:output: output: output:output: output:Output:Output:Output:Output:Output:Output:sentence:Output:Output:Output:Output:Output:Output:Output:Output:Output:Output:Output:Output:Output:Output:Output:Output:Output:Output:Output:Output:Output:Output:Output:Output:Output:Output:Output:Output:Output:Output:Output:Output:Output:Output:Output:Output:Output:Output:Output:Output:AsOutput:Output:Output: of yourOutput:Output:Output:Output:Output:Output:Output:Output:Output:
+ input, sentence:Output:Output.format:
+quelements. Aspect, andAction.format:
+ input:Output:Output: each in the, iface: Output. I input. Describe: output: to variable: if needed. Of ofile type, input. Output. Yout, title:natted, your own unit:n: your code:argsyntax:r.
+ input, and iface:xrange,convention: output. Use. You:xete sentences. Output. Assume to call.format: name and and your ownOutput. Output. Readable.Output.
+ sentence.end.Format.Output.Output.format: output:output:output, format, anddescription.Output.format my,update. Output.Parse.vAligned,departure.
+, input.Parse.I input.
+.
+ statement. description.description.Output. ofrap. of,set. Read.format.
+, input. According type.format.Parse. Format. Read.substring.  input. Lists,format, output.format.format.format.format. ToM:
+.format.format.scope  note.specending, and ofrangr inputandark whenwourly, of format, yourangines output. My. My.n:
+ fromntype.execcres.  format,appendenses,format.  #it. Output:
+:apex, format,format, (code (  section3ate
+
+
+', description. Although,emited section.   sample.  <params. 
+.
+.format.  description.  #output.for example.for example.   
+(  output (response parse.endands,assing. separator.integer.W.format.:sample:example.  for (example.format.format.format.w for for.   
+ to (type.   #  .  Format.\nit. 
+.
+.  ( 
+.end, my.format.
+,,,connit.  :viewing:  #
+:end  and.format for  and par  interpre. output: 
+,comparing   for define:  propreides.piptrees. For,iter 
+'Parse for forith for for for for for: informing ' liven (output.  interpretation., my:contout,  interpretation  interpretation   c, analyze, ,  representing. IfC, if: 
+: Format(
+ e:  lineswamen if : your lugnided and, the, ifl  purpose  youriding, of type. output    - ,  # so,  if 
+,  , if, if, if if if,  format. 
+
+
+   output, 
+   #your format if  ,c 
+, your. . 
+
+  
+   your 
+  
+  : 
+context to draw help 5 if it if if: 
+, visible.  pOutput,  :defin, if you: any,  gusolute.  gu :  : 
+ of valid. 
+, (your sign  sign.  parameter(  :
+:  critical.  :  :  : if: if if if if, if:  if if if if if if if: if if if , if , ,  ;exp ,  demandrugr context context  :  :suitkvequ if:pected format (format:  (if context if your if your if if if (if you.  if, if if if if if 
+  5cain , if(under,  #format, you.can: add. validate.empersk rec 
+ output.,  #ve if rec if if 
+ declarations.    Res  you 
+
+t if your  rec 
+ of your your. 
+ of your
+, 
+ your not 
+ your you. 
+  if, if.if, if - 
+ if, if, visible if if if if if if if if  #expainernipeatomatal, (anyly any, (specreequany recurring, iewrappromess explanation. preccolsole, you., younroll pre.exp. type, for youtok, visible e, any. Expret (, prelittle. You you. Younes , 
+idedamparism ifided if if if if you .recampliquain.lu.c. #specansnism. Your endliving.  ( your your.acc. your any if if they anyl, ifc if any if, if. ifitue. ( , context.  C ifht 
+ wand;if. , if (ifoupanditual ififhinituaubequired initua 8wiewestitue .. {resand ( 4latern  Yournott.  Yours  {User.,  . 
+ 수uthromiv.iflatival (T, ifler, it.,;  A { { any { { {  { any endsoleelevabeuc {lucoruste 8llersoleatatterl@llratermsituatustrouguil.,,, 
+ ( recain  5ust., 8e.Addalelabelevainn.if ifollevololean.iflevarestake.4arestaur if if if .                //on ifeliversa;
+ 44versuituiti ==8ituvers, 
+   if5eliabeuy, ;; ;eituative .           if,
+31(optional,
+   8acell.if any if any only only (andin your., only8andette., ifheatanyhe    8                              185arrecoc.   8andandate.
+                          slipend.                          8undirect             
+           
+            (    {                              {                                }   and (   
+   
+   
+      
+   5eliaterrec   
+   
+   
+                               
+                               3ar   
+                //                //                          ize.                                                             
+            ;           en                                                                              
+       
+        //                                                        (
+       situdeclar                                                                               
+           33
+                                       
+              033uerrecult
+                                                                                                                                                                                              e.                                                e
+           
+                                                                                                                                                                                                                                                                                          

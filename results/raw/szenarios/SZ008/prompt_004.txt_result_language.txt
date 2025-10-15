@@ -1,0 +1,27 @@
+ Project Overview:
+The project consists of two main components: `FopServiceApplication` and `PdfController`. The `FopServiceApplication` serves as the entry point for the Spring Boot application, while the `PdfController` handles PDF generation requests.
+
+Project Structure:
+1. `dev.robertwolf.FOPService` package contains the `FopServiceApplication` and `PdfController` classes.
+2. `main\java\dev\robertwolf\FOPService` directory contains the `FopServiceApplication.java` file.
+3. `main\java\dev\robertwolf\FOPService\PdfController.java` file is the `PdfController` class.
+4. `main\resources\application.properties` file contains Spring Boot application properties.
+5. `test\java\dev\robertwolf\FOPService\FopServiceApplicationTests.java` file contains unit tests for the `FopServiceApplication`.
+
+`FopServiceApplication` Class:
+This class is annotated with `@SpringBootApplication`, indicating it's a Spring Boot application. It contains a `main` method that runs the Spring Boot application using `SpringApplication.run(FopServiceApplication.class, args)`.
+
+`PdfController` Class:
+This class is annotated with `@RestController`, indicating it's a controller for handling HTTP requests. It contains two endpoints:
+1. `/render/files`: Accepts multipart/form-data with file uploads (XML and XSL) and generates a PDF.
+2. `/render/strings`: Accepts raw string parts (XML and XSL) and generates a PDF.
+
+Both endpoints use the `generatePdf` method to perform the PDF generation process. This method reads XML and XSL streams, transforms them into XSL-FO using Apache TransformerFactory, and then uses Apache FOP to generate the PDF.
+
+`FopServiceApplicationTests` Class:
+This class contains a single test method, `contextLoads`, which verifies that the Spring context loads without errors.
+
+`application.properties` File:
+This file contains Spring Boot application properties, specifically the application name set to "FOPService".
+
+Overall, the project provides a simple yet functional PDF generation service using Spring Boot, Apache Transformer, and Apache FOP.�

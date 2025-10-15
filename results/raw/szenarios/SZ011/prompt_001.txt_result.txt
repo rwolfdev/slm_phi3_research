@@ -1,0 +1,49 @@
+ # AuditSaveChangesInterceptor Class Documentation
+
+## Overview
+
+The `AuditSaveChangesInterceptor` class is a custom implementation of the `SaveChangesInterceptor` interface, designed to audit changes made to entities in a `DbContext`. It extends the functionality of the `SaveChangesInterceptor` by tracking modifications, additions, and deletions of entities and storing this information in a `ChangeTrackingEntry` object.
+
+## Class Members
+
+### Class Properties
+
+- `_serviceProvider`: A private field of type `IServiceProvider` that is used to retrieve the `IIdentityContextService` instance.
+
+### Class Constructor
+
+- `AuditSaveChangesInterceptor(IServiceProvider serviceProvider)`: The constructor initializes the `_serviceProvider` field with the provided `serviceProvider` argument.
+
+### Class Methods
+
+#### `override async ValueTask<InterceptionResult<int>> SavingChangesAsync(DbContextEventData eventData, InterceptionResult<int> result, CancellationToken cancellationToken = default)`
+
+This method overrides the `SavingChangesAsync` method from the `SaveChangesInterceptor` interface. It intercepts the `DbContext` events and audits the changes made to the entities.
+
+1. Checks if the `DbContext` is null and returns the result from the base implementation if true.
+2. Retrieves the current UTC time and the `IIdentityContextService` instance.
+3. Filters the entities to be audited based on their state (Modified, Added, or Deleted).
+4. Iterates through the filtered entities and creates a `ChangeTrackingEntry` object for each entity.
+5. If the entity's state is Modified, it appends the modified properties to the `ChangeTrackingEntry` object's `Action` property.
+6. Adds the `ChangeTrackingEntry` object to the `DbContext`.
+7. Returns the result from the base implementation of the `SavingChangesAsync` method.
+
+## Usage
+
+To use the `AuditSaveChangesInterceptor` class, instantiate it with an `IServiceProvider` instance and pass it to the `SaveChanges` method of the `DbContext` as a dependency.
+
+```csharp
+var serviceProvider = new ServiceCollection().AddSingleton<IServiceProvider, ServiceProvider>();
+var auditInterceptor = new AuditSaveChangesInterceptor(serviceProvider.GetRequiredService<IIdentityContextService>());
+
+using (var context = new DbContext())
+{
+    context.Database.SetNoTrackingEnabled();
+    context.Database.UseInterception();
+    context.Database.SetInterceptor(auditInterceptor);
+
+    context.SaveChanges();
+}
+```
+
+This will enable the auditing functionality for the `DbContext` and store the audit information in the `ChangeTrackingEntry` objects.�

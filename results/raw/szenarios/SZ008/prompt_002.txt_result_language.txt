@@ -1,0 +1,27 @@
+ Project: FOPService
+
+Overview:
+The FOPService project is a Spring Boot application that provides an API for generating PDF documents using Apache FOP and XSLT transformations. The project includes two main components: FopServiceApplication and PdfController.
+
+FopServiceApplication:
+This class serves as the entry point for the Spring Boot application. It is annotated with @SpringBootApplication, which enables auto-configuration and component scanning. The main method runs the SpringApplication.run() method, which starts the Spring Boot application.
+
+PdfController:
+This controller class is responsible for handling PDF generation requests. It contains two endpoints:
+
+1. Endpoint 1: Accepts multipart/form-data with file uploads (XML and XSL). The method renderFromFiles() takes MultipartFile objects for XML and XSL files and generates a PDF document using Apache FOP and XSLT transformations.
+
+2. Endpoint 2: Accepts multipart/form-data with raw string parts (XML and XSL). The method renderFromStrings() takes XML and XSL strings as input and generates a PDF document using Apache FOP and XSLT transformations.
+
+generatePdf() method:
+This internal method is responsible for the actual PDF generation process. It performs two steps:
+
+1. Transform XML + XSL into XSL-FO using Apache FOP.
+2. Transform XSL-FO into PDF using Apache FOP.
+
+The project also includes a test class, FopServiceApplicationTests, which tests the SpringBootTest annotation and ensures that the application context loads correctly.
+
+Properties file:
+The application.properties file contains the Spring Boot application name configuration.
+
+Overall, the FOPService project provides an API for generating PDF documents using Apache FOP and XSLT transformations, with support for both file uploads and raw string inputs.�

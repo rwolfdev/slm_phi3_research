@@ -1,0 +1,22 @@
+ # Function: Addiere
+
+## Purpose
+This function adds two integers and returns their sum.
+
+## Parameters
+1. `zahl1` (int): The first integer to be added.
+2. `zahl2` (int): The second integer to be added.
+
+## Return Value
+- Type: `int`
+- Description: The sum of `zahl1` and `zahl2`.
+
+## Example Usage
+```java
+int result = Addiere(5, 7); // result will be 12
+```
+
+## Notes
+- The function assumes that the inputs are integers.
+- No error handling is provided for non-integer inputs.
+- The function does not handle overflow scenarios.�
